@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1761971436115,
+      "tag": "0000_spooky_goliath",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1762365418402,
+      "tag": "0001_petite_silver_centurion",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1767336118152,
+      "tag": "0002_good_senator_kelly",
+      "breakpoints": true
+    }
+  ]
+}

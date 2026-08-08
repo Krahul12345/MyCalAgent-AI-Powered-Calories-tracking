@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+  <!-- Perplexity official logomark: overlapping diamond outline shape -->
+  <path d="M12 2.5L20.5 9V15L12 21.5L3.5 15V9L12 2.5Z" stroke="#20B2AA" stroke-width="1.6" stroke-linejoin="round" fill="none"/>
+  <path d="M12 2.5V21.5" stroke="#20B2AA" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M3.5 9H20.5" stroke="#20B2AA" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M3.5 15H20.5" stroke="#20B2AA" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

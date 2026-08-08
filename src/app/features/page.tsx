@@ -1,0 +1,273 @@
+import { Metadata } from "next";
+import { Navigation } from "@/components/Navigation";
+import { QuickFAQ } from "@/components/QuickFAQ";
+import { Footer } from "@/components/Footer";
+import AnimatedBackground from "@/components/AnimatedBackground";
+import AppStoreButtons from "@/components/AppStoreButtons";
+import AIDiscussButtons from "@/components/AIDiscussButtons";
+import Link from "next/link";
+import { Brain, Zap, Shield, TrendingUp, Clock, Users, Camera, BarChart, Globe, Heart, Utensils, Award } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Features - MyCalAgent | AI Wellness Intelligence & Pattern Recognition",
+  description: "Explore MyCalAgent's AI wellness features: meal photo analysis, food & mood tracking, hydration insights, fasting intelligence, allergen awareness, and Apple Health integration.",
+  keywords: ["AI wellness intelligence", "food and mood tracking", "AI meal analysis", "wellness pattern recognition", "hydration insights", "intermittent fasting app"],
+  openGraph: {
+    title: "Features - MyCalAgent | AI Wellness Intelligence & Pattern Recognition",
+    description: "Explore MyCalAgent's AI wellness features: meal photo analysis, food & mood tracking, hydration insights, fasting intelligence, allergen awareness, and Apple Health integration.",
+    url: "https://www.mycalagent.com/features",
+  },
+  alternates: {
+    canonical: "https://www.mycalagent.com/features",
+  },
+};
+
+const features = [
+  
+  {
+    icon: Shield,
+    title: "Privacy First",
+    description: "MyCalAgent protects your health data with enterprise-grade security.",
+    benefits: ["End-to-end encryption", "Private & Secure Storage", "Export or Delete Your Data Anytime"],
+    color: "from-orange-500 to-red-500",
+  },
+  {
+    icon: Brain,
+    title: "AI-Powered Meal Logging",
+    description: "Take a photo of your meal and MyCalAgent's AI automatically identifies foods, calculates calories, macros and micro nutrients, and detects allergens in real time. You can correct results using voice or text and instantly recalculate nutrition.",
+    benefits: ["AI calorie tracking app", "Photo-based meal logging", "Portion size estimation"],
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    icon: Zap,
+    title: "Advanced AI Powered Analytics Dashboard",
+    description: "View calorie trends, Allergen meals timestamps, hydration details, caffeine intake, fasting schedules, and personalized nutrient goals across daily, weekly, and monthly views.",
+    benefits: ["< 6 second processing", "Macro & micronutrient tracking", "AI nutrition analysis"],
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    icon: Award,
+    title: "Allergen & Dislike Detection",
+    description: "Exclude allergens or foods you dislike from your analyses and recommendations.",
+    benefits: ["Manage your personal like's and dislike's", "Alerts", "Provide feedback"],
+    color: "from-pink-500 to-rose-500",
+  },
+  {
+    icon: TrendingUp,
+    title: "Hydration, Caffeine & Alcohol Tracking",
+    description: "Log water, juice, coffee, tea, and alcohol with smart portion sizing. MyCalAgent tracks caffeine intake, syncs alcohol calories into daily totals, and adapts displays automatically from ml to liters.",
+    benefits: ["Simple to use", "Helps in daily hydration tracking","Can set push notifications", "Personalized recommendations"],
+    color: "from-green-500 to-emerald-500",
+  },
+  {
+    icon: Clock,
+    title: "Smart Reminders & AI Coaching",
+    description: "Receive personalized meal reminders, hydration nudges, fasting alerts, and AI-powered wellness tips tailored to your goals and habits.",
+    benefits: ["AI powered BMI and Calorie recommendation", "Reminders & Notificaitons", "Export your data on realtime basis"],
+    color: "from-indigo-500 to-purple-500",
+  },
+  {
+    icon: Camera,
+    title: "Multi-Platform Support",
+    description: "Sync sleep, steps, workouts, and calories burned from Apple Health, Fitbit, Garmin, Oura Ring, WHOOP, and more — or log data manually anytime.",
+    benefits: ["One Unified Wellness View", "Web camera support", "Offline mode available"],
+    color: "from-violet-500 to-purple-500",
+  },
+  {
+    icon: BarChart,
+    title: "Advanced Analytics",
+    description: "Deep insights into your eating patterns and nutritional balance.",
+    benefits: ["Nutrient breakdown", "Smarter Insights with Less Manual Effort", "Full Control Over Your Data"],
+    color: "from-cyan-500 to-blue-500",
+  },
+  {
+    icon: Globe,
+    title: "Intermittent Fasting Planner",
+    description: "MyCalAgent helps you Plan 16:8, 18:6, or 20:4 fasting schedules with visual timelines, calendar syncing, and smart reminders — making fasting simple and sustainable.",
+    benefits: ["Custom Fasting Schedules", "Smart Reminders & Alerts", "Progress & Streak Tracking"],
+    color: "from-teal-500 to-green-500",
+  },
+  {
+    icon: Heart,
+    title: "Complete Nutrition Tracking",
+    description: "Track protein, carbs, fats, fiber, sugar, and 11 essential micronutrients like sodium, calcium, iron, potassium, and vitamins A, C, and D. Personalized targets are calculated using FDA and WHO guidelines.",
+    benefits: ["AI Powered Personalized Daily Goal & Progress Tracking", "AI Coach Tip on every meal input"],
+    color: "from-red-500 to-pink-500",
+  },
+  {
+    icon: Utensils,
+    title: "Media Library",
+    description: "Customized fitness videos with professional thumbnails. Categories: Fitness, Wellness, Nutrition, Meditation",
+    benefits: ["Variety of workouts: HIIT, yoga, strength training, meditation", "Modern card design with play buttons", "Progress celebrations"],
+    color: "from-amber-500 to-orange-500",
+  },
+  {
+    icon: Award,
+    title: "User Onboarding",
+    description: "8-step guided journey (name, age, gender, height, weight, activity level, goal) based on FDA-Compliant Calculations: BMI, BMR (Mifflin-St Jeor Equation), TDEE.",
+    benefits: ["AI-generated health summary with personalized recommendations", "Goal-based calorie targets (±500 cal for weight loss/gain)", "Smooth animations with haptic feedback"],
+    color: "from-yellow-500 to-amber-500",
+  },
+];
+
+const featuresFAQ = [
+  {
+    question: "What are the core features of MyCalAgent?",
+    answer: "AI meal photo analysis, nutrition tracking, hydration and beverage tracking, intermittent fasting planning, analytics dashboards, reminders, and optional health integrations."
+  },
+  {
+    question: "Does MyCalAgent detect food allergens?",
+    answer: "Yes. The app can flag common and custom allergens during meal analysis to support informed food choices."
+  },
+  {
+    question: "Can I customize my nutrition goals?",
+    answer: "Yes. Users can customize calorie, macro, and micronutrient targets based on personal preferences and goals."
+  },
+  {
+    question: "Does MyCalAgent work offline?",
+    answer: "Yes. MyCalAgent is designed with offline-first functionality and syncs securely when online."
+  },
+  {
+    question: "How much water should I drink every day?",
+    answer: "Daily water needs depend on body size, activity level, and environment. Tracking hydration helps users stay consistent throughout the day.\n\n👉 MyCalAgent includes hydration tracking and reminders to support daily intake goals."
+  },
+  {
+    question: "Is intermittent fasting effective for weight management?",
+    answer: "Intermittent fasting works for some people by creating structured eating windows. Consistency and lifestyle fit are more important than following a specific plan.\n\n👉 MyCalAgent offers optional fasting plans with reminders and visual schedules."
+  },
+  {
+    question: "How can I stay consistent with my health goals?",
+    answer: "Consistency improves when tracking is simple and feedback is clear. Seeing progress over time helps users stay motivated.\n\n👉 MyCalAgent brings meals, hydration, activity, and routines into one easy dashboard."
+  },
+  {
+    question: "What is the best app to track calories and daily habits?",
+    answer: "The best app is one that fits your lifestyle, reduces manual effort, and keeps data easy to understand.\n\n👉 MyCalAgent combines AI-powered meal tracking with lifestyle habit monitoring in one app."
+  }
+];
+
+const featuresJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": featuresFAQ.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const featureDeepDives = [
+  { title: "AI Meal Analysis", desc: "How photo-based nutrition logging works", href: "/features/ai-meal-analysis" },
+  { title: "Food & Mood", desc: "Connecting diet to energy and mood", href: "/features/food-and-mood" },
+  { title: "Hydration Tracking", desc: "Water, caffeine & beverage intelligence", href: "/features/hydration-tracking" },
+  { title: "Intermittent Fasting", desc: "Smart fasting planner with AI insights", href: "/features/intermittent-fasting" },
+  { title: "Apple Health", desc: "Full integration for complete wellness view", href: "/features/apple-health" },
+  { title: "Wellness Patterns", desc: "AI pattern recognition across all your data", href: "/features/wellness-pattern-recognition" },
+];
+
+export default function FeaturesPage() {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(featuresJsonLd) }}
+      />
+      <div className="relative min-h-screen overflow-hidden">
+      <AnimatedBackground />
+      <Navigation />
+      
+      <main className="relative z-10 pt-32 pb-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16 animate-slide-up">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              Core Features of
+              <br />
+              MyCal<span className="text-emerald-500">Agent</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              Take a photo of your meal and MyCalAgent&apos;s AI automatically identifies foods, calculates calories, macros, and micronutrients, and detects allergens in real time. You can correct results using voice or text and instantly recalculate nutrition.
+            </p>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <AIDiscussButtons
+                pageUrl="https://www.mycalagent.com/features"
+                pageTitle="MyCalAgent Features Overview"
+                pageType="feature"
+              />
+            </div>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="group relative"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <div className="h-full p-8 rounded-3xl glass-card hover:glass transition-all duration-500 hover:scale-105 glow-hover">
+                  {/* Icon */}
+                  <div className="relative mb-6">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} p-0.5`}>
+                        <div className="w-full h-full rounded-2xl bg-background dark:bg-card flex items-center justify-center">
+                          <feature.icon className="w-8 h-8 text-foreground" />
+                        </div>
+                    </div>
+                    <div className={`absolute inset-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">{feature.description}</p>
+                  
+                  <ul className="space-y-2">
+                    {feature.benefits.map((benefit, idx) => (
+                      <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <span className={`bg-gradient-to-br ${feature.color} bg-clip-text text-transparent mt-1`}>•</span>
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Decorative elements */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Deep Dive Links */}
+          <div className="mt-16 mb-4">
+            <h2 className="text-2xl font-bold mb-2 text-center">Explore Features in Depth</h2>
+            <p className="text-muted-foreground text-center mb-8 text-sm">Each feature explained in full — how it works, why it matters, and what to expect.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {featureDeepDives.map((f) => (
+                <Link key={f.href} href={f.href} className="group p-5 rounded-2xl border border-border/40 bg-white/60 dark:bg-card/60 backdrop-blur-sm hover:border-emerald-300/50 hover:shadow-md transition-all duration-200">
+                  <h3 className="font-semibold text-sm mb-1 group-hover:text-emerald-600 transition-colors">{f.title}</h3>
+                  <p className="text-xs text-muted-foreground mb-2">{f.desc}</p>
+                  <span className="text-xs font-semibold text-emerald-600">Learn more →</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-20 text-center">
+            <div className="inline-block p-8 rounded-3xl glass-card">
+              <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
+              <p className="text-muted-foreground mb-6">Join thousands of users tracking their nutrition with AI.</p>
+              <AppStoreButtons className="justify-center" />
+            </div>
+          </div>
+        </div>
+        
+        <QuickFAQ items={featuresFAQ} />
+      </main>
+
+      <Footer />
+      </div>
+    </>
+  );
+}

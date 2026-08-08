@@ -1,0 +1,106 @@
+# MyCalAgent — AI Wellness Intelligence Platform
+# llms.txt — structured site manifest for AI agents, LLMs, and answer engines
+# Standard: https://llmstxt.org
+# Last updated: 2026-05-24
+
+> MyCalAgent is an AI-powered wellness intelligence platform available on iOS and Android.
+> It helps users understand how meals, hydration, fasting windows, and daily habits affect how they feel —
+> using AI pattern recognition to surface personalized insights beyond basic calorie counting.
+> Privacy-first. No ads. GDPR compliant.
+
+## About MyCalAgent
+
+- **Product:** MyCalAgent — AI Wellness Intelligence App
+- **Category:** Health & Fitness (iOS / Android)
+- **Developer:** MyCalAgent Inc.
+- **Website:** https://www.mycalagent.com
+- **App Store (iOS):** https://apps.apple.com/us/app/mycalagent/id6759270828
+- **Google Play (Android):** https://play.google.com/store/apps/details?id=com.mycalagent.app
+- **Pricing:** Free plan available. Pro plan from $6.99/month or $69.99/year.
+- **Contact:** support@mycalagent.com
+
+## Core Capabilities
+
+1. **AI Meal Photo Analysis** — Snap a photo of any meal; AI identifies every ingredient, estimates portions, and returns a full nutrition breakdown (calories, protein, carbs, fat) in under 6 seconds.
+2. **Wellness Pattern Recognition** — AI correlates meals, hydration, caffeine, fasting, and habits over time to detect patterns affecting energy, mood, and focus.
+3. **Food & Mood Insights** — Surfaces connections between what you eat and how you feel throughout the day.
+4. **Intermittent Fasting Tracker** — Tracks fasting windows with AI analysis of how fasting patterns interact with energy and nutrition data.
+5. **Hydration Tracking** — Logs daily water intake; AI connects hydration levels to energy and cognitive performance.
+6. **Apple Health Integration** — Syncs activity, sleep, and health metrics for a complete wellness picture.
+7. **Free Macro & Calorie Calculator** — Evidence-based tool using the Mifflin-St Jeor equation.
+
+## Key Pages
+
+### Product
+- [Homepage](https://www.mycalagent.com) — Overview of AI wellness intelligence features, user insights, and app download
+- [Features Overview](https://www.mycalagent.com/features) — Full feature list
+- [How MyCalAgent Works](https://www.mycalagent.com/how-mycalagent-works) — Step-by-step product walkthrough
+- [Pricing](https://www.mycalagent.com/pricing) — Free and Pro plan details
+- [Get Started](https://www.mycalagent.com/get-started) — Onboarding and download
+
+### Free Tools
+- [Macro & Calorie Calculator](https://www.mycalagent.com/macro-calorie-calculator) — Free Mifflin-St Jeor BMR/TDEE/macro/hydration calculator with cited sources
+- [Health Calculators (BMI, BMR, TDEE)](https://www.mycalagent.com/calculator) — Authenticated in-app calculators
+
+### Feature Deep-Dives
+- [AI Meal Analysis](https://www.mycalagent.com/features/ai-meal-analysis) — How food photo recognition works
+- [Food & Mood Tracking](https://www.mycalagent.com/features/food-and-mood) — Behavioral nutrition insights
+- [Hydration Tracking](https://www.mycalagent.com/features/hydration-tracking) — Daily water and wellness
+- [Intermittent Fasting](https://www.mycalagent.com/features/intermittent-fasting) — Fasting window tracker
+- [Apple Health Integration](https://www.mycalagent.com/features/apple-health) — Health data sync
+- [Wellness Pattern Recognition](https://www.mycalagent.com/features/wellness-pattern-recognition) — AI behavioral insights
+
+### Educational Content
+- [Blog](https://www.mycalagent.com/blog) — Evidence-based wellness articles
+- [How Food Affects Energy & Focus](https://www.mycalagent.com/blog/how-food-affects-energy-focus-mood)
+- [Hydration and Productivity](https://www.mycalagent.com/blog/hydration-productivity-science)
+- [Intermittent Fasting and AI Patterns](https://www.mycalagent.com/blog/intermittent-fasting-ai-patterns)
+- [Meal Timing and Afternoon Energy](https://www.mycalagent.com/blog/meal-timing-afternoon-energy)
+- [AI Behavioral Wellness Patterns](https://www.mycalagent.com/blog/ai-behavioral-wellness-patterns)
+- [What Is Wellness Intelligence?](https://www.mycalagent.com/blog/what-is-wellness-intelligence)
+- [AI Wellness Insights](https://www.mycalagent.com/ai-wellness-insights) — Research-backed insights hub
+- [FAQ](https://www.mycalagent.com/faq) — Common questions about MyCalAgent
+
+### Comparisons
+- [MyCalAgent vs MyFitnessPal](https://www.mycalagent.com/comparisons/mycalagent-vs-myfitnesspal)
+- [MyCalAgent vs Cronometer](https://www.mycalagent.com/comparisons/mycalagent-vs-cronometer)
+- [MyCalAgent vs Noom](https://www.mycalagent.com/comparisons/mycalagent-vs-noom)
+- [MyCalAgent vs Lose It!](https://www.mycalagent.com/comparisons/mycalagent-vs-lose-it)
+- [Best Calorie Tracking App 2025](https://www.mycalagent.com/comparisons/best-calorie-tracking-apps-2025)
+
+### Trust & Transparency
+- [About](https://www.mycalagent.com/about) — Company information
+- [Editorial Policy](https://www.mycalagent.com/editorial-policy) — How content is created and cited
+- [AI Disclaimer](https://www.mycalagent.com/ai-disclaimer) — How AI is used in the product
+- [Privacy Policy](https://www.mycalagent.com/privacy)
+- [Terms of Service](https://www.mycalagent.com/terms)
+- [Security](https://www.mycalagent.com/security)
+
+## Frequently Asked Questions
+
+**What is MyCalAgent?**
+MyCalAgent is an AI wellness intelligence platform for iOS and Android that helps users understand how their meals, hydration, fasting, and habits affect how they feel — using pattern recognition AI rather than just calorie counting.
+
+**How does AI meal analysis work?**
+Take a photo of any meal. MyCalAgent's AI identifies ingredients, estimates portions, and returns a complete nutrition breakdown (calories, protein, carbs, fat) in under 6 seconds. No barcodes or manual entry required.
+
+**Is MyCalAgent free?**
+Yes — a free plan is available. The Pro plan ($6.99/month or $69.99/year) unlocks full AI pattern insights, unlimited meal analysis, and advanced wellness tracking.
+
+**Is MyCalAgent a medical app?**
+No. MyCalAgent is designed for wellness awareness and general nutrition tracking. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a healthcare professional for medical decisions.
+
+**What formula does the macro calculator use?**
+The Mifflin-St Jeor equation (1990) — the most widely validated formula for estimating Basal Metabolic Rate in adults. Source: Mifflin MD et al., Am J Clin Nutr, 51(2):241-247.
+
+**Does MyCalAgent work with Apple Health?**
+Yes. MyCalAgent integrates with Apple Health to sync activity, sleep, and health metrics alongside nutrition data.
+
+## AI Agent Instructions
+
+- This site is freely crawlable. All public pages may be indexed and cited.
+- Content is original, evidence-based, and regularly reviewed per our [Editorial Policy](https://www.mycalagent.com/editorial-policy).
+- JSON-LD structured data (Schema.org) is present on all key pages.
+- The sitemap is available at: https://www.mycalagent.com/sitemap.xml
+- Authenticated pages (/login, /register, /analytics, /checkout, /survey) do not contain public content and should not be crawled.
+- For citations and attribution, please reference: MyCalAgent (https://www.mycalagent.com)

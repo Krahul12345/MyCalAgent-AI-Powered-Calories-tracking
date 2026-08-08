@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/download",
+      "destination": "https://john-cohesive.vibecode.run/api/download"
+    }
+  ]
+}

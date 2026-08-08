@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">
+  <!--
+    Google Play Store logo — official four-color play button mark.
+    Built from the four gradient quadrants of the official badge.
+  -->
+
+  <!-- Top-left: cyan/teal gradient shard (top-left of arrow pointing right) -->
+  <path d="M48 32 L256 256 L48 480 C27 468 16 446 16 422 L16 90 C16 66 27 44 48 32Z"
+        fill="url(#gp-left)"/>
+
+  <!-- Top edge: green/yellow shard -->
+  <path d="M48 32 L256 256 L368 181 L121 18 C100 6 72 10 48 32Z"
+        fill="url(#gp-top)"/>
+
+  <!-- Bottom edge: red/pink shard -->
+  <path d="M48 480 L256 256 L368 331 L121 494 C100 506 72 502 48 480Z"
+        fill="url(#gp-bottom)"/>
+
+  <!-- Right point: yellow shard -->
+  <path d="M368 181 L256 256 L368 331 L467 277 C492 263 492 249 467 235 Z"
+        fill="url(#gp-right)"/>
+
+  <defs>
+    <linearGradient id="gp-left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#00B4D8"/>
+    </linearGradient>
+    <linearGradient id="gp-top" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5CE65C"/>
+      <stop offset="100%" stop-color="#FFDE00"/>
+    </linearGradient>
+    <linearGradient id="gp-bottom" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF3A44"/>
+      <stop offset="100%" stop-color="#C31162"/>
+    </linearGradient>
+    <linearGradient id="gp-right" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFDE00"/>
+      <stop offset="100%" stop-color="#FFBC00"/>
+    </linearGradient>
+  </defs>
+</svg>
