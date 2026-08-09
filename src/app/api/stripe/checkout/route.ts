@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     const subscription = await stripe.subscriptions.create({
       customer: customerId,
       items: [{ price: priceId }],
-      trial_period_days: 5,
+      trial_period_days: 3,
       payment_behavior: 'default_incomplete',
       payment_settings: { save_default_payment_method: 'on_subscription' },
       expand: ['pending_setup_intent'],
@@ -94,21 +94,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save subscription to database immediately after creation
     const now = new Date();
     const trialEndDate = subscription.trial_end 
       ? new Date(subscription.trial_end * 1000) 
-      : new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000);
-    
-    // For trial subscriptions, period start is now and period end is trial end
-    const periodStart = subscription.current_period_start 
-      ? new Date(subscription.current_period_start * 1000) 
+      : new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000);
+
+    const subscriptionItem = subscription.items.data[0];
+    const periodStart = subscriptionItem?.current_period_start
+      ? new Date(subscriptionItem.current_period_start * 1000)
       : now;
-    const periodEnd = subscription.current_period_end 
-      ? new Date(subscription.current_period_end * 1000) 
+    const periodEnd = subscriptionItem?.current_period_end
+      ? new Date(subscriptionItem.current_period_end * 1000)
       : trialEndDate;
 
-    // Check if subscription already exists (in case of retry)
     const existingSubRecord = await db
       .select()
       .from(subscriptions)
@@ -136,7 +134,6 @@ export async function POST(request: NextRequest) {
         });
       } catch (dbError) {
         console.error('Failed to save subscription to DB');
-        // Continue anyway - the subscription is created in Stripe
       }
     }
 

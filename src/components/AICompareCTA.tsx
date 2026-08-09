@@ -184,7 +184,6 @@ export default function AICompareCTA() {
                   flexShrink: 0,
                   alignItems: "center",
                 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={p.logo}
                     alt={p.logoAlt}

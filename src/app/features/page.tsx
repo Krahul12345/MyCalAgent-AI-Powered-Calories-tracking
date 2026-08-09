@@ -6,7 +6,8 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
 import AIDiscussButtons from "@/components/AIDiscussButtons";
 import Link from "next/link";
-import { Brain, Zap, Shield, TrendingUp, Clock, Users, Camera, BarChart, Globe, Heart, Utensils, Award } from "lucide-react";
+import Image from "next/image";
+import { Brain, Zap, Shield, TrendingUp, Clock, Camera, BarChart, Globe, Heart, Utensils, Award, Check } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Features - MyCalAgent | AI Wellness Intelligence & Pattern Recognition",
@@ -28,13 +29,13 @@ const features = [
     icon: Shield,
     title: "Privacy First",
     description: "MyCalAgent protects your health data with enterprise-grade security.",
-    benefits: ["End-to-end encryption", "Private & Secure Storage", "Export or Delete Your Data Anytime"],
+    benefits: ["Encrypted Supabase storage", "Private & Secure Storage", "Export or Delete Your Data Anytime"],
     color: "from-orange-500 to-red-500",
   },
   {
     icon: Brain,
     title: "AI-Powered Meal Logging",
-    description: "Take a photo of your meal and MyCalAgent's AI automatically identifies foods, calculates calories, macros and micro nutrients, and detects allergens in real time. You can correct results using voice or text and instantly recalculate nutrition.",
+            description: "Take a photo of your meal and MyCalAgent's AI automatically identifies foods, calculates calories, macros and micronutrients, and detects allergens in real time. You can correct results using voice or text and instantly recalculate nutrition.",
     benefits: ["AI calorie tracking app", "Photo-based meal logging", "Portion size estimation"],
     color: "from-purple-500 to-pink-500",
   },
@@ -49,7 +50,7 @@ const features = [
     icon: Award,
     title: "Allergen & Dislike Detection",
     description: "Exclude allergens or foods you dislike from your analyses and recommendations.",
-    benefits: ["Manage your personal like's and dislike's", "Alerts", "Provide feedback"],
+    benefits: ["Manage personal likes and dislikes", "Alerts", "Provide feedback"],
     color: "from-pink-500 to-rose-500",
   },
   {
@@ -63,14 +64,14 @@ const features = [
     icon: Clock,
     title: "Smart Reminders & AI Coaching",
     description: "Receive personalized meal reminders, hydration nudges, fasting alerts, and AI-powered wellness tips tailored to your goals and habits.",
-    benefits: ["AI powered BMI and Calorie recommendation", "Reminders & Notificaitons", "Export your data on realtime basis"],
+    benefits: ["AI-powered BMI and calorie recommendations", "Reminders and notifications", "Export your data in real time"],
     color: "from-indigo-500 to-purple-500",
   },
   {
     icon: Camera,
     title: "Multi-Platform Support",
-    description: "Sync sleep, steps, workouts, and calories burned from Apple Health, Fitbit, Garmin, Oura Ring, WHOOP, and more — or log data manually anytime.",
-    benefits: ["One Unified Wellness View", "Web camera support", "Offline mode available"],
+    description: "Sync activity, sleep, workouts, and calories burned from Apple HealthKit for Apple Watch and Google Fit — or log data manually anytime.",
+    benefits: ["One Unified Wellness View", "Apple Watch via HealthKit", "Google Fit integration"],
     color: "from-violet-500 to-purple-500",
   },
   {
@@ -125,7 +126,7 @@ const featuresFAQ = [
   },
   {
     question: "Does MyCalAgent work offline?",
-    answer: "Yes. MyCalAgent is designed with offline-first functionality and syncs securely when online."
+    answer: "Core logging workflows are designed to remain resilient, with secure sync behavior when network connectivity is available."
   },
   {
     question: "How much water should I drink every day?",
@@ -199,6 +200,40 @@ export default function FeaturesPage() {
             </div>
           </div>
 
+          <section className="mb-20 grid items-center gap-10 border-y border-border py-12 lg:grid-cols-[1fr_0.72fr] lg:gap-16" aria-labelledby="nutrition-intelligence-heading">
+            <div className="max-w-xl">
+              <p className="mb-3 text-sm font-semibold text-primary">Inside the intelligence layer</p>
+              <h2 id="nutrition-intelligence-heading" className="mb-5 text-3xl font-bold sm:text-4xl">Nutrition you can actually read</h2>
+              <p className="mb-8 leading-relaxed text-muted-foreground">
+                MyCalAgent turns meal logs into a clear view of your macro progress, micronutrient intake, and personalized targets so the useful signal is never buried in a spreadsheet.
+              </p>
+              <ul className="space-y-5">
+                {[
+                  "See protein, carbs, fat, and fiber against your daily targets.",
+                  "Review key micronutrients such as sodium, calcium, iron, potassium, and vitamins.",
+                  "Use AI-generated context to understand what the numbers mean for your routine.",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
+                      <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mx-auto w-full max-w-sm overflow-hidden rounded-xl border border-border bg-white">
+              <Image
+                src="/mycalagent-nutrition-insights.webp"
+                alt="MyCalAgent analytics screen showing macro targets and micronutrient intake"
+                width={900}
+                height={1600}
+                sizes="(max-width: 1024px) 90vw, 380px"
+                className="h-auto w-full"
+              />
+            </div>
+          </section>
+
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
@@ -257,7 +292,7 @@ export default function FeaturesPage() {
           <div className="mt-20 text-center">
             <div className="inline-block p-8 rounded-3xl glass-card">
               <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
-              <p className="text-muted-foreground mb-6">Join thousands of users tracking their nutrition with AI.</p>
+              <p className="text-muted-foreground mb-6">Explore the full experience with a 3-day free trial.</p>
               <AppStoreButtons className="justify-center" />
             </div>
           </div>

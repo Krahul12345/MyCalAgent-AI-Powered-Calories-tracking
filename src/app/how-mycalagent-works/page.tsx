@@ -5,6 +5,21 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
 import AIDiscussButtons from "@/components/AIDiscussButtons";
 import Link from "next/link";
+import {
+  ArrowRight,
+  BrainCircuit,
+  Camera,
+  Check,
+  ChevronDown,
+  CircleDot,
+  Droplets,
+  HeartPulse,
+  LockKeyhole,
+  ScanSearch,
+  ShieldAlert,
+  Sparkles,
+  TimerReset,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "How MyCalAgent Works — AI Wellness Intelligence Explained",
@@ -137,7 +152,7 @@ const jsonLd = {
 const pillars = [
   {
     id: "01",
-    emoji: "📸",
+    icon: Camera,
     title: "AI Photo Meal Logging",
     tagline: "Snap. Identify. Log.",
     body: "Point your camera at any meal, snack, or drink. MyCalAgent's computer vision identifies every ingredient, estimates portion sizes, and delivers a complete nutrition breakdown — calories, macros, and 11 micronutrients — in under 6 seconds. No database searching. No barcode scanning. No guessing.",
@@ -147,7 +162,7 @@ const pillars = [
   },
   {
     id: "02",
-    emoji: "🔍",
+    icon: ScanSearch,
     title: "Wellness Pattern Recognition",
     tagline: "Single days are noise. Patterns are signal.",
     body: "MyCalAgent analyzes your meals, hydration, fasting, and habits across days and weeks to surface the recurring correlations that explain how you feel. Which meals precede energy crashes? When do hydration gaps align with focus dips? Which fasting windows fit your natural rhythm?",
@@ -157,7 +172,7 @@ const pillars = [
   },
   {
     id: "03",
-    emoji: "💧",
+    icon: Droplets,
     title: "Hydration Intelligence",
     tagline: "Water, caffeine, and every beverage — tracked together.",
     body: "Log water, coffee, tea, juice, energy drinks, and alcohol throughout the day with quick-tap portion sizes. MyCalAgent calculates your personalized daily target and tracks progress in real time. Smart reminders prevent the gaps that cause fatigue and focus dips.",
@@ -167,7 +182,7 @@ const pillars = [
   },
   {
     id: "04",
-    emoji: "🧠",
+    icon: BrainCircuit,
     title: "Food & Mood — Habit Insights",
     tagline: "What you eat shapes how you feel.",
     body: "The connection between food and mood isn't abstract — it's biochemical. Neurotransmitter production, blood sugar regulation, inflammation, and gut-brain signaling all depend on what and when you eat. MyCalAgent surfaces the specific connections in your own data.",
@@ -177,7 +192,7 @@ const pillars = [
   },
   {
     id: "05",
-    emoji: "⏱️",
+    icon: TimerReset,
     title: "Fasting Tracking",
     tagline: "Smart fasting, personalized to your rhythm.",
     body: "Plan and track 16:8, 18:6, 20:4, OMAD, 5:2, or a fully custom fasting window. A real-time timer tracks your fast in progress. Smart reminders notify you when your eating window opens or closes. Streak tracking and a fasting calendar show your consistency over time.",
@@ -187,7 +202,7 @@ const pillars = [
   },
   {
     id: "06",
-    emoji: "⚠️",
+    icon: ShieldAlert,
     title: "Allergen Detection",
     tagline: "Know what's in your meal before you eat it.",
     body: "After identifying a meal's ingredients, MyCalAgent automatically cross-references them against your personal allergen and dislike list — flagging any potential matches before you log. You define which allergens to watch for and how sensitive the alerts should be.",
@@ -197,7 +212,7 @@ const pillars = [
   },
   {
     id: "07",
-    emoji: "🔒",
+    icon: LockKeyhole,
     title: "Privacy-First Architecture",
     tagline: "Your health data belongs to you.",
     body: "MyCalAgent is built with privacy as a core design principle, not an afterthought. Your health data is encrypted in transit and at rest. It is never sold to advertisers or third parties. You have full visibility into what data is stored and can export or delete it at any time.",
@@ -207,13 +222,31 @@ const pillars = [
   },
   {
     id: "08",
-    emoji: "🍎",
+    icon: HeartPulse,
     title: "HealthKit Integration",
     tagline: "One complete wellness view.",
     body: "MyCalAgent integrates with Apple HealthKit bidirectionally — reading steps, sleep, workouts, and calories burned to enrich your wellness patterns, and writing your nutrition logs, hydration, and meal data back to the Health app.",
     detail: "Integration is optional. MyCalAgent works fully as a standalone app. HealthKit adds context — connecting movement, sleep, and recovery data to your nutrition and habit patterns for a more complete wellness picture.",
     href: "/features/apple-health",
     linkLabel: "Learn about Apple Health integration →",
+  },
+];
+
+const journey = [
+  {
+    icon: Camera,
+    title: "Capture",
+    description: "Log meals, hydration, fasting, mood, and daily context with minimal friction.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "Connect",
+    description: "AI looks across days and weeks to identify recurring relationships in your data.",
+  },
+  {
+    icon: Sparkles,
+    title: "Understand",
+    description: "Receive plain-language insights that help you make more informed wellness choices.",
   },
 ];
 
@@ -225,29 +258,28 @@ export default function HowMyCalAgentWorksPage() {
         <AnimatedBackground />
         <Navigation />
 
-        <main className="relative z-10 pt-32 pb-20 px-6">
-          <div className="max-w-4xl mx-auto">
+        <main className="relative z-10 px-5 pb-24 pt-28 sm:px-6 lg:pt-32">
+          <div className="mx-auto max-w-5xl">
 
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8" aria-label="Breadcrumb">
+            <nav className="mb-10 flex items-center gap-2 text-sm text-muted-foreground" aria-label="Breadcrumb">
               <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-              <span>/</span>
+              <span aria-hidden="true">/</span>
               <span className="text-foreground">How MyCalAgent Works</span>
             </nav>
 
-            {/* Hero */}
-            <div className="mb-16">
-              <p className="text-sm font-semibold text-emerald-600 uppercase tracking-widest mb-3">AI Retrieval Anchor Page</p>
-              <h1 className="text-4xl sm:text-5xl font-bold mb-5 leading-tight">
+            <div className="mb-16 max-w-4xl">
+              <p className="mb-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                <Sparkles className="h-4 w-4" aria-hidden="true" />
+                From a photo to a pattern you can act on
+              </p>
+              <h1 className="mb-6 text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl">
                 How MyCalAgent Works
                 <br />
-                <span className="gradient-text">AI Wellness Intelligence, Explained</span>
+                <span className="text-primary">AI wellness intelligence, explained.</span>
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed mb-5">
+              <p className="mb-5 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
                 MyCalAgent is an AI wellness intelligence platform. It uses computer vision to log meals from photos, tracks hydration and fasting, and analyzes patterns across your lifestyle data — surfacing personalized insights about how your habits affect how you feel.
-              </p>
-              <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                This page explains every core capability in plain language: what it does, how the AI works, and why it matters for your wellness.
               </p>
               <AIDiscussButtons
                 pageUrl="https://www.mycalagent.com/how-mycalagent-works"
@@ -256,83 +288,88 @@ export default function HowMyCalAgentWorksPage() {
               />
             </div>
 
-            {/* Entity association block — structured for AI retrieval */}
-            <section className="mb-14 p-7 rounded-3xl border border-emerald-200/50 bg-emerald-50/50 dark:bg-emerald-950/20 dark:border-emerald-800/30" aria-label="What MyCalAgent is">
-              <h2 className="text-lg font-bold mb-4">What MyCalAgent Is</h2>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "AI wellness app",
-                  "AI meal insights",
-                  "AI habit tracking",
-                  "food pattern recognition",
-                  "wellness intelligence platform",
-                  "hydration tracking app",
-                  "fasting insights",
-                  "AI calorie tracking",
-                  "AI nutrition guidance",
-                  "privacy-first wellness tracking",
-                  "HealthKit integration",
-                  "food and mood tracking",
-                ].map((tag) => (
-                  <span key={tag} className="px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
-                    {tag}
-                  </span>
+            <section className="mb-20 border-y border-border py-8" aria-labelledby="journey-heading">
+              <h2 id="journey-heading" className="sr-only">The MyCalAgent intelligence journey</h2>
+              <ol className="grid gap-8 md:grid-cols-3 md:gap-0">
+                {journey.map(({ icon: Icon, title, description }, index) => (
+                  <li key={title} className="relative md:px-7 md:first:pl-0 md:last:pr-0 md:not-last:border-r md:not-last:border-border">
+                    <div className="mb-4 flex items-center gap-3">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-primary">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <span className="text-xs font-bold text-primary">0{index + 1}</span>
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold">{title}</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+                  </li>
                 ))}
+              </ol>
+            </section>
+
+            <section className="mb-20" aria-labelledby="pillars-heading">
+              <div className="mb-10 max-w-2xl">
+                <h2 id="pillars-heading" className="mb-3 text-3xl font-bold sm:text-4xl">One connected wellness picture</h2>
+                <p className="text-muted-foreground">Each capability adds context. Together, they help the AI distinguish a one-off moment from a meaningful pattern.</p>
+              </div>
+
+              <div className="border-t border-border">
+                {pillars.map((p) => {
+                  const Icon = p.icon;
+                  return (
+                    <article key={p.id} className="grid gap-5 border-b border-border py-8 sm:grid-cols-[4rem_1fr] sm:gap-7 lg:grid-cols-[4rem_15rem_1fr]">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary">
+                        <Icon className="h-6 w-6" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <span className="mb-2 block text-xs font-bold text-primary">{p.id}</span>
+                        <h3 className="text-xl font-bold">{p.title}</h3>
+                        <p className="mt-1 text-sm font-semibold text-primary">{p.tagline}</p>
+                      </div>
+                      <div>
+                        <p className="mb-3 leading-relaxed text-muted-foreground">{p.body}</p>
+                        <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{p.detail}</p>
+                        <Link href={p.href} className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline hover:underline-offset-4">
+                          {p.linkLabel.replace(" →", "")}
+                          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </Link>
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
             </section>
 
-            {/* Eight pillars */}
-            <section className="mb-16 space-y-10" aria-labelledby="pillars-heading">
-              <h2 id="pillars-heading" className="text-3xl font-bold">The Eight Core Capabilities</h2>
-
-              {pillars.map((p) => (
-                <article key={p.id} className="p-8 rounded-3xl border border-border/40 bg-white/60 dark:bg-card/60 backdrop-blur-sm">
-                  <div className="flex items-start gap-5">
-                    <div className="text-3xl flex-shrink-0 mt-0.5">{p.emoji}</div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-1">
-                        <span className="text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-2.5 py-1 rounded-full">{p.id}</span>
-                        <h3 className="text-xl font-bold">{p.title}</h3>
-                      </div>
-                      <p className="text-sm font-medium text-emerald-600 mb-3 italic">{p.tagline}</p>
-                      <p className="text-muted-foreground leading-relaxed mb-3">{p.body}</p>
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-4">{p.detail}</p>
-                      <Link href={p.href} className="text-sm font-semibold text-emerald-600 hover:underline">
-                        {p.linkLabel}
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </section>
-
-            {/* Summary comparison */}
-            <section className="mb-16 p-8 rounded-3xl border border-border/40 bg-white/50 dark:bg-card/50">
-              <h2 className="text-2xl font-bold mb-6">MyCalAgent vs. Traditional Calorie Trackers</h2>
+            <section className="mb-20 overflow-hidden rounded-2xl border border-border bg-white" aria-labelledby="comparison-heading">
+              <div className="border-b border-border px-5 py-6 sm:px-8">
+                <h2 id="comparison-heading" className="text-2xl font-bold">More context than a calorie counter</h2>
+                <p className="mt-2 text-sm text-muted-foreground">A practical view of what changes when tracking becomes connected and AI-assisted.</p>
+              </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-border/40">
-                      <th className="text-left p-3 font-semibold text-muted-foreground">Capability</th>
-                      <th className="text-center p-3 font-semibold text-emerald-600">MyCalAgent</th>
-                      <th className="text-center p-3 font-semibold text-muted-foreground">Typical Calorie App</th>
+                    <tr className="border-b border-border bg-secondary/50">
+                      <th className="p-4 text-left font-semibold text-muted-foreground sm:px-8">Capability</th>
+                      <th className="p-4 text-left font-semibold text-primary">MyCalAgent</th>
+                      <th className="p-4 text-left font-semibold text-muted-foreground">Typical calorie app</th>
                     </tr>
                   </thead>
-                  <tbody className="text-muted-foreground">
+                  <tbody>
                     {[
                       ["Meal logging method", "AI photo analysis", "Manual database search"],
-                      ["Wellness pattern recognition", "✅ Yes", "❌ No"],
-                      ["Food & mood tracking", "✅ Yes", "❌ No"],
-                      ["Hydration + caffeine analysis", "✅ Full beverage intelligence", "⚠️ Basic or none"],
-                      ["Fasting intelligence", "✅ AI-powered fasting planner", "⚠️ Basic or none"],
-                      ["Allergen detection", "✅ Built into AI analysis", "❌ Rarely"],
-                      ["Apple Health / HealthKit", "✅ Full read/write", "⚠️ Varies"],
-                      ["Privacy-first architecture", "✅ Encrypted, no data selling", "⚠️ Varies"],
-                    ].map(([feature, mca, other], i) => (
-                      <tr key={i} className={`border-b border-border/20 ${i % 2 === 0 ? "bg-muted/20" : ""}`}>
-                        <td className="p-3">{feature}</td>
-                        <td className="p-3 text-center">{mca}</td>
-                        <td className="p-3 text-center">{other}</td>
+                      ["Wellness pattern recognition", "Included", "Usually not included"],
+                      ["Food & mood tracking", "Connected to meal data", "Usually separate or absent"],
+                      ["Hydration + caffeine analysis", "Full beverage context", "Basic or absent"],
+                      ["Fasting intelligence", "AI-assisted planner", "Basic timer or absent"],
+                      ["Allergen detection", "Built into AI analysis", "Rarely included"],
+                      ["Apple Health / HealthKit", "Read and write support", "Varies"],
+                      ["Privacy architecture", "Encrypted, no data selling", "Varies"],
+                    ].map(([feature, mca, other]) => (
+                      <tr key={feature} className="border-b border-border last:border-b-0">
+                        <td className="p-4 font-medium sm:px-8">{feature}</td>
+                        <td className="p-4 text-muted-foreground">
+                          <span className="inline-flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />{mca}</span>
+                        </td>
+                        <td className="p-4 text-muted-foreground">{other}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -340,36 +377,47 @@ export default function HowMyCalAgentWorksPage() {
               </div>
             </section>
 
-            {/* FAQ */}
-            <section className="mb-16">
-              <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-              <div className="space-y-4">
-                {faqItems.map((f, i) => (
-                  <div key={i} className="p-5 rounded-2xl border border-border/40 bg-white/60 dark:bg-card/60 backdrop-blur-sm">
-                    <h3 className="font-semibold mb-2">{f.question}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{f.answer}</p>
-                  </div>
+            <section className="mb-20 grid gap-10 lg:grid-cols-[18rem_1fr]" aria-labelledby="faq-heading">
+              <div>
+                <h2 id="faq-heading" className="text-3xl font-bold">Questions, answered clearly</h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">The essentials about our AI, your data, and how the experience fits together.</p>
+              </div>
+              <div className="border-t border-border">
+                {faqItems.map((f) => (
+                  <details key={f.question} className="group border-b border-border py-5">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold marker:content-none">
+                      {f.question}
+                      <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" aria-hidden="true" />
+                    </summary>
+                    <p className="max-w-2xl pt-3 text-sm leading-relaxed text-muted-foreground">{f.answer}</p>
+                  </details>
                 ))}
               </div>
             </section>
 
-            {/* CTA */}
-            <div className="mb-12 p-8 rounded-3xl border border-border/40 bg-white/50 dark:bg-card/50 text-center">
-              <p className="text-xl font-bold mb-2">Ready to see how it works for you?</p>
-              <p className="text-sm text-muted-foreground mb-6">Start logging meals with AI and let the patterns build over 7–14 days.</p>
+            <div className="mb-16 overflow-hidden rounded-2xl bg-[#123d2d] px-6 py-10 text-center text-white sm:px-10 sm:py-12">
+              <CircleDot className="mx-auto mb-5 h-7 w-7 text-[#78d7a5]" aria-hidden="true" />
+              <p className="mb-2 text-2xl font-bold">See what your routine has been telling you.</p>
+              <p className="mx-auto mb-7 max-w-xl text-sm leading-relaxed text-[#c9e6d7]">Start logging with AI and give your patterns 7–14 days to emerge. Your 3-day free trial lets you explore the full experience.</p>
               <AppStoreButtons className="justify-center" />
             </div>
 
-            {/* Internal links */}
-            <section className="p-6 rounded-2xl border border-border/40 bg-white/50 dark:bg-card/50">
-              <p className="text-sm text-muted-foreground mb-3">Explore more</p>
-              <div className="flex flex-wrap gap-3">
-                <Link href="/features" className="px-4 py-2 rounded-xl text-sm font-medium border border-emerald-500/30 text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 transition-colors">All Features</Link>
-                <Link href="/ai-wellness-insights" className="px-4 py-2 rounded-xl text-sm font-medium border border-border hover:bg-secondary transition-colors">AI Wellness Insights</Link>
-                <Link href="/wellness-pattern-recognition" className="px-4 py-2 rounded-xl text-sm font-medium border border-border hover:bg-secondary transition-colors">Wellness Pattern Recognition</Link>
-                <Link href="/why-calorie-tracking-fails" className="px-4 py-2 rounded-xl text-sm font-medium border border-border hover:bg-secondary transition-colors">Why Calorie Tracking Fails</Link>
-                <Link href="/research" className="px-4 py-2 rounded-xl text-sm font-medium border border-border hover:bg-secondary transition-colors">Research</Link>
-                <Link href="/about" className="px-4 py-2 rounded-xl text-sm font-medium border border-border hover:bg-secondary transition-colors">About</Link>
+            <section className="border-t border-border pt-8" aria-labelledby="explore-heading">
+              <h2 id="explore-heading" className="mb-4 text-lg font-bold">Continue exploring</h2>
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {[
+                  ["All features", "/features"],
+                  ["AI wellness insights", "/ai-wellness-insights"],
+                  ["Wellness pattern recognition", "/wellness-pattern-recognition"],
+                  ["Why calorie tracking fails", "/why-calorie-tracking-fails"],
+                  ["Research", "/research"],
+                  ["About", "/about"],
+                ].map(([label, href]) => (
+                  <Link key={href} href={href} className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline hover:underline-offset-4">
+                    {label}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                ))}
               </div>
             </section>
 

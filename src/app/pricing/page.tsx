@@ -26,7 +26,7 @@ const pricingFAQ = [
     },
   {
     question: "What payment methods do you accept?",
-    answer: "We accept all major credit cards (Visa, Mastercard, American Express) and PayPal."
+    answer: "Payments are handled through Stripe and RevenueCat, supporting the payment methods available through those checkout flows."
   },
   {
     question: "Do you offer refunds?",

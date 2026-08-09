@@ -1,9 +1,8 @@
 "use server";
 
 import { db } from "@/db";
-import { healthProfiles } from "@/db/schema";
+import { healthProfiles, surveyResponses } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { v4 as uuidv4 } from "uuid";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -30,9 +29,9 @@ export async function saveHealthProfile(data: {
     .select()
     .from(healthProfiles)
     .where(eq(healthProfiles.userId, userId))
-    .get();
+    .limit(1);
 
-  if (existing) {
+  if (existing.length > 0) {
     await db
       .update(healthProfiles)
       .set({
@@ -65,9 +64,9 @@ export async function getHealthProfile() {
     .select()
     .from(healthProfiles)
     .where(eq(healthProfiles.userId, session.user.id))
-    .get();
+    .limit(1);
 
-  return profile || null;
+  return profile[0] || null;
 }
 
 export async function getSurveyResponseByEmail(email: string) {
@@ -75,7 +74,7 @@ export async function getSurveyResponseByEmail(email: string) {
     .select()
     .from(surveyResponses)
     .where(eq(surveyResponses.email, email.toLowerCase()))
-    .get();
+    .limit(1);
   
-  return response || null;
+  return response[0] || null;
 }

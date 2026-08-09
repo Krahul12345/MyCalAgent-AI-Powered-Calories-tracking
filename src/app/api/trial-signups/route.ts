@@ -84,15 +84,16 @@ export async function GET(request: NextRequest) {
     const offset = Math.max(parseInt(searchParams.get('offset') ?? '0'), 0);
     const search = searchParams.get('search')?.trim().slice(0, 100) ?? '';
 
-    let query = db.select().from(trialSignups);
-    if (search) {
-      query = query.where(like(trialSignups.email, `%${search}%`));
-    }
-
-    const results = await query
+    const baseQuery = db
+      .select()
+      .from(trialSignups)
       .orderBy(desc(trialSignups.createdAt))
       .limit(limit)
       .offset(offset);
+
+    const results = search
+      ? await baseQuery.where(like(trialSignups.email, `%${search}%`))
+      : await baseQuery;
 
     return NextResponse.json(results, { status: 200 });
   } catch (error) {

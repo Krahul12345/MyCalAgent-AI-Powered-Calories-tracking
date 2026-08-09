@@ -1,10 +1,10 @@
 "use client";
 
 /**
- * CookieConsent — GDPR-compliant cookie banner with GA4 Consent Mode v2
+ * CookieConsent — privacy-first cookie banner with GA4 Consent Mode v2
  *
  * Storage key : "mycalagent_cookie_consent" (localStorage)
- * Categories  : essential (always-on) | analytics (GA4, opt-in)
+ * Categories  : essential (always-on) | analytics (GA4 + ads measurement, opt-in)
  * Default     : analytics DENIED — GA4 only fires after explicit accept
  *
  * Key exports:
@@ -61,6 +61,7 @@ function saveConsent(
       analytics_storage: analytics ? "granted" : "denied",
     });
   }
+  window.dispatchEvent(new CustomEvent("mycalagent:cookie-consent", { detail: payload }));
   return payload;
 }
 
@@ -83,7 +84,7 @@ export function openCookiePreferences() {
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
-  const [analyticsOn, setAnalyticsOn] = useState(false); // default OFF (GDPR)
+  const [analyticsOn, setAnalyticsOn] = useState(false);
   const { setCookieBannerVisible } = useCookieBanner();
 
   // Sync visibility state to context so LiveWellnessFeed can pause
@@ -221,8 +222,7 @@ export default function CookieConsent() {
                 <div>
                   <p className="text-sm font-medium text-slate-800">Analytics</p>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Helps us understand how people use the app (Google Analytics).
-                    Off by default.
+                    Helps us understand site usage and ad performance (Google Analytics and OpenAI Ads Measurement). Off by default.
                   </p>
                 </div>
                 <button

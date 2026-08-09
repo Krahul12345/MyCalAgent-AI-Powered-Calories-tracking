@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
     
     const trialEndDate = stripeSubscription.trial_end 
       ? new Date(stripeSubscription.trial_end * 1000) 
-      : new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000);
+      : new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000);
 
     await db.insert(subscriptions).values({
       id: crypto.randomUUID(),

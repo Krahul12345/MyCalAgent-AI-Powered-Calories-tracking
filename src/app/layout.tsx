@@ -5,6 +5,7 @@ import { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import CookieConsent from '@/components/CookieConsent';
 import LiveWellnessFeed from '@/components/LiveWellnessFeed';
+import OpenAIAdsPixel from '@/components/OpenAIAdsPixel';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import { CookieBannerProvider } from '@/lib/CookieBannerContext';
 
@@ -259,6 +260,8 @@ const jsonLd = {
   ],
 };
 
+const openAIAdsPixelId = process.env.NEXT_PUBLIC_OPENAI_ADS_PIXEL_ID;
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
@@ -276,6 +279,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//ipapi.co" />
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="//bzrcdn.openai.com" />
+        <link rel="dns-prefetch" href="//bzr.openai.com" />
       </head>
       <body>
         <Script
@@ -288,7 +293,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/*
           GA4 CONSENT GATING — DO NOT REMOVE OR REORDER
           ------------------------------------------------
-          Analytics are denied by default (GDPR Consent Mode v2).
+          Analytics are denied by default until the visitor opts in.
           GA4 only receives data after the user clicks "Accept All" in the
           cookie banner, or re-enables analytics via "Cookie Settings" in footer.
 
@@ -351,6 +356,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           strategy="afterInteractive"
           data-orchids-project-id="c30ac0a1-d80d-448c-bb54-e9f289f958e8"
         />
+        <OpenAIAdsPixel pixelId={openAIAdsPixelId} />
         <ScrollProgressBar />
         <CookieBannerProvider>
           {children}

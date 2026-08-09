@@ -48,7 +48,7 @@ const CATEGORY_BG: Record<string, string> = {
 function trackAIShare(platform: string) {
   try {
     if (typeof window !== "undefined" && typeof (window as Window & { gtag?: (...args: unknown[]) => void }).gtag === "function") {
-      (window as Window & { gtag: (...args: unknown[]) => void }).gtag("event", `ai_share_${platform}`, {
+      (window as unknown as Window & { gtag: (...args: unknown[]) => void }).gtag("event", `ai_share_${platform}`, {
         event_category: "AI Share",
         event_label: platform,
       });
@@ -186,7 +186,6 @@ function AIShareButtons({
             }}
           >
             <span style={{ display: "flex", alignItems: "center", filter: isHovered ? "brightness(1.1)" : "none", transition: "filter 0.15s ease" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={p.logo} alt={p.logoAlt} width={AI_LOGO_SIZE} height={AI_LOGO_SIZE} style={{ display: "block", width: AI_LOGO_SIZE, height: AI_LOGO_SIZE }} aria-hidden="true" />
             </span>
             {p.label}
@@ -452,7 +451,6 @@ export default function ArticlePageClient({ article, related }: { article: BlogA
             {/* Featured image */}
             {article.featured_image && (
               <div style={{ marginBottom: 36, borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={article.featured_image} alt={article.title} style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
             )}

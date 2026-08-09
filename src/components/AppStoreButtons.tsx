@@ -43,7 +43,6 @@ export default function AppStoreButtons({ layout = "row", className = "" }: AppS
         className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-black text-white font-semibold hover:bg-zinc-800 transition-colors"
       >
         {/* Official Google Play four-color logo */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/logos/google-play.svg"
           alt="Google Play"

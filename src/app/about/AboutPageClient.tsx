@@ -32,7 +32,7 @@ const values = [
   {
     icon: Zap,
     title: "Security & Innovation",
-    description: "Your data stays yours. All processing happens securely with end-to-end encryption. We continuously push the boundaries of what's possible with computer vision and AI.",
+    description: "Your data stays yours. Wellness data is protected with encrypted Supabase storage and secure processing. We continuously push the boundaries of what's possible with computer vision and AI.",
     color: "from-green-500 to-emerald-500",
   },
   {

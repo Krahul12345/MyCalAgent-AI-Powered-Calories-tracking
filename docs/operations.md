@@ -15,6 +15,8 @@ The development server runs at `http://localhost:3000` unless that port is alrea
 
 ```bash
 bun install --frozen-lockfile
+bun run typecheck
+bun run lint
 bun run build
 bun run audit:visibility
 ```
@@ -51,6 +53,7 @@ SUPABASE_ANON_KEY
 SUPABASE_SERVICE_ROLE_KEY
 BETTER_AUTH_SECRET
 NEXT_PUBLIC_SITE_URL
+NEXT_PUBLIC_OPENAI_ADS_PIXEL_ID
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 STRIPE_SECRET_KEY
 STRIPE_WEBHOOK_SECRET
@@ -63,6 +66,8 @@ RESEND_FROM_EMAIL
 RESEND_REPLY_TO
 ```
 
+`NEXT_PUBLIC_OPENAI_ADS_PIXEL_ID` enables the OpenAI Ads Measurement Pixel after a visitor accepts analytics cookies. Do not add an OpenAI Conversions API key to any `NEXT_PUBLIC_*` variable; keep that server-only if server-side conversion events are added later.
+
 ## Release Flow
 
 1. Make changes locally.
@@ -74,6 +79,6 @@ RESEND_REPLY_TO
 
 ## Current Known Follow-Up
 
-`bun run typecheck` reports existing Stripe SDK and Drizzle typing issues. `bun run lint` may also require native optional resolver bindings depending on the machine. Keep production deploys gated on `bun run build` until those issues are fixed.
+`bun run typecheck`, `bun run lint`, `bun run build`, and `bun run audit:visibility` are enforced quality gates for production readiness.
 
 `bun run audit:visibility` is enforced in CI and may emit warnings for older migrated pages that still need page-specific structured data. Treat those warnings as the AEO/GEO backlog for future enhancements.

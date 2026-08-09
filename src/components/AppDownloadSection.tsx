@@ -119,7 +119,7 @@ export default function AppDownloadSection() {
                   alt="Scan to download MyCalAgent on the App Store"
                   width={200}
                   height={200}
-                  className="w-[200px] h-[200px] object-contain"
+                  className="h-auto w-[200px] object-contain"
                 />
               </div>
               <div className="text-center">

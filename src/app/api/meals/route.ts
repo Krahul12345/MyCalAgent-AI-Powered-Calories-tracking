@@ -3,7 +3,6 @@ import { db } from "@/db";
 import { meals } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { eq, desc, and, gte, lte } from "drizzle-orm";
-import { crypto } from "next/dist/compiled/@edge-runtime/primitives";
 
 const GENERIC_500 = { error: "Something went wrong. Please try again." };
 

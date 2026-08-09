@@ -12,10 +12,8 @@ import AppDownloadSection from "@/components/AppDownloadSection";
 import VideoSection from "@/components/VideoSection";
 import { ComparisonCTA } from "@/components/ComparisonCTA";
 import { QuickFAQ } from "@/components/QuickFAQ";
-import LiveWellnessFeed from "@/components/LiveWellnessFeed";
 import AICompareCTA from "@/components/AICompareCTA";
 import UserInsightsSection from "@/components/UserInsightsSection";
-import { useSession } from "@/lib/auth-client";
 import { Footer } from "@/components/Footer";
 
 const homeFAQ = [
@@ -171,8 +169,6 @@ const homeJsonLd = {
 };
 
 export default function Home() {
-  const { data: session } = useSession();
-
   return (
     <>
       <script
@@ -198,7 +194,6 @@ export default function Home() {
         </main>
 
         <Footer />
-        <LiveWellnessFeed />
       </div>
     </>
   );

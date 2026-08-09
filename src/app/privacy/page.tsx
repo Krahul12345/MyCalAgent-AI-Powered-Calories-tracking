@@ -6,11 +6,11 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - MyCalAgent",
-  description: "MyCalAgent Privacy Policy: how we collect, use, and protect your data. GDPR-compliant, no data selling, GA4 analytics opt-in only.",
+  description: "MyCalAgent Privacy Policy: how we collect, use, and protect your data. No data selling, GA4 analytics opt-in only.",
   alternates: { canonical: "https://www.mycalagent.com/privacy" },
   openGraph: {
     title: "Privacy Policy - MyCalAgent",
-    description: "How MyCalAgent handles your personal and wellness data — transparent, GDPR-aware, and privacy-first.",
+    description: "How MyCalAgent handles your personal and wellness data — transparent, user-controlled, and privacy-first.",
     url: "https://www.mycalagent.com/privacy",
   },
 };
@@ -23,7 +23,7 @@ const privacyJsonLd = {
       "@id": "https://www.mycalagent.com/privacy#webpage",
       url: "https://www.mycalagent.com/privacy",
       name: "Privacy Policy - MyCalAgent",
-      description: "MyCalAgent Privacy Policy covering data collection, AI processing, GDPR legal basis, cookies, user rights, and data security.",
+      description: "MyCalAgent Privacy Policy covering data collection, AI processing, cookies, user rights, and data security.",
       inLanguage: "en",
       isPartOf: { "@id": "https://www.mycalagent.com/#website" },
       dateModified: "2026-04-01",
@@ -39,7 +39,7 @@ const privacyJsonLd = {
       "@type": "DigitalDocument",
       name: "MyCalAgent Privacy Policy",
       url: "https://www.mycalagent.com/privacy",
-      description: "Privacy Policy for the MyCalAgent AI wellness platform. GDPR-compliant, last updated April 2026.",
+      description: "Privacy Policy for the MyCalAgent AI wellness platform. Last updated April 2026.",
       inLanguage: "en",
       dateModified: "2026-04-01",
       publisher: {
@@ -50,7 +50,7 @@ const privacyJsonLd = {
       },
       about: [
         { "@type": "Thing", name: "Privacy Policy" },
-        { "@type": "Thing", name: "GDPR Compliance" },
+        { "@type": "Thing", name: "Privacy-First Data Controls" },
         { "@type": "Thing", name: "Data Protection" },
       ],
     },
@@ -190,7 +190,7 @@ export default function PrivacyPage() {
 
                 <section>
                   <h2 className="text-2xl font-semibold text-slate-900">
-                    4. Legal Basis for Processing (GDPR)
+                    4. Legal Basis for Processing
                   </h2>
                   <p className="mt-3">
                     If you are located in regions such as the EU/UK, we process your

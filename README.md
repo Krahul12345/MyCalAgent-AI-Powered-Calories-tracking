@@ -62,13 +62,13 @@ MyCalAgent is positioned as an **AI Wellness Intelligence Platform** — not jus
 | **Auth** | Better Auth v1.3.10 |
 | **Payments** | Stripe v19 (subscriptions, webhooks) |
 | **Email** | Resend |
-| **Analytics** | Google Analytics 4 via Google Tag Manager |
+| **Analytics** | Google Analytics 4 via Google Tag Manager; OpenAI Ads Measurement Pixel when configured |
 | **Icons** | Lucide React, Tabler Icons, React Icons |
 | **Forms** | React Hook Form + Zod |
 | **Charts** | Recharts |
 | **Notifications** | Sonner (toast) |
 | **Carousels** | Embla Carousel, Swiper |
-| **Package Manager** | npm (lockfile: package-lock.json) |
+| **Package Manager** | Bun (lockfile: bun.lock) |
 
 ---
 
@@ -363,7 +363,7 @@ Versioned Terms and Privacy policy documents with active/deleted flags, reconsen
 | `TrialPopup.tsx` | Delayed trial offer popup modal |
 | `BetaAccessDialog.tsx` | Beta access request dialog |
 | `LogFoodModal.tsx` | Meal logging modal |
-| `CookieConsent.tsx` | GDPR cookie consent banner |
+| `CookieConsent.tsx` | Privacy-first cookie consent banner |
 | `ErrorReporter.tsx` | Client-side error reporting |
 | `GeoFlag.tsx` | Country flag via IP geolocation (ipapi.co) |
 | `ThemeToggle.tsx` | Light/dark mode toggle |
@@ -384,6 +384,9 @@ DATABASE_URL=postgresql://...
 SUPABASE_URL=https://kxlkulmuhnnnalnzlftn.supabase.co
 SUPABASE_ANON_KEY=...
 SUPABASE_SERVICE_ROLE_KEY=<value>
+
+# Ads measurement (browser pixel; loads after analytics consent)
+NEXT_PUBLIC_OPENAI_ADS_PIXEL_ID=...
 
 # Authentication (Better Auth)
 BETTER_AUTH_SECRET=...
@@ -628,7 +631,7 @@ GitHub Actions are configured in `.github/workflows`.
 
 | Workflow | Trigger | Purpose |
 |---|---|---|
-| `CI` | Pull requests and pushes to `main` | Installs dependencies with Bun and runs `bun run build` |
+| `CI` | Pull requests and pushes to `main` | Installs dependencies with Bun and runs typecheck, lint, build, and visibility audit |
 | `Deploy Production` | Pushes to `main` and manual dispatch | Pulls Vercel production env, builds with Vercel, and deploys the prebuilt output |
 
 ### Required GitHub Secrets
@@ -645,7 +648,7 @@ Runtime app variables such as `DATABASE_URL`, `SUPABASE_*`, `STRIPE_*`, `BETTER_
 
 ### Current Quality Gate
 
-The app's production build is the enforced CI gate. `bun run typecheck` currently reports existing Stripe, Drizzle, and `uuid` typing issues, and the Next build is configured to skip TypeScript and ESLint validation. Tighten CI to include `typecheck` and `lint` after those issues are cleaned up.
+The enforced CI gates are `bun run typecheck`, `bun run lint`, `bun run build`, and `bun run audit:visibility`.
 
 ### Redirects
 

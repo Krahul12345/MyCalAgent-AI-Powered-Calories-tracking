@@ -47,12 +47,12 @@ const faqItems = [
   {
     question: "Do I need health apps to get full benefits?",
     answer:
-      "No. Core features work standalone. Health device integration (Apple Health, Fitbit, wearables) is optional and available in Premium.",
+      "No. Core features work standalone. Health device integration through Apple HealthKit for Apple Watch and Google Fit is optional and available in Premium.",
   },
   {
     question: "Is my data private and secure?",
     answer:
-      "Yes. Your data is end-to-end encrypted and stored on secure servers. You can export or delete your data anytime. We never sell your data to third parties.",
+      "Yes. Your data is encrypted in Supabase-backed storage and handled through secure app workflows. You can export or delete your data anytime. We never sell your data to third parties.",
   },
   {
     question: "Why different protein targets for different goals?",
@@ -473,7 +473,7 @@ export default function KnowledgeBasePage() {
                     {
                       title: "Privacy by Design",
                       body: "Images are processed securely, and you control what is stored or deleted in your history.",
-                      bullets: ["End-to-end encryption for sensitive health data", "Full control of data export and deletion"],
+                      bullets: ["Encrypted Supabase-backed storage for sensitive wellness data", "Full control of data export and deletion"],
                     },
                   ].map((item) => (
                     <Card key={item.title} title={item.title} body={item.body} bullets={item.bullets} />

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, LogOut, User as UserIcon, ChevronDown } from "lucide-react";
+import { Menu, X, LogOut, User as UserIcon, ChevronDown, ArrowUpRight } from "lucide-react";
 import { authClient, useSession } from "@/lib/auth-client";
 import { toast } from "sonner";
 import Image from "next/image";
@@ -52,43 +52,44 @@ export const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 backdrop-blur-xl bg-background/80">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-md" aria-label="Primary navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-14 lg:h-16">
+        <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-lg lg:text-2xl flex-shrink-0">
+          <Link href="/" className="flex items-center gap-2 font-bold text-lg xl:text-xl flex-shrink-0" aria-label="MyCalAgent home">
             <Image
               src="/mycalagent-logo.webp"
               alt="MyCalAgent Logo"
-              width={56}
-              height={56}
-              className="w-14 h-14 object-contain rounded-2xl mix-blend-multiply flex-shrink-0"
+              width={44}
+              height={44}
+              className="w-11 h-11 object-contain flex-shrink-0"
               priority
             />
-            <span className="text-foreground" style={{ textShadow: '0 0 20px rgba(16, 185, 129, 0.2)' }}>
-              MyCal<span style={{ color: '#158341' }}>Agent</span>
+            <span className="text-foreground tracking-[-0.02em]">
+              MyCal<span className="text-primary">Agent</span>
             </span>
           </Link>
 
           {/* Desktop Navigation — only shown on lg+ (1024px+) */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-8">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             {finalNavItems.map((item) =>
               item.href === "/features" ? (
                 <div key={item.href} className="relative group">
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 text-sm xl:text-base font-medium transition-colors whitespace-nowrap ${
+                    aria-current={pathname.startsWith("/features") ? "page" : undefined}
+                    className={`flex items-center gap-1 border-b-2 py-5 text-sm font-semibold transition-colors whitespace-nowrap ${
                       pathname.startsWith("/features")
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-primary"
+                        ? "border-primary text-primary"
+                        : "border-transparent text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {item.label}
                     <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-all group-hover:rotate-180 duration-200" />
                   </Link>
                   <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                    <div className="bg-background/95 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl p-2 min-w-[200px]">
+                    <div className="bg-background border border-border rounded-xl shadow-lg p-2 min-w-[220px]">
                       <Link href="/features" className="block px-3 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors mb-1">
                         All Features
                       </Link>
@@ -108,10 +109,11 @@ export const Navigation = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm xl:text-base font-medium transition-colors whitespace-nowrap ${
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  className={`border-b-2 py-5 text-sm font-semibold transition-colors whitespace-nowrap ${
                     pathname === item.href
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-primary"
+                      ? "border-primary text-primary"
+                      : "border-transparent text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {item.label}
@@ -139,7 +141,15 @@ export const Navigation = () => {
                   Sign Out
                 </button>
               </>
-            ) : null}
+            ) : (
+              <Link
+                href="/get-started"
+                className="inline-flex h-10 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[#0f5c39]"
+              >
+                Start free
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            )}
           </div>
 
           {/* Tablet/Mobile right side — GeoFlag + hamburger */}
@@ -149,6 +159,7 @@ export const Navigation = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-lg hover:bg-secondary"
               aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -168,6 +179,7 @@ export const Navigation = () => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
+                  aria-current={pathname === item.href ? "page" : undefined}
                   className={`px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
                     pathname === item.href
                       ? "text-primary bg-primary/10"
@@ -198,7 +210,16 @@ export const Navigation = () => {
                       Sign Out
                     </button>
                   </>
-                ) : null}
+                ) : (
+                  <Link
+                    href="/get-started"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-semibold text-primary-foreground"
+                  >
+                    Start free
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                )}
               </div>
             </div>
           </div>

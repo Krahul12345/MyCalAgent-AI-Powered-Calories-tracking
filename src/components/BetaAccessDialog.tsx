@@ -82,7 +82,7 @@ export const BetaAccessDialog = ({ open, onOpenChange }: BetaAccessDialogProps) 
                 alt="Scan to download MyCalAgent on the App Store"
                 width={120}
                 height={120}
-                className="w-[120px] h-[120px] object-contain"
+                className="h-auto w-[120px] object-contain"
               />
             </div>
             <p className="text-xs text-gray-500">Points to the App Store listing</p>

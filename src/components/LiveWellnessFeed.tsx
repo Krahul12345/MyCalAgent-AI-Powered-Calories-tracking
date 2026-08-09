@@ -118,8 +118,7 @@ export default function LiveWellnessFeed() {
   const { isCookieBannerVisible } = useCookieBanner();
   const pathname = usePathname();
 
-  // Don't show on legal/privacy pages
-  const isLegalPage = pathname === "/privacy" || pathname === "/terms";
+  const shouldHide = pathname !== "/";
 
   useEffect(() => {
     prefersReduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -154,18 +153,16 @@ export default function LiveWellnessFeed() {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, isCookieBannerVisible]);
 
-  // Don't render at all when cookie banner is visible or on legal pages
-  if (index === null || isCookieBannerVisible || isLegalPage) return null;
+  if (index === null || isCookieBannerVisible || shouldHide) return null;
 
   const msg = MESSAGES[index];
   const color = CATEGORY_COLORS[msg.category];
 
   return (
     <div
-      className="fixed left-6 z-50 select-none"
+      className="fixed left-6 z-50 hidden select-none md:block"
       style={{
         maxWidth: 420,
         bottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))",

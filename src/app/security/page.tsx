@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Security & Data Protection - MyCalAgent",
-  description: "MyCalAgent uses industry-standard encryption, GDPR-aware security principles, and privacy-first architecture to protect your wellness data.",
+  description: "MyCalAgent uses industry-standard encryption, Supabase-backed data protection, and privacy-first architecture to protect your wellness data.",
   alternates: { canonical: "https://www.mycalagent.com/security" },
   openGraph: {
     title: "Security & Data Protection - MyCalAgent",
@@ -37,7 +37,7 @@ const securityJsonLd = {
       "@type": "Article",
       "@id": "https://www.mycalagent.com/security#article",
       headline: "Security & Data Protection at MyCalAgent",
-      description: "MyCalAgent uses industry-standard security practices including AES-256 encryption, GDPR-aware architecture, and user-controlled data access.",
+      description: "MyCalAgent uses industry-standard security practices, Supabase encrypted storage, and user-controlled data access.",
       url: "https://www.mycalagent.com/security",
       inLanguage: "en",
       author: { "@type": "Organization", name: "MyCalAgent", url: "https://www.mycalagent.com" },
@@ -50,7 +50,7 @@ const securityJsonLd = {
       mainEntityOfPage: { "@id": "https://www.mycalagent.com/security#webpage" },
       about: [
         { "@type": "Thing", name: "Data Encryption" },
-        { "@type": "Thing", name: "GDPR Compliance" },
+        { "@type": "Thing", name: "Privacy-First Data Controls" },
         { "@type": "Thing", name: "HIPAA-Aligned Security" },
         { "@type": "Thing", name: "User Data Privacy" },
       ],
@@ -126,7 +126,7 @@ export default function SecurityPage() {
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">6. Compliance Approach</h2>
               <p>
-                MyCalAgent is designed using HIPAA-aligned and GDPR-aware security principles, focusing on transparency, data minimization, and user control.
+                MyCalAgent is designed around privacy-first security principles, focusing on transparency, data minimization, encrypted storage, and user control.
               </p>
               <p className="mt-2 italic">
                 Compliance depends on usage context. MyCalAgent does not claim medical certification.

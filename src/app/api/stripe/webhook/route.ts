@@ -58,8 +58,9 @@ export async function POST(request: NextRequest) {
 
       case 'invoice.payment_failed': {
         const invoice = event.data.object as Stripe.Invoice;
-        if (invoice.subscription) {
-          await handlePaymentFailed(invoice.subscription as string);
+        const subscriptionId = getInvoiceSubscriptionId(invoice);
+        if (subscriptionId) {
+          await handlePaymentFailed(subscriptionId);
         }
         break;
       }
@@ -70,6 +71,19 @@ export async function POST(request: NextRequest) {
     console.error('Webhook handler error:', error);
     return NextResponse.json({ error: 'Webhook handler failed' }, { status: 500 });
   }
+}
+
+function getSubscriptionPeriod(subscription: Stripe.Subscription) {
+  const item = subscription.items.data[0];
+  return {
+    currentPeriodStart: item?.current_period_start ? new Date(item.current_period_start * 1000) : null,
+    currentPeriodEnd: item?.current_period_end ? new Date(item.current_period_end * 1000) : null,
+  };
+}
+
+function getInvoiceSubscriptionId(invoice: Stripe.Invoice) {
+  const subscription = invoice.parent?.subscription_details?.subscription;
+  return typeof subscription === 'string' ? subscription : subscription?.id;
 }
 
 async function handleSubscriptionCreated(
@@ -86,6 +100,7 @@ async function handleSubscriptionCreated(
 
   const priceId = subscription.items.data[0]?.price?.id;
   const price = subscription.items.data[0]?.price;
+  const period = getSubscriptionPeriod(subscription);
   
   const existing = await db
     .select()
@@ -107,8 +122,8 @@ async function handleSubscriptionCreated(
     status: subscription.status,
     billingInterval: price?.recurring?.interval || 'month',
     currency: price?.currency || 'usd',
-    currentPeriodStart: new Date(subscription.current_period_start * 1000),
-    currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+    currentPeriodStart: period.currentPeriodStart,
+    currentPeriodEnd: period.currentPeriodEnd,
     cancelAtPeriodEnd: subscription.cancel_at_period_end,
     trialEnd: subscription.trial_end ? new Date(subscription.trial_end * 1000) : null,
     createdAt: new Date(),
@@ -129,6 +144,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
 
   const priceId = subscription.items.data[0]?.price?.id;
   const price = subscription.items.data[0]?.price;
+  const period = getSubscriptionPeriod(subscription);
 
   await db
     .update(subscriptions)
@@ -137,8 +153,8 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
       status: subscription.status,
       billingInterval: price?.recurring?.interval || existing[0].billingInterval,
       currency: price?.currency || existing[0].currency,
-      currentPeriodStart: new Date(subscription.current_period_start * 1000),
-      currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+      currentPeriodStart: period.currentPeriodStart,
+      currentPeriodEnd: period.currentPeriodEnd,
       cancelAtPeriodEnd: subscription.cancel_at_period_end,
       trialEnd: subscription.trial_end ? new Date(subscription.trial_end * 1000) : null,
       updatedAt: new Date(),

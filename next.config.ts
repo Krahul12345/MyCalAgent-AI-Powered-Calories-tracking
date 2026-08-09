@@ -4,22 +4,27 @@ import path from "node:path";
 const LOADER = path.resolve(__dirname, 'src/visual-edits/component-tagger-loader.js');
 const isDev = process.env.NODE_ENV === 'development';
 
-// ── Content-Security-Policy ───────────────────────────────────────────────────
-// Permits only trusted origins; inline scripts are restricted to nonces
-// (Next.js auto-injects them for server components).
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://js.stripe.com https://slelguoygbfzlpylpxfs.supabase.co",
+  [
+    "script-src 'self' 'unsafe-inline'",
+    isDev ? "'unsafe-eval' http://localhost:*" : "",
+    "https://www.googletagmanager.com https://js.stripe.com https://slelguoygbfzlpylpxfs.supabase.co https://bzrcdn.openai.com",
+  ].filter(Boolean).join(' '),
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data: blob: https://slelguoygbfzlpylpxfs.supabase.co https://kxlkulmuhnnnalnzlftn.supabase.co https://flagcdn.com https://www.googletagmanager.com https://www.google-analytics.com",
   "media-src 'self' https://kxlkulmuhnnnalnzlftn.supabase.co https://slelguoygbfzlpylpxfs.supabase.co",
-  "connect-src 'self' https://api.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://ipapi.co https://slelguoygbfzlpylpxfs.supabase.co https://kxlkulmuhnnnalnzlftn.supabase.co",
+  [
+    "connect-src 'self'",
+    isDev ? "http://localhost:* ws://localhost:*" : "",
+    "https://api.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://ipapi.co https://slelguoygbfzlpylpxfs.supabase.co https://kxlkulmuhnnnalnzlftn.supabase.co https://bzr.openai.com",
+  ].filter(Boolean).join(' '),
   "frame-src https://js.stripe.com https://hooks.stripe.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
-  "upgrade-insecure-requests",
+  ...(isDev ? [] : ["upgrade-insecure-requests"]),
 ].join('; ');
 
 const securityHeaders = [
@@ -32,10 +37,10 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(self), microphone=(), geolocation=(self), interest-cohort=()',
   },
-  {
+  ...(isDev ? [] : [{
     key: 'Strict-Transport-Security',
     value: 'max-age=63072000; includeSubDomains; preload',
-  },
+  }]),
   {
     key: 'Content-Security-Policy',
     value: CSP,
@@ -108,8 +113,6 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   outputFileTracingRoot: path.resolve(__dirname),
   serverExternalPackages: ['postgres'],
-  typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
   turbopack: isDev ? {
     rules: { "*.{jsx,tsx}": { loaders: [LOADER] } },
   } : undefined,

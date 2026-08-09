@@ -25,7 +25,7 @@ const features = [
   {
     icon: Shield,
     title: "Privacy-First Design",
-    description: "Your health data stays yours. MyCalAgent is built with end-to-end encryption and gives you full control over what you share — always.",
+    description: "Your health data stays yours. MyCalAgent protects wellness records with encrypted Supabase storage and gives you full control over what you share — always.",
     color: "from-orange-500 to-red-500",
   },
   {

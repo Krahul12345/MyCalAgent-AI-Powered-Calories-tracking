@@ -137,7 +137,6 @@ export default function AIDiscussButtons({
               }}
             >
               <span style={{ display: "flex", flexShrink: 0, filter: isHov ? "brightness(1.1)" : "none", transition: "filter 0.15s ease" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.logo} alt={p.logoAlt} aria-hidden="true" />
               </span>
               {p.label}

@@ -6,7 +6,7 @@
 > MyCalAgent is an AI-powered wellness intelligence platform available on iOS and Android.
 > It helps users understand how meals, hydration, fasting windows, and daily habits affect how they feel —
 > using AI pattern recognition to surface personalized insights beyond basic calorie counting.
-> Privacy-first. No ads. GDPR compliant.
+> Privacy-first. No ads. User-controlled wellness data.
 
 ## About MyCalAgent
 
