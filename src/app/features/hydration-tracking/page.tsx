@@ -8,11 +8,11 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Hydration Tracking — MyCalAgent | Water, Caffeine & Beverage Intelligence",
-  description: "Track water intake, caffeine, juice, tea, and alcohol with smart beverage logging. MyCalAgent connects your hydration habits to your energy and focus patterns.",
+  description: "Track water intake, coffee, tea, juice, and alcohol with precise beverage logging. Water counts toward your hydration goal while other drinks add calorie and habit context.",
   keywords: ["hydration tracking app", "water intake tracker", "caffeine tracker", "beverage tracking", "hydration and energy", "hydration app"],
   openGraph: {
     title: "Hydration Tracking — MyCalAgent",
-    description: "Log water, caffeine, and all beverages. See how hydration patterns connect to your daily energy and focus.",
+    description: "Log water and beverages. See how hydration patterns connect to your daily energy and focus.",
     url: "https://www.mycalagent.com/features/hydration-tracking",
   },
   alternates: { canonical: "https://www.mycalagent.com/features/hydration-tracking" },
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
 const faqItems = [
   {
     question: "How does hydration tracking work in MyCalAgent?",
-    answer: "You log water and beverages throughout the day using quick-tap portion sizes. MyCalAgent tracks total fluid intake across all beverage types and compares it to your personalized daily target, adjusting for body weight, activity level, and climate.",
+    answer: "You log water and beverages throughout the day using quick-tap portion sizes. Water counts toward your personalized hydration goal. Coffee, tea, juice, and alcohol are tracked for calories and habit context, but they do not count as water-goal progress.",
   },
   {
-    question: "Does MyCalAgent track caffeine intake?",
-    answer: "Yes. Coffee, tea, energy drinks, and sodas are all tracked with automatic caffeine calculations. You get a daily caffeine total alongside hydration data so you can see both at once.",
+    question: "Does MyCalAgent track coffee and tea?",
+    answer: "Yes. Coffee and tea can be logged as drinks so they appear in your beverage and habit history. MyCalAgent tracks servings and related calories rather than claiming precise caffeine milligram measurement.",
   },
   {
     question: "How much water should I drink per day?",
@@ -70,11 +70,10 @@ const jsonLd = {
 };
 
 const beverages = [
-  { emoji: "💧", label: "Water", detail: "Plain, sparkling, or flavored — all counted toward your daily target." },
-  { emoji: "☕", label: "Coffee & Espresso", detail: "Caffeine calculated automatically. Milk-based calories included." },
-  { emoji: "🍵", label: "Tea", detail: "All varieties — green, black, herbal. Caffeine tracked per type." },
-  { emoji: "🧃", label: "Juice", detail: "Calories and sugar logged. Natural sugars tracked separately from added." },
-  { emoji: "⚡", label: "Energy Drinks", detail: "Caffeine and sugar content pulled from product database." },
+  { emoji: "💧", label: "Water", detail: "Plain water entries count toward your daily hydration goal." },
+  { emoji: "☕", label: "Coffee & Espresso", detail: "Tracked as drinks and habit context, with added calories where relevant." },
+  { emoji: "🍵", label: "Tea", detail: "Logged as a beverage habit without treating it as water-goal progress." },
+  { emoji: "🧃", label: "Juice", detail: "Calories and sugar context are logged separately from your water goal." },
   { emoji: "🍺", label: "Alcohol", detail: "Calories added to daily total. Alcohol units tracked separately." },
 ];
 
@@ -111,7 +110,7 @@ export default function HydrationTrackingPage() {
                 <span className="gradient-text">Water, Caffeine & Beverage Intelligence</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Mild dehydration — just 1–2% below optimal — measurably reduces cognitive performance. MyCalAgent tracks every beverage and connects your hydration habits to how you actually feel.
+                Mild dehydration — just 1–2% below optimal — can affect cognitive performance. MyCalAgent tracks water separately from other beverages, so your hydration goal stays precise while coffee, tea, juice, and alcohol still add useful habit context.
               </p>
               <AIDiscussButtons
                 pageUrl="https://www.mycalagent.com/features/hydration-tracking"
@@ -130,7 +129,7 @@ export default function HydrationTrackingPage() {
             </section>
 
             <section className="mb-16">
-              <h2 className="text-2xl font-bold mb-6">Every Beverage, Tracked</h2>
+              <h2 className="text-2xl font-bold mb-6">Every Beverage, Logged Clearly</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {beverages.map((b, i) => (
                   <div key={i} className="flex gap-4 p-5 rounded-2xl border border-border/40 bg-white/60 dark:bg-card/60 backdrop-blur-sm">

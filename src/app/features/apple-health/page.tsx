@@ -21,15 +21,15 @@ export const metadata: Metadata = {
 const faqItems = [
   {
     question: "Does MyCalAgent sync with Apple Health?",
-    answer: "Yes. MyCalAgent integrates with Apple Health to both read data (steps, sleep, workouts, calories burned) and write data (nutrition logs, hydration, fasting windows) — creating a unified view across all your health tracking.",
+    answer: "Yes. MyCalAgent integrates with Apple Health to read steps, sleep, and workouts, and to write nutrition, calories, and water back to Apple Health.",
   },
   {
     question: "What data does MyCalAgent read from Apple Health?",
-    answer: "MyCalAgent can read steps, active calories burned, workouts, sleep duration and quality, and heart rate data from Apple Health. This data is used to provide context for your nutrition and wellness patterns.",
+    answer: "MyCalAgent can read steps, sleep, and workouts from Apple Health. This data is used to provide context for your nutrition and wellness patterns.",
   },
   {
     question: "What data does MyCalAgent write to Apple Health?",
-    answer: "MyCalAgent writes nutritional data (calories, macros, micronutrients), water intake, and meal logs to Apple Health — so your nutrition data is available to other Apple Health apps and the Health app itself.",
+    answer: "MyCalAgent writes nutrition, calories, and water intake back to Apple Health so your wellness data can stay connected across supported Health app views.",
   },
   {
     question: "Is the Apple Health integration required?",
@@ -71,11 +71,10 @@ const jsonLd = {
 
 const dataPoints = [
   { direction: "reads", emoji: "👟", label: "Steps & movement", detail: "Daily step count and movement data for activity context." },
-  { direction: "reads", emoji: "🔥", label: "Active calories burned", detail: "Workout and activity calories to inform net calorie calculations." },
-  { direction: "reads", emoji: "💤", label: "Sleep data", detail: "Sleep duration and quality to surface food-sleep pattern connections." },
-  { direction: "reads", emoji: "🏋️", label: "Workouts", detail: "Workout type, duration, and intensity for pre/post-workout nutrition insight." },
-  { direction: "writes", emoji: "🍽️", label: "Meal nutrition data", detail: "Calories, macros, and micronutrients written back to Apple Health." },
-  { direction: "writes", emoji: "💧", label: "Hydration logs", detail: "Water and beverage intake synced to Apple Health water tracking." },
+  { direction: "reads", emoji: "💤", label: "Sleep data", detail: "Sleep context to surface food-sleep pattern connections." },
+  { direction: "reads", emoji: "🏋️", label: "Workouts", detail: "Workout activity for pre/post-workout nutrition insight." },
+  { direction: "writes", emoji: "🍽️", label: "Nutrition & calories", detail: "Nutrition and calorie data written back to Apple Health." },
+  { direction: "writes", emoji: "💧", label: "Water intake", detail: "Water logs synced to Apple Health water tracking." },
 ];
 
 export default function AppleHealthPage() {

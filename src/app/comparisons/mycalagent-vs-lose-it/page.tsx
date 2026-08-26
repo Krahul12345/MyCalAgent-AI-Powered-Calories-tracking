@@ -33,7 +33,7 @@ const faqItems = [
   },
   {
     question: "Which app has better hydration tracking?",
-    answer: "MyCalAgent offers more comprehensive hydration tracking — logging water, all beverages, caffeine, and alcohol with pattern analysis connecting hydration to energy and focus. Lose It's hydration tracking is more basic.",
+    answer: "MyCalAgent offers more comprehensive beverage tracking — water counts toward your hydration goal, while coffee, tea, juice, and alcohol are logged separately for calorie and habit context. Lose It's hydration tracking is more basic.",
   },
 ];
 

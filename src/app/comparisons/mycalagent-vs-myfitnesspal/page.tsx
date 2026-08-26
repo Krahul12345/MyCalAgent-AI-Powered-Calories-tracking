@@ -25,7 +25,7 @@ const faqItems = [
   },
   {
     question: "Does MyCalAgent have a food database like MyFitnessPal?",
-    answer: "MyCalAgent's primary logging method is AI photo analysis rather than manual database search. You can also search manually or scan barcodes. MyFitnessPal's database is larger, but MyCalAgent's AI removes the need to search in most cases.",
+    answer: "MyCalAgent's primary logging method is AI photo analysis rather than manual database search. It can also use packaged product cues and manual search. MyFitnessPal's database is larger, but MyCalAgent's AI removes the need to search in most cases.",
   },
   {
     question: "Which app is better for wellness insights?",

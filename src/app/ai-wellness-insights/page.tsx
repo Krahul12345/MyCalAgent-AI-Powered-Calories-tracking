@@ -165,7 +165,7 @@ export default function AIWellnessInsightsPage() {
               <ol className="space-y-4 text-muted-foreground">
                 <li className="flex gap-4">
                   <span className="w-7 h-7 rounded-full bg-emerald-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
-                  <div><strong className="text-foreground">Snap a photo.</strong> Point your camera at any meal, snack, or drink. No barcodes, no manual searching.</div>
+                  <div><strong className="text-foreground">Snap a photo.</strong> Point your camera at any meal, snack, drink, or packaged product. Review the result before saving.</div>
                 </li>
                 <li className="flex gap-4">
                   <span className="w-7 h-7 rounded-full bg-emerald-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span>

@@ -47,7 +47,7 @@ const faqItems = [
   {
     question: "Do I need health apps to get full benefits?",
     answer:
-      "No. Core features work standalone. Health device integration through Apple HealthKit for Apple Watch and Google Fit is optional and available in Premium.",
+      "No. Core features work standalone. Apple Health integration is optional on iOS, and WHOOP support is available for a fuller wellness picture.",
   },
   {
     question: "Is my data private and secure?",
@@ -97,7 +97,7 @@ const faqItems = [
   {
     question: "What's the difference between Free and Premium?",
     answer:
-      "Free includes meal logging, nutrition tracking, and basic analytics (7 scans/day). Premium adds unlimited scans, health device integration, advanced analytics, custom nutrition plans, and priority support.",
+      "Free includes meal logging, nutrition tracking, and basic analytics with a daily scan limit. Premium adds unlimited scans, health device integration, advanced analytics, custom nutrition plans, and priority support.",
   },
   {
     question: "How much mobile data does the app use?",
@@ -412,7 +412,7 @@ export default function KnowledgeBasePage() {
                     },
                     {
                       title: "Health Integrations",
-                      body: "Sync steps, heart rate, sleep, and workouts from Apple Health and wearables for smarter calorie targets.",
+                      body: "Sync steps, sleep, and workouts from Apple Health on iOS, and connect supported devices such as WHOOP for a fuller wellness picture.",
                       bullets: ["Auto-imports workouts to adjust activity factors", "Sleep quality influences recovery recommendations", "All integrations are opt-in and private"],
                     },
                     {
@@ -431,7 +431,7 @@ export default function KnowledgeBasePage() {
                       <tr><Th>Feature</Th><Th>Free</Th><Th>Premium</Th></tr>
                     </thead>
                     <tbody className="divide-y divide-slate-200/60">
-                      <tr><Td>AI meal scans</Td><Td>7 scans / day</Td><Td>Unlimited + batch scans</Td></tr>
+                      <tr><Td>AI meal scans</Td><Td>Daily scan limit</Td><Td>Unlimited + batch scans</Td></tr>
                       <tr><Td>Health integrations</Td><Td>Limited</Td><Td>Full access</Td></tr>
                       <tr><Td>Advanced insights</Td><Td>Weekly summary</Td><Td>Daily + weekly coaching</Td></tr>
                       <tr><Td>Custom nutrition plans</Td><Td>—</Td><Td>Included</Td></tr>

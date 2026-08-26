@@ -2,28 +2,12 @@ import './globals.css';
 import { ReactNode } from 'react';
 import Script from 'next/script';
 import { Metadata, Viewport } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
 import CookieConsent from '@/components/CookieConsent';
 import LiveWellnessFeed from '@/components/LiveWellnessFeed';
 import OpenAIAdsPixel from '@/components/OpenAIAdsPixel';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
+import WebMcpProvider from '@/components/WebMcpProvider';
 import { CookieBannerProvider } from '@/lib/CookieBannerContext';
-
-const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-inter',
-  display: 'swap',
-  preload: true,
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-space-grotesk',
-  display: 'swap',
-  preload: true,
-});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -195,7 +179,7 @@ const jsonLd = {
       name: 'MyCalAgent',
       url: 'https://www.mycalagent.com',
       description:
-        'AI wellness intelligence app for iOS and Android. Recognizes patterns across meals, hydration, fasting, and habits to surface personalized wellness insights.',
+        'AI wellness intelligence app for iOS and Android. Recognizes patterns across meals, hydration, fasting, weight, mood, and habits to surface personalized wellness insights.',
       applicationCategory: 'HealthApplication',
       operatingSystem: 'iOS, Android',
       downloadUrl: [
@@ -234,11 +218,16 @@ const jsonLd = {
       creator: { '@id': 'https://www.mycalagent.com/#organization' },
       featureList: [
         'AI meal photo analysis',
+        'Packaged product recognition',
+        'Macro and micronutrient tracking',
         'Wellness pattern recognition',
         'Food and mood insights',
         'Intermittent fasting tracker',
-        'Hydration tracking',
+        'Hydration and beverage tracking',
         'Apple Health integration',
+        'WHOOP integration',
+        'Allergen detection',
+        'Dietary conflict detection',
         'Macro and calorie calculator',
       ],
     },
@@ -267,7 +256,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html
       lang="en"
       dir="ltr"
-      className={`${inter.variable} ${spaceGrotesk.variable}`}
     >
       <head>
         <meta charSet="utf-8" />
@@ -275,6 +263,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="webmcp-manifest" href="/.well-known/webmcp.json" />
+        <link rel="mcp-manifest" href="/.well-known/mcp.json" />
+        <meta name="mcp-enabled" content="true" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//ipapi.co" />
@@ -357,6 +348,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           data-orchids-project-id="c30ac0a1-d80d-448c-bb54-e9f289f958e8"
         />
         <OpenAIAdsPixel pixelId={openAIAdsPixelId} />
+        <WebMcpProvider />
         <ScrollProgressBar />
         <CookieBannerProvider>
           {children}

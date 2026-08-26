@@ -8,7 +8,7 @@ const steps = [
     step: "01",
     icon: Camera,
     title: "Snap Your Meal",
-    description: "Take a photo of any meal, snack, or drink. No barcodes, no manual search — just point and shoot.",
+    description: "Take a photo of any meal, snack, drink, or packaged product — just point, shoot, review, and save.",
     color: "from-purple-500 to-pink-500",
   },
   {

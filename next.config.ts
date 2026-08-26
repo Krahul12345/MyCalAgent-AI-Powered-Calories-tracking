@@ -29,6 +29,10 @@ const CSP = [
 
 const securityHeaders = [
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
+  {
+    key: 'Link',
+    value: '</.well-known/webmcp.json>; rel="webmcp-manifest", </.well-known/mcp.json>; rel="mcp-manifest", </llms.txt>; rel="describedby"; type="text/markdown"',
+  },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
   { key: 'X-XSS-Protection', value: '1; mode=block' },
@@ -85,7 +89,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/(site.webmanifest|robots.txt|sitemap.xml)',
+        source: '/(site.webmanifest|robots.txt|sitemap.xml|llms.txt|.well-known/webmcp.json|.well-known/mcp.json)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=86400' },
         ],

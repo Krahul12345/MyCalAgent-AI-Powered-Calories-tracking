@@ -23,7 +23,7 @@ export default function HeroSection() {
             >
               <Sparkles className="w-4 h-4 text-purple-500" />
               <span className="gradient-text">
-                Built for those who seek deeper understanding — not just numbers
+                Intelligence, not just counting
               </span>
             </motion.div>
 
@@ -33,9 +33,9 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-5 leading-tight"
             >
-              Decode Your Body's
+              Feel how your body
               <br />
-              <span className="gradient-text text-[0.8em]">Hidden Signals</span>
+              <span className="gradient-text text-[0.8em]">really works</span>
             </motion.h1>
 
             <motion.div
@@ -46,7 +46,7 @@ export default function HeroSection() {
             >
               <p className="text-muted-foreground text-[0.9em]">
                 Your body is constantly sending signals. Unlike traditional calorie counters,
-                <strong className="text-foreground"> MyCalAgent is an AI-native wellness intelligence company that </strong> connects the patterns behind meals, hydration, sleep, and fasting -
+                <strong className="text-foreground"> MyCalAgent is an AI-native wellness intelligence platform that </strong> connects the patterns behind meals, hydration, sleep, and fasting -
                 surfacing how your lifestyle actually affects your daily energy, mood, and focus.
               </p>
             </motion.div>
@@ -73,7 +73,7 @@ export default function HeroSection() {
                 <svg className="w-3.5 h-3.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-                Privacy-First &amp; Local
+                Privacy-First
               </span>
               <span className="flex items-center gap-1.5">
                 <svg className="w-3.5 h-3.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

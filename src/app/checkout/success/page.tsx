@@ -242,7 +242,7 @@ function SuccessContent() {
           </div>
           <ul className="space-y-3">
             {[
-              '7 meal scans per day',
+              '15 meal scans per day',
               'Advanced nutritional analysis',
               'Unlimited meal log history',
               'AI coaching & insights',
