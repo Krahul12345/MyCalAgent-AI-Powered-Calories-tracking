@@ -66,7 +66,7 @@ export default function AboutPageClient({ aboutFAQ }: AboutPageClientProps) {
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  We&apos;re still building MyCalAgent — and we&apos;re building it with you.
+                  MyCalAgent is built with a clear commitment: to become the most trusted AI wellness companion for everyday health — shaped continuously with the people who use it.
                 </p>
                 <p>
                   Our mission began with a simple belief: <b>your body leaves clues about how food and habits affect how you feel — but most people never see them. We wanted to change that.</b>
@@ -75,7 +75,7 @@ export default function AboutPageClient({ aboutFAQ }: AboutPageClientProps) {
                   In 2026, a small team of AI engineers and wellness researchers came together with one clear vision: <b>to build an AI that doesn&apos;t just log what you eat — but helps you understand how it affects you.</b>
                 </p>
                 <p>
-                  Today, we&apos;re working closely with users across the world to shape MyCalAgent into the most insightful, privacy-respecting, and genuinely useful AI wellness intelligence platform available.
+                  Today, we&apos;re working closely with customers, wellness experts, and researchers to keep bringing the latest and greatest product features into MyCalAgent — shaping it into the most insightful, privacy-respecting, and genuinely useful AI wellness intelligence platform available.
                 </p>
                 <p>
                   We&apos;re not building another calorie counter — we&apos;re building the future of personal wellness intelligence, together.

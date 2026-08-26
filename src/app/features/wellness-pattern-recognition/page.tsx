@@ -74,7 +74,7 @@ const dataStreams = [
   { emoji: "💧", label: "Hydration data", detail: "Daily fluid intake across all beverage types, tracked throughout the day." },
   { emoji: "⏱️", label: "Fasting windows", detail: "Start/end times, duration, and consistency of fasting schedules." },
   { emoji: "☕", label: "Caffeine & alcohol", detail: "Timing and volume of stimulants and depressants relative to other patterns." },
-  { emoji: "👟", label: "Activity data", detail: "Steps, workouts, and calories burned from Apple Health or manual entry." },
+  { emoji: "👟", label: "Activity data", detail: "Steps and workouts from Apple Health on iOS or manual entry." },
   { emoji: "💤", label: "Sleep data", detail: "Sleep duration and quality from Apple Health or connected wearables." },
 ];
 

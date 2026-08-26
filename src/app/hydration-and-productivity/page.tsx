@@ -32,7 +32,7 @@ const faqItems = [
   },
   {
     question: "Can caffeine substitute for water?",
-    answer: "No. While caffeinated drinks contribute to fluid intake, caffeine has a mild diuretic effect and can mask thirst signals. High caffeine intake without adequate water actually increases net fluid loss. Coffee and tea count toward total fluid intake, but cannot replace water for optimal hydration.",
+    answer: "Coffee and tea can be useful beverage logs, but they should not replace water-goal tracking. In MyCalAgent, water counts toward the hydration goal while coffee and tea are tracked separately for habit and calorie context.",
   },
   {
     question: "How does MyCalAgent help with hydration tracking?",

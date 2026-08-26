@@ -74,7 +74,7 @@ const pricingJsonLd = {
           price: "0",
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
-          description: "Limited AI scans, basic calorie tracking",
+          description: "Free plan with 15 meal scans per day, 3-day meal log history, AI coaching, hydration, allergen detection, fasting, alcohol tracking, health integration, and custom goals.",
           url: "https://www.mycalagent.com/register",
         },
         {
@@ -83,7 +83,7 @@ const pricingJsonLd = {
           price: "6.99",
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
-          description: "Full AI meal scanning, macro tracking, hydration, fasting, and wellness insights. 3-day free trial.",
+          description: "Unlimited AI meal scanning, unlimited meal history, advanced nutrition analysis, and 4 Wellness Reports per month. 3-day free trial.",
           billingIncrement: "P1M",
           url: "https://www.mycalagent.com/checkout",
           priceValidUntil: "2027-01-01",

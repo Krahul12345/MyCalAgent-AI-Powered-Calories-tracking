@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "AI Meal Analysis — MyCalAgent | Photo-Based Nutrition in Seconds",
-  description: "Learn how MyCalAgent's AI meal analysis uses computer vision to identify foods, estimate portions, and deliver full nutrition breakdowns from a single photo.",
+  description: "Learn how MyCalAgent's AI meal analysis uses computer vision and packaged product cues to identify foods, estimate portions, and deliver full nutrition breakdowns.",
   keywords: ["AI meal analysis", "photo meal logging", "AI calorie tracker", "food photo recognition", "AI nutrition app", "automatic meal tracking"],
   openGraph: {
     title: "AI Meal Analysis — MyCalAgent | Photo-Based Nutrition in Seconds",
@@ -29,7 +29,7 @@ const faqItems = [
   },
   {
     question: "Can the AI identify restaurant meals and packaged foods?",
-    answer: "Yes. MyCalAgent is trained on a wide variety of cuisines, restaurant dishes, homemade meals, and packaged foods. You can also scan barcodes or search manually for any item the AI doesn't recognize.",
+    answer: "Yes. MyCalAgent is trained on a wide variety of cuisines, restaurant dishes, homemade meals, and packaged foods. It can read useful nutrition label and front-of-pack cues, and you can search manually for any item the AI doesn't recognize.",
   },
   {
     question: "What nutrients does the analysis cover?",
@@ -71,10 +71,10 @@ const jsonLd = {
 };
 
 const steps = [
-  { n: "1", title: "Point and snap.", body: "Take a photo of any meal, snack, or drink. No barcodes, no manual search required." },
+  { n: "1", title: "Point and snap.", body: "Take a photo of any meal, snack, drink, or packaged product." },
   { n: "2", title: "AI identifies ingredients.", body: "Computer vision recognizes each food item, even in complex mixed dishes, and maps them to a nutritional database." },
   { n: "3", title: "Portions are estimated.", body: "The model estimates serving sizes using visual depth cues, plate size, and reference objects." },
-  { n: "4", title: "Review and correct.", body: "You see the full breakdown and can adjust any item by voice or text before saving." },
+  { n: "4", title: "Review and correct.", body: "You see the full breakdown and can adjust items before saving." },
   { n: "5", title: "Data feeds your patterns.", body: "Every logged meal contributes to your wellness intelligence — surfacing patterns over time." },
 ];
 
@@ -82,7 +82,7 @@ const highlights = [
   { emoji: "⚡", title: "Under 6 seconds", body: "Full nutrition analysis delivered in under six seconds from photo capture." },
   { emoji: "🧬", title: "15+ nutrients tracked", body: "Calories, macros, fiber, sugar, and 11 micronutrients on every meal." },
   { emoji: "🌍", title: "All cuisines", body: "Trained across global cuisines — from Japanese ramen to Indian thali to Tex-Mex." },
-  { emoji: "🎙️", title: "Voice correction", body: "Correct any result by speaking naturally. \"Add more rice\" adjusts instantly." },
+  { emoji: "🥫", title: "Packaged products", body: "Reads useful nutrition label and front-of-pack cues for branded foods." },
   { emoji: "⚠️", title: "Allergen alerts", body: "Flags your personal allergens before you log, not after." },
   { emoji: "📴", title: "Offline mode", body: "Log meals without a connection. Data syncs automatically when back online." },
 ];
@@ -117,7 +117,7 @@ export default function AIMealAnalysisPage() {
                 MyCalAgent's AI analyzes any meal photo — identifying ingredients, estimating portions, and delivering a complete nutrition breakdown in under six seconds.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                No more searching databases, scanning barcodes, or guessing weights. The camera does the work. You review, correct if needed, and move on.
+                The camera does the work for meals and packaged products. You review, correct if needed, and move on.
               </p>
               <AIDiscussButtons
                 pageUrl="https://www.mycalagent.com/features/ai-meal-analysis"

@@ -25,7 +25,7 @@ const homeFAQ = [
   {
     question: "How does AI meal analysis work in MyCalAgent?",
     answer:
-      "Simply snap a photo of any meal. MyCalAgent's AI identifies every ingredient, estimates portion sizes, and delivers a complete nutrition breakdown — calories, protein, carbs, and fat — in under 6 seconds. No barcodes, no manual entry, no searching.",
+      "Simply snap a photo of a meal or packaged product. MyCalAgent's AI identifies foods, estimates portion sizes, reads useful label cues, and delivers a nutrition breakdown — calories, macros, and micronutrients — in seconds.",
   },
   {
     question: "Can AI recognize food from photos?",
@@ -35,7 +35,7 @@ const homeFAQ = [
   {
     question: "How does MyCalAgent track wellness patterns?",
     answer:
-      "MyCalAgent tracks meals, hydration, caffeine, fasting windows, and optional health metrics over time. Its AI analyzes this data to detect recurring patterns — like which foods give you energy, when you tend to underhydrate, or how meal timing affects your daily rhythm.",
+      "MyCalAgent tracks meals, water intake, beverage habits, fasting windows, mood, weight, and optional health context over time. Its AI analyzes this data to detect recurring patterns — like which foods give you energy, when you tend to underhydrate, or how meal timing affects your daily rhythm.",
   },
   {
     question: "How does food affect energy and mood?",
@@ -45,12 +45,12 @@ const homeFAQ = [
   {
     question: "Can MyCalAgent integrate with Apple Health?",
     answer:
-      "Yes. MyCalAgent integrates with Apple Health to sync activity data, sleep, and other health metrics. This allows the AI to build a more complete picture of your wellness — connecting nutrition data with movement and recovery patterns.",
+      "Yes. MyCalAgent integrates with Apple Health on iOS to read steps, sleep, and workouts, and write nutrition, calories, and water back to Apple Health.",
   },
   {
     question: "How does hydration tracking work?",
     answer:
-      "Log your water intake manually or set daily hydration goals. MyCalAgent tracks your hydration alongside meals and habits, helping you understand how water intake correlates with your energy levels, focus, and physical performance throughout the day.",
+      "Log water toward your daily hydration goal, and log coffee, tea, juice, and alcohol separately for calorie and habit context. This keeps water-goal progress precise while still showing how beverage habits relate to energy and focus.",
   },
   {
     question: "Is MyCalAgent a medical app?",
@@ -114,14 +114,17 @@ const homeJsonLd = {
       ],
       featureList: [
         "AI meal photo analysis",
+        "Packaged product recognition",
+        "Macro and micronutrient tracking",
         "Wellness pattern recognition",
         "Food and mood insights",
-        "Hydration tracking",
+        "Hydration and beverage tracking",
         "Intermittent fasting planner",
         "Habit awareness tracking",
         "Apple Health integration",
         "Allergen detection",
-        "Caffeine tracking",
+        "Dietary conflict detection",
+        "WHOOP integration",
       ],
     },
     {

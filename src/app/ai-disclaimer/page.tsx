@@ -51,8 +51,10 @@ export default function AIDisclaimerPage() {
                   </p>
                   <ul className="mt-3 list-disc pl-6 space-y-2">
                     <li>Identify foods and ingredients from photos</li>
+                    <li>Recognize some packaged product and nutrition label cues</li>
                     <li>Estimate portion sizes based on visual cues</li>
                     <li>Calculate approximate nutritional values</li>
+                    <li>Flag potential allergens or dietary conflicts based on the profile you provide</li>
                     <li>Detect patterns across meals, hydration, and habits over time</li>
                     <li>Surface personalized wellness insights based on your logged data</li>
                   </ul>
@@ -67,6 +69,7 @@ export default function AIDisclaimerPage() {
                   <ul className="mt-3 list-disc pl-6 space-y-2">
                     <li>Nutritional estimates from photos may differ from actual values due to portion variation, cooking methods, and ingredient substitutions</li>
                     <li>AI pattern recognition is probabilistic — it identifies likely trends, not certainties</li>
+                    <li>Allergen and dietary conflict warnings are safety aids, not guarantees that a meal is free of allergens or preference conflicts</li>
                     <li>Food recognition accuracy varies by cuisine, presentation, and image quality</li>
                     <li>AI insights do not account for individual medical conditions, medications, or clinical health factors</li>
                   </ul>
@@ -96,6 +99,7 @@ export default function AIDisclaimerPage() {
                   <ul className="mt-3 list-disc pl-6 space-y-2">
                     <li>User feedback and manual corrections</li>
                     <li>Expanded training datasets across cuisines and meal types</li>
+                    <li>Server-side validation checks that reject or clamp physiologically impossible nutrition values</li>
                     <li>Regular model updates and accuracy benchmarking</li>
                   </ul>
                   <p className="mt-3">
