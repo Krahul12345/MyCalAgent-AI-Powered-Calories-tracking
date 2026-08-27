@@ -3,6 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Research — MyCalAgent | Wellness Intelligence Methodology",
@@ -49,9 +50,44 @@ const researchAreas = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.mycalagent.com/research#collection",
+      name: "Research — MyCalAgent Wellness Intelligence Methodology",
+      url: "https://www.mycalagent.com/research",
+      description: metadata.description,
+      isPartOf: { "@id": "https://www.mycalagent.com/#website" },
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      about: researchAreas.map((area) => area.title),
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.mycalagent.com/research#research-areas",
+      name: "MyCalAgent Research Areas",
+      itemListElement: researchAreas.map((area, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: area.title,
+        description: area.summary,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mycalagent.com" },
+        { "@type": "ListItem", position: 2, name: "Research", item: "https://www.mycalagent.com/research" },
+      ],
+    },
+  ],
+};
+
 export default function ResearchPage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <JsonLd data={jsonLd} />
       <AnimatedBackground />
       <Navigation />
 

@@ -3,6 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "AI Disclaimer — MyCalAgent",
@@ -15,9 +16,46 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.mycalagent.com/ai-disclaimer" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.mycalagent.com/ai-disclaimer#webpage",
+      name: "AI Disclaimer",
+      url: "https://www.mycalagent.com/ai-disclaimer",
+      description: metadata.description,
+      isPartOf: { "@id": "https://www.mycalagent.com/#website" },
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      about: [
+        "AI limitations",
+        "AI meal analysis accuracy",
+        "wellness insight disclaimer",
+        "not medical advice",
+      ],
+    },
+    {
+      "@type": "DigitalDocument",
+      "@id": "https://www.mycalagent.com/ai-disclaimer#document",
+      name: "MyCalAgent AI Disclaimer",
+      url: "https://www.mycalagent.com/ai-disclaimer",
+      dateModified: "2026-05-01",
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mycalagent.com" },
+        { "@type": "ListItem", position: 2, name: "AI Disclaimer", item: "https://www.mycalagent.com/ai-disclaimer" },
+      ],
+    },
+  ],
+};
+
 export default function AIDisclaimerPage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <JsonLd data={jsonLd} />
       <AnimatedBackground />
       <Navigation />
 

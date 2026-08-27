@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Meal Timing and Afternoon Energy Crashes: What Your Data Reveals — MyCalAgent Blog",
@@ -16,9 +17,38 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.mycalagent.com/blog/meal-timing-afternoon-energy" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://www.mycalagent.com/blog/meal-timing-afternoon-energy#article",
+      headline: "Meal Timing and Afternoon Energy Crashes: What Your Data Reveals",
+      description: metadata.description,
+      url: "https://www.mycalagent.com/blog/meal-timing-afternoon-energy",
+      datePublished: "2026-03-01",
+      dateModified: "2026-03-01",
+      author: { "@type": "Organization", name: "MyCalAgent Team" },
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      articleSection: "Productivity & Energy",
+      keywords: metadata.keywords,
+      mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.mycalagent.com/blog/meal-timing-afternoon-energy" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mycalagent.com" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.mycalagent.com/blog" },
+        { "@type": "ListItem", position: 3, name: "Meal Timing & Energy", item: "https://www.mycalagent.com/blog/meal-timing-afternoon-energy" },
+      ],
+    },
+  ],
+};
+
 export default function MealTimingEnergyArticlePage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <JsonLd data={jsonLd} />
       <AnimatedBackground />
       <Navigation />
       <main className="relative z-10 pt-32 pb-20 px-6">

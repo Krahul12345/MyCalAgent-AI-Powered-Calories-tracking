@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Intermittent Fasting Patterns: What AI Can Reveal About Your Fasting Windows — MyCalAgent Blog",
@@ -16,9 +17,38 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.mycalagent.com/blog/intermittent-fasting-ai-patterns" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://www.mycalagent.com/blog/intermittent-fasting-ai-patterns#article",
+      headline: "Intermittent Fasting Patterns: What AI Can Reveal About Your Fasting Windows",
+      description: metadata.description,
+      url: "https://www.mycalagent.com/blog/intermittent-fasting-ai-patterns",
+      datePublished: "2026-04-01",
+      dateModified: "2026-04-01",
+      author: { "@type": "Organization", name: "MyCalAgent Team" },
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      articleSection: "Intermittent Fasting",
+      keywords: metadata.keywords,
+      mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.mycalagent.com/blog/intermittent-fasting-ai-patterns" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mycalagent.com" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.mycalagent.com/blog" },
+        { "@type": "ListItem", position: 3, name: "Fasting & AI Patterns", item: "https://www.mycalagent.com/blog/intermittent-fasting-ai-patterns" },
+      ],
+    },
+  ],
+};
+
 export default function FastingAIPatternsArticlePage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <JsonLd data={jsonLd} />
       <AnimatedBackground />
       <Navigation />
       <main className="relative z-10 pt-32 pb-20 px-6">
