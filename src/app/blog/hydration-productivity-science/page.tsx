@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "The Hydration-Productivity Link: What Science Says About Water and Focus — MyCalAgent Blog",
@@ -16,9 +17,38 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.mycalagent.com/blog/hydration-productivity-science" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://www.mycalagent.com/blog/hydration-productivity-science#article",
+      headline: "The Hydration-Productivity Link: What Science Says About Water and Focus",
+      description: metadata.description,
+      url: "https://www.mycalagent.com/blog/hydration-productivity-science",
+      datePublished: "2026-04-01",
+      dateModified: "2026-04-01",
+      author: { "@type": "Organization", name: "MyCalAgent Team" },
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      articleSection: "Hydration",
+      keywords: metadata.keywords,
+      mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.mycalagent.com/blog/hydration-productivity-science" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mycalagent.com" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.mycalagent.com/blog" },
+        { "@type": "ListItem", position: 3, name: "Hydration & Productivity", item: "https://www.mycalagent.com/blog/hydration-productivity-science" },
+      ],
+    },
+  ],
+};
+
 export default function HydrationProductivityArticlePage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <JsonLd data={jsonLd} />
       <AnimatedBackground />
       <Navigation />
       <main className="relative z-10 pt-32 pb-20 px-6">

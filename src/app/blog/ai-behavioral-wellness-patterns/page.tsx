@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "How AI Detects Behavioral Patterns in Your Wellness Data — MyCalAgent Blog",
@@ -16,9 +17,38 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.mycalagent.com/blog/ai-behavioral-wellness-patterns" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://www.mycalagent.com/blog/ai-behavioral-wellness-patterns#article",
+      headline: "How AI Detects Behavioral Patterns in Your Wellness Data",
+      description: metadata.description,
+      url: "https://www.mycalagent.com/blog/ai-behavioral-wellness-patterns",
+      datePublished: "2026-04-01",
+      dateModified: "2026-04-01",
+      author: { "@type": "Organization", name: "MyCalAgent Team" },
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      articleSection: "Wellness Intelligence",
+      keywords: metadata.keywords,
+      mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.mycalagent.com/blog/ai-behavioral-wellness-patterns" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mycalagent.com" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.mycalagent.com/blog" },
+        { "@type": "ListItem", position: 3, name: "AI Behavioral Patterns", item: "https://www.mycalagent.com/blog/ai-behavioral-wellness-patterns" },
+      ],
+    },
+  ],
+};
+
 export default function AIBehavioralPatternsArticlePage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <JsonLd data={jsonLd} />
       <AnimatedBackground />
       <Navigation />
       <main className="relative z-10 pt-32 pb-20 px-6">

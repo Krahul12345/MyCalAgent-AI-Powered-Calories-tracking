@@ -6,6 +6,35 @@ import { Navigation } from "@/components/Navigation";
 import { Camera, Upload, Mail, Lock, User, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { BetaAccessDialog } from "@/components/BetaAccessDialog";
+import JsonLd from "@/components/JsonLd";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.mycalagent.com/get-started#webpage",
+      name: "Get Started with MyCalAgent",
+      url: "https://www.mycalagent.com/get-started",
+      description: "Create a MyCalAgent account and start using AI-powered meal analysis and wellness tracking.",
+      isPartOf: { "@id": "https://www.mycalagent.com/#website" },
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      about: ["AI meal analysis", "nutrition tracking", "wellness pattern recognition"],
+      potentialAction: {
+        "@type": "RegisterAction",
+        name: "Create a MyCalAgent account",
+        target: "https://www.mycalagent.com/get-started",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mycalagent.com" },
+        { "@type": "ListItem", position: 2, name: "Get Started", item: "https://www.mycalagent.com/get-started" },
+      ],
+    },
+  ],
+};
 
 export default function GetStartedPage() {
   const [email, setEmail] = useState("");
@@ -21,6 +50,7 @@ export default function GetStartedPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <JsonLd data={jsonLd} />
       {/* <AnimatedBackground /> */}
       <Navigation />
       

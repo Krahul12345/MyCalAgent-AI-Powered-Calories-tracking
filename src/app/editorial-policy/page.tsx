@@ -3,6 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Editorial Policy — MyCalAgent",
@@ -15,9 +16,48 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.mycalagent.com/editorial-policy" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.mycalagent.com/editorial-policy#webpage",
+      name: "Editorial Policy",
+      url: "https://www.mycalagent.com/editorial-policy",
+      description: metadata.description,
+      isPartOf: { "@id": "https://www.mycalagent.com/#website" },
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      about: [
+        "editorial standards",
+        "AI-assisted content review",
+        "wellness content accuracy",
+        "medical disclaimer",
+        "source citation policy",
+      ],
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://www.mycalagent.com/editorial-policy#policy",
+      name: "MyCalAgent Editorial Policy",
+      url: "https://www.mycalagent.com/editorial-policy",
+      dateModified: "2026-05-01",
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      audience: { "@type": "Audience", audienceType: "MyCalAgent readers and users" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mycalagent.com" },
+        { "@type": "ListItem", position: 2, name: "Editorial Policy", item: "https://www.mycalagent.com/editorial-policy" },
+      ],
+    },
+  ],
+};
+
 export default function EditorialPolicyPage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <JsonLd data={jsonLd} />
       <AnimatedBackground />
       <Navigation />
 

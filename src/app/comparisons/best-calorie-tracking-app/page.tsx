@@ -7,6 +7,7 @@ import { Check, Minus } from "lucide-react";
 import Link from "next/link";
 import { QuickFAQ } from "@/components/QuickFAQ";
 import AIDiscussButtons from "@/components/AIDiscussButtons";
+import JsonLd from "@/components/JsonLd";
 
 const comparisons = [
   {
@@ -80,9 +81,54 @@ const faqItems = [
   }
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.mycalagent.com/comparisons/best-calorie-tracking-app#webpage",
+      name: "Compare Popular Calorie Tracking Apps",
+      url: "https://www.mycalagent.com/comparisons/best-calorie-tracking-app",
+      description: "A comparison of popular calorie tracking apps by feature focus, pricing, and AI wellness capabilities.",
+      isPartOf: { "@id": "https://www.mycalagent.com/#website" },
+      publisher: { "@id": "https://www.mycalagent.com/#organization" },
+      about: ["calorie tracking apps", "AI nutrition tracking", "wellness tracking apps"],
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.mycalagent.com/comparisons/best-calorie-tracking-app#comparison",
+      name: "Popular Calorie Tracking Apps Compared",
+      itemListElement: comparisons.map((app, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: app.name,
+        description: app.subBestFor || app.bestFor,
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.mycalagent.com/comparisons/best-calorie-tracking-app#faq",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mycalagent.com" },
+        { "@type": "ListItem", position: 2, name: "Comparisons", item: "https://www.mycalagent.com/comparisons/best-calorie-tracking-app" },
+        { "@type": "ListItem", position: 3, name: "Best Calorie Tracking App", item: "https://www.mycalagent.com/comparisons/best-calorie-tracking-app" },
+      ],
+    },
+  ],
+};
+
 export default function ComparisonPage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <JsonLd data={jsonLd} />
       <AnimatedBackground />
       <Navigation />
 
