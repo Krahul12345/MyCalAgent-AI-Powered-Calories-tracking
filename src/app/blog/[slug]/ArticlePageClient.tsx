@@ -117,8 +117,41 @@ const AI_PLATFORMS: AIShareConfig[] = [
   },
 ];
 
-function buildPrompt(title: string, url: string): string {
-  return `Summarize the key insights from ${url} and explain what this means for wellness tracking, hydration, food habits, and behavioral wellness. The article is titled: "${title}"`;
+function articlePreview(html: string): string {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 900);
+}
+
+function buildPrompt(article: BlogArticle, url: string, platformId: string): string {
+  const basePrompt = `Summarize the key insights from ${url} and explain what this means for wellness tracking, hydration, food habits, and behavioral wellness. The article is titled: "${article.title}"`;
+
+  if (platformId !== "gemini") {
+    return basePrompt;
+  }
+
+  const tags = article.tags.length ? article.tags.join(", ") : "wellness tracking";
+  const sources = article.source_name || "MyCalAgent editorial sources";
+  const preview = articlePreview(article.content);
+
+  return [
+    `Summarize this MyCalAgent article and explain what it means for wellness tracking, hydration, food habits, and behavioral wellness.`,
+    `Public URL: ${url}`,
+    `Title: ${article.title}`,
+    `Category: ${article.category}`,
+    `Tags: ${tags}`,
+    `Excerpt: ${article.excerpt}`,
+    `Sources cited: ${sources}`,
+    `If Google AI Mode has not indexed the URL yet, use this article preview as context instead of saying the article is unavailable: ${preview}`,
+  ].join("\n");
 }
 
 function AIShareButtons({
@@ -130,7 +163,6 @@ function AIShareButtons({
 }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const url = article.canonical_url || `https://www.mycalagent.com/blog/${article.slug}`;
-  const prompt = buildPrompt(article.title, url);
 
   const isSticky = variant === "sticky";
   const isCta = variant === "cta";
@@ -158,7 +190,7 @@ function AIShareButtons({
         return (
           <a
             key={p.id}
-            href={p.buildUrl(prompt)}
+            href={p.buildUrl(buildPrompt(article, url, p.id))}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackAIShare(p.id)}
