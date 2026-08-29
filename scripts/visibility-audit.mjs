@@ -47,7 +47,7 @@ function walk(dir) {
 const layout = requireFile("src/app/layout.tsx");
 const sitemap = requireFile("src/app/sitemap.ts");
 const robots = requireFile("src/app/robots.ts");
-const llms = requireFile("public/llms.txt");
+const llms = requireFile("src/app/llms.txt/route.ts");
 
 requireIncludes("layout metadata", layout, [
   "metadataBase: new URL('https://www.mycalagent.com')",
@@ -70,10 +70,10 @@ requireIncludes("robots", robots, [
   "Bingbot",
 ]);
 
-requireIncludes("llms.txt", llms, [
+requireIncludes("llms.txt route", llms, [
   "MyCalAgent",
   "AI Wellness Intelligence",
-  "https://www.mycalagent.com/sitemap.xml",
+  "/sitemap.xml",
   "App Store",
   "Google Play",
   "Frequently Asked Questions",
@@ -130,7 +130,7 @@ for (const file of publicPageFiles) {
   if (!hasJsonLd) warnings.push(`${file} has no obvious structured-data signal`);
 }
 
-warnUnlessIncludes("llms.txt", llms, [
+warnUnlessIncludes("llms.txt route", llms, [
   "privacy-first",
   "evidence-based",
   "wellness pattern recognition",

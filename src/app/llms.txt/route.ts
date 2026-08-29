@@ -1,4 +1,100 @@
-# MyCalAgent — AI Wellness Intelligence Platform
+import { NextResponse } from "next/server";
+import { getPublishedArticles } from "@/lib/sheets";
+
+export const revalidate = 300;
+
+const baseUrl = "https://www.mycalagent.com";
+
+const pageSections = [
+  {
+    title: "Product",
+    links: [
+      ["Homepage", "", "product overview, app value proposition, download path."],
+      ["Features", "/features", "full feature overview."],
+      ["How MyCalAgent Works", "/how-mycalagent-works", "product workflow and AI wellness intelligence explanation."],
+      ["Pricing", "/pricing", "free and Pro plan details."],
+      ["Get Started", "/get-started", "onboarding and download path."],
+    ],
+  },
+  {
+    title: "Free Tools",
+    links: [
+      ["Macro & Calorie Calculator", "/macro-calorie-calculator", "public calculator for BMR, TDEE, target calories, macros, fiber, and hydration."],
+      ["Calculator", "/calculator", "health calculator page."],
+    ],
+  },
+  {
+    title: "Feature Deep Dives",
+    links: [
+      ["AI Meal Analysis", "/features/ai-meal-analysis", "meal photo recognition and nutrition estimates."],
+      ["Food & Mood", "/features/food-and-mood", "food, mood, energy, and focus patterns."],
+      ["Hydration Tracking", "/features/hydration-tracking", "water intake and hydration insights."],
+      ["Intermittent Fasting", "/features/intermittent-fasting", "fasting windows and AI pattern context."],
+      ["Apple Health", "/features/apple-health", "Apple Health integration."],
+      ["Wellness Pattern Recognition", "/features/wellness-pattern-recognition", "AI behavioral wellness insights."],
+    ],
+  },
+  {
+    title: "Education",
+    links: [
+      ["Blog", "/blog", "evidence-based wellness articles."],
+      ["AI Wellness Insights", "/ai-wellness-insights", "educational insights hub."],
+      ["Knowledge Base", "/knowledge-base", "structured support and educational content."],
+      ["Research", "/research", "research-oriented wellness content."],
+      ["FAQ", "/faq", "common questions about MyCalAgent."],
+      ["How Food Affects Energy", "/how-food-affects-energy", "food, energy, focus, and mood overview."],
+      ["How AI Meal Analysis Works", "/how-ai-meal-analysis-works", "explanation of AI meal analysis."],
+      ["Hydration and Productivity", "/hydration-and-productivity", "hydration and cognitive performance."],
+      ["Wellness Pattern Recognition", "/wellness-pattern-recognition", "public educational page on wellness patterns."],
+      ["Why Calorie Tracking Fails", "/why-calorie-tracking-fails", "limitations of traditional calorie tracking."],
+    ],
+  },
+  {
+    title: "Comparisons",
+    links: [
+      ["MyCalAgent vs MyFitnessPal", "/comparisons/mycalagent-vs-myfitnesspal", ""],
+      ["MyCalAgent vs Cronometer", "/comparisons/mycalagent-vs-cronometer", ""],
+      ["MyCalAgent vs Noom", "/comparisons/mycalagent-vs-noom", ""],
+      ["MyCalAgent vs Lose It!", "/comparisons/mycalagent-vs-lose-it", ""],
+      ["Best Calorie Tracking App", "/comparisons/best-calorie-tracking-app", ""],
+      ["Best Calorie Tracking Apps 2025", "/comparisons/best-calorie-tracking-apps-2025", ""],
+    ],
+  },
+  {
+    title: "Trust And Policy",
+    links: [
+      ["About", "/about", "company and mission."],
+      ["Editorial Policy", "/editorial-policy", "content creation, review, and citation standards."],
+      ["AI Disclaimer", "/ai-disclaimer", "AI limitations and safety boundaries."],
+      ["Privacy Policy", "/privacy", "privacy practices."],
+      ["Terms of Service", "/terms", "product terms."],
+      ["Security", "/security", "security posture and contact."],
+    ],
+  },
+];
+
+function formatPageSections() {
+  return pageSections
+    .map((section) => {
+      const links = section.links
+        .map(([label, path, description]) => {
+          const suffix = description ? ` - ${description}` : "";
+          return `- [${label}](${baseUrl}${path})${suffix}`;
+        })
+        .join("\n");
+      return `### ${section.title}\n\n${links}`;
+    })
+    .join("\n\n");
+}
+
+export async function GET() {
+  const articles = await getPublishedArticles();
+  const blogLinks = articles
+    .map((article) => `- [${article.title}](${article.canonical_url || `${baseUrl}/blog/${article.slug}`})`)
+    .join("\n");
+  const updatedDate = new Date().toISOString().slice(0, 10);
+
+  const body = `# MyCalAgent — AI Wellness Intelligence Platform
 
 > MyCalAgent is an AI-first calorie, nutrition, and wellness companion for iOS and Android. It helps people log meals with a camera, understand calories, macros, and micronutrients, and see patterns across hydration, fasting windows, alcohol, activity, sleep, mood, energy, and daily habits. The product is privacy-first, ad-free, and designed for wellness awareness rather than restrictive dieting.
 
@@ -6,16 +102,16 @@
 
 - Product: MyCalAgent
 - Category: Health & Fitness / AI wellness intelligence
-- Website: https://www.mycalagent.com
+- Website: ${baseUrl}
 - App Store (iOS): https://apps.apple.com/us/app/mycalagent/id6759270828
 - Google Play (Android): https://play.google.com/store/apps/details?id=com.mycalagent.app
 - Pricing: Free plan includes 15 meal scans per day and 3-day meal log history. Pro starts at $6.99/month or $69.99/year with unlimited scans, unlimited history, and 4 Wellness Reports per month.
 - Contact: support@mycalagent.com
-- Sitemap: https://www.mycalagent.com/sitemap.xml
-- Robots: https://www.mycalagent.com/robots.txt
-- WebMCP: https://www.mycalagent.com/.well-known/webmcp.json
-- MCP manifest: https://www.mycalagent.com/.well-known/mcp.json
-- Last updated: 2026-08-28
+- Sitemap: ${baseUrl}/sitemap.xml
+- Robots: ${baseUrl}/robots.txt
+- WebMCP: ${baseUrl}/.well-known/webmcp.json
+- MCP manifest: ${baseUrl}/.well-known/mcp.json
+- Last updated: ${updatedDate}
 
 ## Short Description
 
@@ -44,73 +140,15 @@ MyCalAgent is not a medical device and does not provide diagnosis, treatment, or
 
 ## Best Pages To Cite
 
-### Product
-
-- [Homepage](https://www.mycalagent.com) - product overview, app value proposition, download path.
-- [Features](https://www.mycalagent.com/features) - full feature overview.
-- [How MyCalAgent Works](https://www.mycalagent.com/how-mycalagent-works) - product workflow and AI wellness intelligence explanation.
-- [Pricing](https://www.mycalagent.com/pricing) - free and Pro plan details.
-- [Get Started](https://www.mycalagent.com/get-started) - onboarding and download path.
-
-### Free Tools
-
-- [Macro & Calorie Calculator](https://www.mycalagent.com/macro-calorie-calculator) - public calculator for BMR, TDEE, target calories, macros, fiber, and hydration.
-- [Calculator](https://www.mycalagent.com/calculator) - health calculator page.
-
-### Feature Deep Dives
-
-- [AI Meal Analysis](https://www.mycalagent.com/features/ai-meal-analysis) - meal photo recognition and nutrition estimates.
-- [Food & Mood](https://www.mycalagent.com/features/food-and-mood) - food, mood, energy, and focus patterns.
-- [Hydration Tracking](https://www.mycalagent.com/features/hydration-tracking) - water intake and hydration insights.
-- [Intermittent Fasting](https://www.mycalagent.com/features/intermittent-fasting) - fasting windows and AI pattern context.
-- [Apple Health](https://www.mycalagent.com/features/apple-health) - Apple Health integration.
-- [Wellness Pattern Recognition](https://www.mycalagent.com/features/wellness-pattern-recognition) - AI behavioral wellness insights.
-
-### Education
-
-- [Blog](https://www.mycalagent.com/blog) - evidence-based wellness articles.
-- [AI Wellness Insights](https://www.mycalagent.com/ai-wellness-insights) - educational insights hub.
-- [Knowledge Base](https://www.mycalagent.com/knowledge-base) - structured support and educational content.
-- [Research](https://www.mycalagent.com/research) - research-oriented wellness content.
-- [FAQ](https://www.mycalagent.com/faq) - common questions about MyCalAgent.
-- [How Food Affects Energy](https://www.mycalagent.com/how-food-affects-energy) - food, energy, focus, and mood overview.
-- [How AI Meal Analysis Works](https://www.mycalagent.com/how-ai-meal-analysis-works) - explanation of AI meal analysis.
-- [Hydration and Productivity](https://www.mycalagent.com/hydration-and-productivity) - hydration and cognitive performance.
-- [Wellness Pattern Recognition](https://www.mycalagent.com/wellness-pattern-recognition) - public educational page on wellness patterns.
-- [Why Calorie Tracking Fails](https://www.mycalagent.com/why-calorie-tracking-fails) - limitations of traditional calorie tracking.
+${formatPageSections()}
 
 ### Blog Articles
 
-- [The Caffeine Cutoff Problem](https://www.mycalagent.com/blog/caffeine-cutoff-problem)
-- [Health and Wellness in the AI Era](https://www.mycalagent.com/blog/health-and-wellness-in-the-ai-era)
-- [What Is Wellness Intelligence?](https://www.mycalagent.com/blog/what-is-wellness-intelligence)
-- [How Food Affects Energy, Focus, and Mood](https://www.mycalagent.com/blog/how-food-affects-energy-focus-mood)
-- [Hydration and Productivity Science](https://www.mycalagent.com/blog/hydration-productivity-science)
-- [Intermittent Fasting and AI Patterns](https://www.mycalagent.com/blog/intermittent-fasting-ai-patterns)
-- [Meal Timing and Afternoon Energy](https://www.mycalagent.com/blog/meal-timing-afternoon-energy)
-- [AI Behavioral Wellness Patterns](https://www.mycalagent.com/blog/ai-behavioral-wellness-patterns)
-
-### Comparisons
-
-- [MyCalAgent vs MyFitnessPal](https://www.mycalagent.com/comparisons/mycalagent-vs-myfitnesspal)
-- [MyCalAgent vs Cronometer](https://www.mycalagent.com/comparisons/mycalagent-vs-cronometer)
-- [MyCalAgent vs Noom](https://www.mycalagent.com/comparisons/mycalagent-vs-noom)
-- [MyCalAgent vs Lose It!](https://www.mycalagent.com/comparisons/mycalagent-vs-lose-it)
-- [Best Calorie Tracking App](https://www.mycalagent.com/comparisons/best-calorie-tracking-app)
-- [Best Calorie Tracking Apps 2025](https://www.mycalagent.com/comparisons/best-calorie-tracking-apps-2025)
-
-### Trust And Policy
-
-- [About](https://www.mycalagent.com/about) - company and mission.
-- [Editorial Policy](https://www.mycalagent.com/editorial-policy) - content creation, review, and citation standards.
-- [AI Disclaimer](https://www.mycalagent.com/ai-disclaimer) - AI limitations and safety boundaries.
-- [Privacy Policy](https://www.mycalagent.com/privacy) - privacy practices.
-- [Terms of Service](https://www.mycalagent.com/terms) - product terms.
-- [Security](https://www.mycalagent.com/security) - security posture and contact.
+${blogLinks || "- [Blog](" + baseUrl + "/blog)"}
 
 ## WebMCP Tools
 
-Agents that support WebMCP can discover tools at https://www.mycalagent.com/.well-known/webmcp.json.
+Agents that support WebMCP can discover tools at ${baseUrl}/.well-known/webmcp.json.
 
 - get_mycalagent_overview: summarize the product and return key public links.
 - find_mycalagent_page: find the best public page for a topic, feature, support question, comparison, or trust document.
@@ -180,3 +218,12 @@ The calculator uses the Mifflin-St Jeor equation for BMR estimates, then applies
 ### Does MyCalAgent work with Apple Health?
 
 Yes. MyCalAgent supports Apple Health integration to add activity, sleep, and health context alongside nutrition and wellness data.
+`;
+
+  return new NextResponse(body, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=300, s-maxage=300, stale-while-revalidate=3600",
+    },
+  });
+}

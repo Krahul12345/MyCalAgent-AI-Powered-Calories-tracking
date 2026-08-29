@@ -89,7 +89,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/(site.webmanifest|robots.txt|sitemap.xml|llms.txt|.well-known/webmcp.json|.well-known/mcp.json)',
+        source: '/(site.webmanifest|robots.txt|sitemap.xml|.well-known/webmcp.json|.well-known/mcp.json)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=86400' },
         ],
