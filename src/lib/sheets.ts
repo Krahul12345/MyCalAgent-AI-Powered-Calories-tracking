@@ -215,6 +215,127 @@ export async function getAllArticles(): Promise<BlogArticle[]> {
 
 const SEED_ARTICLES: BlogArticle[] = [
   {
+    id: "8",
+    status: "published",
+    title: "The Caffeine Cutoff Problem: What AI Can Reveal About Sleep and Energy",
+    slug: "caffeine-cutoff-problem",
+    excerpt: "Late caffeine can quietly leak into sleep quality and next-day energy. MyCalAgent helps you spot your personal cutoff without turning wellness into guesswork.",
+    content: `<h2>Late caffeine is not a character flaw. It is a timing problem.</h2>
+<p>A cup of coffee at 8 a.m. rarely raises questions. A cup at 4 p.m. can change the next 12 hours in ways that are easy to miss and hard to connect back to the source. That matters because CDC guidance says adults generally need at least 7 hours of sleep, and NHLBI notes that caffeine can interfere with sleep and may last up to 8 hours. The result is a familiar loop: more caffeine to stay sharp, then worse sleep, then more caffeine the next day.</p>
+<p>That loop is not just annoying. It makes it hard to judge whether your energy problem is a sleep problem, a schedule problem, a hydration problem, or just an over-caffeinated afternoon. The useful question is not "Should I ever have caffeine?" It is "When does caffeine stop helping me and start stealing from tomorrow?"</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:28px 0;">
+  <div style="padding:18px 18px 16px;border-radius:18px;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #bbf7d0;">
+    <div style="font-size:28px;font-weight:800;color:#15803d;line-height:1.1;">7+</div>
+    <div style="margin-top:6px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#047857;">Hours of sleep</div>
+    <p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#334155;">CDC guidance for most adults, not a luxury target.</p>
+  </div>
+  <div style="padding:18px 18px 16px;border-radius:18px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;">
+    <div style="font-size:28px;font-weight:800;color:#2563eb;line-height:1.1;">8 hours</div>
+    <div style="margin-top:6px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1d4ed8;">Caffeine window</div>
+    <p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#334155;">NHLBI notes caffeine effects can last this long.</p>
+  </div>
+  <div style="padding:18px 18px 16px;border-radius:18px;background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fed7aa;">
+    <div style="font-size:28px;font-weight:800;color:#c2410c;line-height:1.1;">14 days</div>
+    <div style="margin-top:6px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9a3412;">Tracking window</div>
+    <p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#334155;">Long enough to reveal your own pattern without overreacting to one bad night.</p>
+  </div>
+</div>
+
+<h2>Why the cutoff is personal</h2>
+<p>No single time works for everyone. Habitual caffeine intake, body size, medication use, anxiety, late exercise, shift work, and bedtime consistency can all change how a cup feels. Some people can drink coffee after lunch and still sleep fine. Others notice a lighter, shorter, or more restless night after an afternoon latte. The point is not to chase a universal rule. The point is to find your own threshold with enough data to trust it.</p>
+<p>That is where a wellness tool is more useful than memory. Most of us remember the cup. Fewer of us remember the wake-ups, the bedtime drift, or the next-day mood that followed it.</p>
+
+<h2>What AI adds that a notebook usually misses</h2>
+<p>MyCalAgent is built to connect beverage habits, meals, and wellness signals over time. Its hydration tracking keeps coffee and tea visible as beverage context, while wellness pattern recognition looks for recurring links between habits, energy, focus, and sleep. That means the app is not just storing caffeine. It is helping you see what tends to happen after it.</p>
+<p>That matters because the real signal is rarely the caffeine alone. It is the combination: time of day, dose, what you ate, how much water you had, whether you trained late, and how you slept the night before. AI is good at holding those variables together without making you do the mental bookkeeping yourself.</p>
+
+<div style="overflow-x:auto;margin:28px 0;border:1px solid #e2e8f0;border-radius:18px;background:#fff;">
+  <table style="width:100%;min-width:620px;border-collapse:collapse;font-size:14px;">
+    <thead>
+      <tr style="background:#f8fafc;border-bottom:1px solid #e2e8f0;">
+        <th style="padding:14px 16px;text-align:left;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">Signal</th>
+        <th style="padding:14px 16px;text-align:left;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">What to log</th>
+        <th style="padding:14px 16px;text-align:left;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">What it can clarify</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:14px 16px;font-weight:700;color:#0f172a;">Caffeine timing</td>
+        <td style="padding:14px 16px;color:#475569;">Coffee, tea, pre-workout, and when you had them</td>
+        <td style="padding:14px 16px;color:#475569;">Whether late-day intake lines up with later sleep onset or lighter sleep</td>
+      </tr>
+      <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:14px 16px;font-weight:700;color:#0f172a;">Sleep quality</td>
+        <td style="padding:14px 16px;color:#475569;">Bedtime, wake time, restfulness, and wake-ups</td>
+        <td style="padding:14px 16px;color:#475569;">Whether your body is actually recovering overnight</td>
+      </tr>
+      <tr>
+        <td style="padding:14px 16px;font-weight:700;color:#0f172a;">Next-day energy</td>
+        <td style="padding:14px 16px;color:#475569;">Morning energy, 2 p.m. slump, irritability, or focus</td>
+        <td style="padding:14px 16px;color:#475569;">Whether caffeine helped the day or simply delayed the crash</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>A practical 14-day experiment</h2>
+<p>If you want a useful answer, do not change everything at once. Keep the experiment simple. Log the time of each caffeinated drink, your bedtime, your approximate sleep duration, and a quick morning energy score from 1 to 5. If you usually have tea, count that too. If you add water, log that as well so you can see whether hydration and caffeine are interacting.</p>
+<ol>
+  <li>Track your normal routine for 7 days without trying to be perfect.</li>
+  <li>Review the pattern once, then make one small change, such as moving your last caffeine earlier.</li>
+  <li>Track another 7 days and compare the sleep and energy trend, not just a single night.</li>
+</ol>
+<p>The goal is not deprivation. The goal is calibration. If the pattern does not change, you learned something. If it does, you learned something else.</p>
+
+<h2>What this looks like inside MyCalAgent</h2>
+<p>In MyCalAgent, coffee and tea live alongside water, meals, fasting windows, mood, and energy. That makes it easier to notice whether an afternoon coffee is actually helping you, whether a long gap between meals is driving fatigue, or whether late caffeine is part of a larger sleep pattern. The app is designed to surface those links without turning wellness into an all-or-nothing scorecard.</p>
+<p>That is the more human version of AI wellness: not more judgment, just better context.</p>
+
+<div style="padding:16px 18px;border-radius:16px;background:#fff7ed;border:1px solid #fed7aa;margin:28px 0;">
+  <p style="margin:0;font-size:14px;line-height:1.7;color:#7c2d12;"><strong>Wellness and AI disclaimer:</strong> This article is educational and not medical advice. If you are pregnant, live with insomnia or anxiety, have a heart rhythm concern, take medications that can interact with caffeine, or manage a chronic condition, talk with a qualified healthcare professional before changing your caffeine routine.</p>
+</div>
+
+<h2>Sources</h2>
+<ul>
+  <li><a href="https://www.cdc.gov/sleep/about/index.html" target="_blank" rel="noopener noreferrer">CDC: About Sleep</a></li>
+  <li><a href="https://www.cdc.gov/nchs/products/databriefs/db559.htm" target="_blank" rel="noopener noreferrer">CDC/NCHS: Short Sleep Duration and Sleep Difficulties Among Adults, 2024</a></li>
+  <li><a href="https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits" target="_blank" rel="noopener noreferrer">NHLBI: Healthy Sleep Habits</a></li>
+  <li><a href="https://www.mycalagent.com/features/hydration-tracking" target="_blank" rel="noopener noreferrer">MyCalAgent: Hydration Tracking</a></li>
+  <li><a href="https://www.mycalagent.com/features/wellness-pattern-recognition" target="_blank" rel="noopener noreferrer">MyCalAgent: Wellness Pattern Recognition</a></li>
+  <li><a href="https://www.mycalagent.com/ai-disclaimer" target="_blank" rel="noopener noreferrer">MyCalAgent: AI Disclaimer</a></li>
+</ul>`,
+    category: "Productivity & Energy",
+    tags: ["caffeine", "sleep", "energy", "wellness patterns", "AI"],
+    source_name: "NHLBI, CDC, MyCalAgent",
+    source_url: "https://www.nhlbi.nih.gov/health/sleep-deprivation/healthy-sleep-habits",
+    author: "MyCalAgent Team",
+    ai_generated: true,
+    reviewed_by: "MyCalAgent Editorial",
+    publish_date: "2026-08-28",
+    meta_title: "The Caffeine Cutoff Problem | AI, Sleep, and Energy | MyCalAgent",
+    meta_description: "See why late caffeine can quietly affect sleep, how MyCalAgent tracks coffee and energy patterns, and what to watch over 14 days.",
+    featured_image: "/hero-progress-dashboard.webp",
+    faq_json: [
+      {
+        question: "How late is too late for caffeine?",
+        answer: "There is no universal cutoff. NHLBI notes that caffeine can affect sleep and its effects may last up to 8 hours, so the right cutoff depends on your bedtime and sensitivity.",
+      },
+      {
+        question: "Does MyCalAgent track coffee and tea?",
+        answer: "Yes. MyCalAgent tracks coffee and tea as beverage context alongside water, meals, fasting, mood, and energy so you can see how they fit into your overall wellness pattern.",
+      },
+      {
+        question: "Can I use MyCalAgent to diagnose a sleep problem?",
+        answer: "No. MyCalAgent is a wellness awareness tool, not a medical device. If you have persistent sleep problems or a medical concern, talk with a qualified healthcare professional.",
+      },
+    ],
+    canonical_url: "https://www.mycalagent.com/blog/caffeine-cutoff-problem",
+    created_at: "2026-08-28",
+    updated_at: "2026-08-28",
+    read_time: "6 min read",
+  },
+  {
     id: "7",
     status: "published",
     title: "Health and Wellness in the AI Era: How to Use Smart Tools Without Losing the Human Signal",

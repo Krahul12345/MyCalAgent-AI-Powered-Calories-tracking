@@ -15,7 +15,7 @@
 - Robots: https://www.mycalagent.com/robots.txt
 - WebMCP: https://www.mycalagent.com/.well-known/webmcp.json
 - MCP manifest: https://www.mycalagent.com/.well-known/mcp.json
-- Last updated: 2026-08-26
+- Last updated: 2026-08-28
 
 ## Short Description
 
@@ -81,6 +81,7 @@ MyCalAgent is not a medical device and does not provide diagnosis, treatment, or
 
 ### Blog Articles
 
+- [The Caffeine Cutoff Problem](https://www.mycalagent.com/blog/caffeine-cutoff-problem)
 - [Health and Wellness in the AI Era](https://www.mycalagent.com/blog/health-and-wellness-in-the-ai-era)
 - [What Is Wellness Intelligence?](https://www.mycalagent.com/blog/what-is-wellness-intelligence)
 - [How Food Affects Energy, Focus, and Mood](https://www.mycalagent.com/blog/how-food-affects-energy-focus-mood)
