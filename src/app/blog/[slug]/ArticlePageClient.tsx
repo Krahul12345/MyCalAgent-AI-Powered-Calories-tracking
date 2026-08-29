@@ -450,8 +450,10 @@ export default function ArticlePageClient({ article, related }: { article: BlogA
 
             {/* Featured image */}
             {article.featured_image && (
-              <div style={{ marginBottom: 36, borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0" }}>
-                <img src={article.featured_image} alt={article.title} style={{ width: "100%", height: "auto", display: "block" }} />
+              <div style={{ marginBottom: 36, display: "flex", justifyContent: "center" }}>
+                <div style={{ maxWidth: 520, width: "100%", borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", background: "#fff" }}>
+                  <img src={article.featured_image} alt={article.title} style={{ width: "100%", height: "auto", maxHeight: 540, objectFit: "contain", display: "block" }} />
+                </div>
               </div>
             )}
 

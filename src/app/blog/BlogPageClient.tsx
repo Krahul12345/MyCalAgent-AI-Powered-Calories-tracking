@@ -161,7 +161,7 @@ export default function BlogPageClient({ articles }: { articles: BlogArticle[] }
     return result;
   }, [articles, activeCategory, searchQuery]);
 
-  const featured = articles.find((a) => a.category === "AI Wellness") ?? articles[0];
+  const featured = articles[0];
   const gridArticles = filtered.slice(0, 9);
 
   // JSON-LD
