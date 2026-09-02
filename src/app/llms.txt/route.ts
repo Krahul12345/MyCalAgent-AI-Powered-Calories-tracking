@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getPublishedArticles } from "@/lib/sheets";
 
 export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 const baseUrl = "https://www.mycalagent.com";
 

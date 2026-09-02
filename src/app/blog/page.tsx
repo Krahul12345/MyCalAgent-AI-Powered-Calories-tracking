@@ -5,6 +5,7 @@ import BlogPageClient from "./BlogPageClient";
 import JsonLd from "@/components/JsonLd";
 
 export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Blog | AI Wellness, Food & Mood, Hydration & Fasting Insights — MyCalAgent",

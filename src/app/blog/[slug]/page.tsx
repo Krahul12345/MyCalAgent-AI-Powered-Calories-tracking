@@ -5,14 +5,10 @@ import ArticlePageClient from "./ArticlePageClient";
 import JsonLd from "@/components/JsonLd";
 
 export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ slug: string }>;
-}
-
-export async function generateStaticParams() {
-  const articles = await getPublishedArticles();
-  return articles.map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

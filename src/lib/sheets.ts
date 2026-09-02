@@ -48,6 +48,15 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface BlogCmsDiagnostics {
+  source: "sheets" | "sheets_cache" | "seed_missing_env" | "seed_fetch_error";
+  article_count: number;
+  latest_slug: string;
+  missing_env: string[];
+  last_fetched_at: string;
+  cache_age_ms?: number;
+}
+
 /* ─── Column index map (0-based, matches sheet column order) ─── */
 
 const COL = {
@@ -134,12 +143,42 @@ function parseRow(row: string[]): BlogArticle | null {
 
 /* ─── Google Sheets client ──────────────────────────────────────── */
 
+function getMissingSheetsEnv(): string[] {
+  return [
+    "GOOGLE_SHEETS_ID",
+    "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+    "GOOGLE_SERVICE_ACCOUNT_KEY",
+  ].filter((key) => !process.env[key]);
+}
+
+function setDiagnostics(
+  source: BlogCmsDiagnostics["source"],
+  articles: BlogArticle[],
+  extra: Partial<BlogCmsDiagnostics> = {}
+) {
+  const latestArticle = [...articles].sort((a, b) => (b.publish_date > a.publish_date ? 1 : -1))[0];
+  _diagnostics = {
+    source,
+    article_count: articles.length,
+    latest_slug: latestArticle?.slug ?? "",
+    missing_env: getMissingSheetsEnv(),
+    last_fetched_at: new Date().toISOString(),
+    ...extra,
+  };
+}
+
 function getSheetsClient() {
+  const missingEnv = getMissingSheetsEnv();
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const key = process.env.GOOGLE_SERVICE_ACCOUNT_KEY?.replace(/\\n/g, "\n");
   const spreadsheetId = process.env.GOOGLE_SHEETS_ID;
 
-  if (!email || !key || !spreadsheetId) return null;
+  if (missingEnv.length > 0) {
+    if (process.env.NODE_ENV === "production") {
+      console.warn("[sheets] missing Google Sheets CMS env:", missingEnv.join(", "));
+    }
+    return null;
+  }
 
   const auth = new google.auth.GoogleAuth({
     credentials: { client_email: email, private_key: key },
@@ -157,13 +196,24 @@ interface CacheEntry {
 
 const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 let _cache: CacheEntry | null = null;
+let _diagnostics: BlogCmsDiagnostics = {
+  source: "seed_missing_env",
+  article_count: 0,
+  latest_slug: "",
+  missing_env: [],
+  last_fetched_at: "",
+};
 
 async function fetchFromSheets(): Promise<BlogArticle[]> {
   const client = getSheetsClient();
-  if (!client) return SEED_ARTICLES;
+  if (!client) {
+    setDiagnostics("seed_missing_env", SEED_ARTICLES);
+    return SEED_ARTICLES;
+  }
 
   // Serve from cache if fresh
   if (_cache && Date.now() - _cache.ts < CACHE_TTL_MS) {
+    setDiagnostics("sheets_cache", _cache.articles, { cache_age_ms: Date.now() - _cache.ts });
     return _cache.articles;
   }
 
@@ -179,11 +229,16 @@ async function fetchFromSheets(): Promise<BlogArticle[]> {
       .filter((a): a is BlogArticle => a !== null);
 
     _cache = { articles, ts: Date.now() };
+    setDiagnostics("sheets", articles);
     return articles;
   } catch (err) {
     console.error("[sheets] fetch error:", err);
     // Return stale cache on error rather than failing
-    if (_cache) return _cache.articles;
+    if (_cache) {
+      setDiagnostics("seed_fetch_error", _cache.articles, { cache_age_ms: Date.now() - _cache.ts });
+      return _cache.articles;
+    }
+    setDiagnostics("seed_fetch_error", SEED_ARTICLES);
     return SEED_ARTICLES;
   }
 }
@@ -209,6 +264,10 @@ export async function getFeaturedArticles(limit = 3): Promise<BlogArticle[]> {
 
 export async function getAllArticles(): Promise<BlogArticle[]> {
   return fetchFromSheets();
+}
+
+export function getBlogCmsDiagnostics(): BlogCmsDiagnostics {
+  return _diagnostics;
 }
 
 /* ─── Seed articles (used when Sheets is not configured) ────────── */

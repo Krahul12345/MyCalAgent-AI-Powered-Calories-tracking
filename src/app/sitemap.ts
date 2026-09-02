@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { getPublishedArticles } from '@/lib/sheets'
 
+export const dynamic = 'force-dynamic'
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.mycalagent.com'
   const now = new Date()
