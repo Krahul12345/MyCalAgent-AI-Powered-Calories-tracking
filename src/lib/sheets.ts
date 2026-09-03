@@ -151,6 +151,16 @@ function getMissingSheetsEnv(): string[] {
   ].filter((key) => !process.env[key]);
 }
 
+function normalizePrivateKey(value: string | undefined): string | undefined {
+  if (!value) return undefined;
+
+  return value
+    .trim()
+    .replace(/^["']|["']$/g, "")
+    .replace(/\\\\n/g, "\\n")
+    .replace(/\\n/g, "\n");
+}
+
 function setDiagnostics(
   source: BlogCmsDiagnostics["source"],
   articles: BlogArticle[],
@@ -170,7 +180,7 @@ function setDiagnostics(
 function getSheetsClient() {
   const missingEnv = getMissingSheetsEnv();
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const key = process.env.GOOGLE_SERVICE_ACCOUNT_KEY?.replace(/\\n/g, "\n");
+  const key = normalizePrivateKey(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
   const spreadsheetId = process.env.GOOGLE_SHEETS_ID;
 
   if (missingEnv.length > 0) {
