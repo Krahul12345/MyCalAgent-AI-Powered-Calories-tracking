@@ -32,7 +32,6 @@ jobs:
 
       - name: Verify Vercel access
         run: |
-          bunx vercel whoami --token=${{ secrets.VERCEL_TOKEN }}
           bunx vercel project inspect app --scope itikishore-1632s-projects --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Pull Vercel environment
