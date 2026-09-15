@@ -3,8 +3,10 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
+import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { getBlogImage } from "@/lib/blog-images";
 
 export const metadata: Metadata = {
   title: "Intermittent Fasting Patterns: What AI Can Reveal About Your Fasting Windows — MyCalAgent Blog",
@@ -69,6 +71,8 @@ export default function FastingAIPatternsArticlePage() {
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">Not all fasting schedules work the same for everyone. AI pattern recognition can surface which fasting windows align best with your energy rhythms and meal habits.</p>
           </div>
+
+          <Image src={getBlogImage("4.png")} alt="MyCalAgent fasting pattern tracking" width={1600} height={900} className="mb-10 w-full rounded-2xl border border-border/40 object-cover" />
 
           <div className="space-y-6 text-muted-foreground leading-relaxed">
             <h2 className="text-xl font-bold text-foreground">Why One-Size Fasting Fails</h2>

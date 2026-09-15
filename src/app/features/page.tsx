@@ -200,6 +200,10 @@ export default function FeaturesPage() {
             </div>
           </div>
 
+          <div className="mb-12 flex flex-wrap items-center justify-between gap-4 border-y border-border py-6">
+            <div><h2 className="text-xl font-semibold">A look at upcoming features</h2><p className="mt-2 text-sm text-muted-foreground">Explore concepts under consideration. No release dates or availability commitments.</p></div>
+            <Link href="/features/upcoming" className="font-semibold text-primary underline underline-offset-4">Explore the preview</Link>
+          </div>
           <section className="mb-20 grid items-center gap-10 border-y border-border py-12 lg:grid-cols-[1fr_0.72fr] lg:gap-16" aria-labelledby="nutrition-intelligence-heading">
             <div className="max-w-xl">
               <p className="mb-3 text-sm font-semibold text-primary">Inside the intelligence layer</p>

@@ -56,6 +56,15 @@ export const trialSignups = pgTable('trial_signups', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
+export const newsletterSubscribers = pgTable('newsletter_subscribers', {
+  id: serial('id').primaryKey(),
+  email: text('email').notNull().unique(),
+  source: text('source').notNull().default('weekly-insights'),
+  consentAt: timestamp('consent_at').defaultNow().notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  unsubscribedAt: timestamp('unsubscribed_at'),
+});
+
 export const healthProfiles = pgTable('health_profiles', {
   id: text('id').primaryKey(),
   userId: text('user_id')

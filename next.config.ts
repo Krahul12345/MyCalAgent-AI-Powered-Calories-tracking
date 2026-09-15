@@ -65,6 +65,7 @@ const nextConfig: NextConfig = {
     // Whitelist only the trusted image hostnames used by the app
     remotePatterns: [
       { protocol: 'https', hostname: 'slelguoygbfzlpylpxfs.supabase.co' },
+      { protocol: 'https', hostname: 'kxlkulmuhnnnalnzlftn.supabase.co' },
       { protocol: 'https', hostname: 'flagcdn.com' },
       { protocol: 'https', hostname: 'lh3.googleusercontent.com' }, // Google avatars
       { protocol: 'https', hostname: 'avatars.githubusercontent.com' }, // GitHub avatars

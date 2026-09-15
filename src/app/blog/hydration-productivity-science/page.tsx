@@ -3,8 +3,10 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
+import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { getBlogImage } from "@/lib/blog-images";
 
 export const metadata: Metadata = {
   title: "The Hydration-Productivity Link: What Science Says About Water and Focus — MyCalAgent Blog",
@@ -69,6 +71,8 @@ export default function HydrationProductivityArticlePage() {
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">Even mild dehydration — just 1–2% below optimal — measurably reduces cognitive performance. Here&apos;s the science and what to do about it.</p>
           </div>
+
+          <Image src={getBlogImage("3.png")} alt="MyCalAgent hydration tracking insights" width={1600} height={900} className="mb-10 w-full rounded-2xl border border-border/40 object-cover" />
 
           <div className="space-y-6 text-muted-foreground leading-relaxed">
             <h2 className="text-xl font-bold text-foreground">The 1–2% Problem</h2>

@@ -12,6 +12,8 @@ const pageSections = [
     links: [
       ["Homepage", "", "product overview, app value proposition, download path."],
       ["Features", "/features", "full feature overview."],
+      ["Upcoming Features", "/features/upcoming", "concepts under exploration, not a release commitment: Cali voice, movement, meditation, and glucose trends."],
+      ["Download MyCalAgent", "/download", "direct App Store and Google Play download options."],
       ["How MyCalAgent Works", "/how-mycalagent-works", "product workflow and AI wellness intelligence explanation."],
       ["Pricing", "/pricing", "free and Pro plan details."],
       ["Get Started", "/get-started", "onboarding and download path."],
@@ -93,7 +95,7 @@ export async function GET() {
   const blogLinks = articles
     .map((article) => `- [${article.title}](${article.canonical_url || `${baseUrl}/blog/${article.slug}`})`)
     .join("\n");
-  const updatedDate = new Date().toISOString().slice(0, 10);
+  const updatedDate = "2026-09-14";
 
   const body = `# MyCalAgent — AI Wellness Intelligence Platform
 
@@ -112,7 +114,7 @@ export async function GET() {
 - Robots: ${baseUrl}/robots.txt
 - WebMCP: ${baseUrl}/.well-known/webmcp.json
 - MCP manifest: ${baseUrl}/.well-known/mcp.json
-- Last updated: ${updatedDate}
+- Site index reviewed: ${updatedDate}. Published blog links are refreshed dynamically.
 
 ## Short Description
 
@@ -124,7 +126,7 @@ MyCalAgent is not a medical device and does not provide diagnosis, treatment, or
 
 - AI Meal Photo Analysis: photo-based meal recognition with calorie, macro, and micronutrient estimates.
 - Packaged Product Recognition: reads nutrition labels and front-of-pack claims for branded or packaged foods.
-- Allergen Detection: flags meals that may contain a user's declared allergens.
+- Allergen Awareness: may flag potential matches to declared allergens; cannot confirm ingredients or food safety. Always verify independently.
 - Dietary Conflict Detection: warns when meals appear inconsistent with lifestyle or preferences such as vegan, vegetarian, pescatarian, no-beef, no-pork, halal, kosher, low-carb, or keto.
 - Ask Cali AI Coach: conversational coaching grounded in logged meal history, goals, and dietary profile.
 - Wellness Reports: Pro-only AI reports with trends, calendar view, milestones, and personalized analysis; limited to 4 generated reports per calendar month.
@@ -160,6 +162,8 @@ These tools are intended for public site discovery, calculator estimates, and na
 
 ## Release Status Boundaries
 
+The Upcoming Features page (${baseUrl}/features/upcoming) presents explorations, not available features, launch dates, or delivery promises. Cali voice and conversational meal logging, camera-assisted movement sessions, guided meditation audio, and glucose trend concepts may change or never ship. Existing Ask Cali functionality is distinct from the upcoming voice concept. Concept illustrations are not app screenshots or measured results. Glucose concepts are not for diagnosis, treatment, medication dosing, or urgent alerts.
+
 Only shipped public capabilities should be described as available. Do not present the following as live unless a newer public website update explicitly says they shipped:
 
 - Siri or Google Assistant voice drink logging.
@@ -193,6 +197,7 @@ Public pages may be indexed and cited. Authenticated, transactional, or user-spe
 - /analytics
 - /checkout
 - /survey
+- /prototype/*
 
 ## Frequently Asked Questions
 

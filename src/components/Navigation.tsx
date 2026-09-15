@@ -20,6 +20,7 @@ const navItems = [
 ];
 
 const featureSubPages = [
+  { label: "Upcoming Features", href: "/features/upcoming" },
   { label: "AI Meal Analysis", href: "/features/ai-meal-analysis" },
   { label: "Food & Mood", href: "/features/food-and-mood" },
   { label: "Hydration Tracking", href: "/features/hydration-tracking" },
@@ -88,7 +89,7 @@ export const Navigation = () => {
                     {item.label}
                     <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-all group-hover:rotate-180 duration-200" />
                   </Link>
-                  <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
                     <div className="bg-background border border-border rounded-xl shadow-lg p-2 min-w-[220px]">
                       <Link href="/features" className="block px-3 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors mb-1">
                         All Features
@@ -97,9 +98,10 @@ export const Navigation = () => {
                         <Link
                           key={sub.href}
                           href={sub.href}
-                          className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                          className={sub.href === "/features/upcoming" ? "flex items-center justify-between gap-4 px-3 py-3 mb-2 text-sm font-bold text-primary bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 rounded-lg transition-colors" : "block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"}
                         >
                           {sub.label}
+                          {sub.href === "/features/upcoming" && <ArrowUpRight className="h-4 w-4" aria-hidden="true" />}
                         </Link>
                       ))}
                     </div>
@@ -141,15 +143,7 @@ export const Navigation = () => {
                   Sign Out
                 </button>
               </>
-            ) : (
-              <Link
-                href="/get-started"
-                className="inline-flex h-10 items-center gap-1.5 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[#0f5c39]"
-              >
-                Start free
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            )}
+            ) : null}
           </div>
 
           {/* Tablet/Mobile right side — GeoFlag + hamburger */}
@@ -190,7 +184,8 @@ export const Navigation = () => {
                 </Link>
               ))}
 
-              <div className="mt-3 pt-3 border-t border-border/50 flex flex-col gap-2">
+              <Link href="/features/upcoming" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between gap-3 border border-emerald-200 bg-emerald-50 rounded-lg px-3 py-3 text-base font-bold text-primary">Upcoming Features <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+              {(isPending || session?.user) && <div className="mt-3 pt-3 border-t border-border/50 flex flex-col gap-2">
                 {isPending ? (
                   <div className="w-full h-10 rounded-lg bg-muted animate-pulse" />
                 ) : session?.user ? (
@@ -210,17 +205,8 @@ export const Navigation = () => {
                       Sign Out
                     </button>
                   </>
-                ) : (
-                  <Link
-                    href="/get-started"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-base font-semibold text-primary-foreground"
-                  >
-                    Start free
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                )}
-              </div>
+                ) : null}
+              </div>}
             </div>
           </div>
         )}

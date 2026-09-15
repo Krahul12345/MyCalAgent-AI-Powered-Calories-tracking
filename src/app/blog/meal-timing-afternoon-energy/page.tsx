@@ -3,8 +3,10 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
+import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { getBlogImage } from "@/lib/blog-images";
 
 export const metadata: Metadata = {
   title: "Meal Timing and Afternoon Energy Crashes: What Your Data Reveals — MyCalAgent Blog",
@@ -69,6 +71,8 @@ export default function MealTimingEnergyArticlePage() {
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">That 2pm slump isn&apos;t random. Meal composition, timing, and hydration all play roles. Here&apos;s how to read the signals your body is sending — and what to do about them.</p>
           </div>
+
+          <Image src={getBlogImage("6.png")} alt="MyCalAgent meal timing and energy insights" width={1600} height={900} className="mb-10 w-full rounded-2xl border border-border/40 object-cover" />
 
           <div className="space-y-6 text-muted-foreground leading-relaxed">
             <h2 className="text-xl font-bold text-foreground">Two Causes, One Crash</h2>

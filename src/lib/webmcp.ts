@@ -2,6 +2,18 @@ export const MYCALAGENT_ORIGIN = 'https://www.mycalagent.com';
 
 export const WEBMCP_PAGES = [
   {
+    title: 'Upcoming Features',
+    path: '/features/upcoming',
+    category: 'feature',
+    description: 'Concepts under exploration: Cali voice, camera-assisted movement, meditation audio, and glucose trends. Not available features or release promises.',
+  },
+  {
+    title: 'Download MyCalAgent',
+    path: '/download',
+    category: 'product',
+    description: 'Download directly from the App Store or Google Play.',
+  },
+  {
     title: 'Homepage',
     path: '/',
     category: 'product',

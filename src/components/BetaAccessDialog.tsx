@@ -75,17 +75,17 @@ export const BetaAccessDialog = ({ open, onOpenChange }: BetaAccessDialogProps) 
 
           {/* QR Code */}
           <div className="flex flex-col items-center gap-2 py-3 px-4 rounded-2xl bg-white/5 border border-white/10">
-            <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Scan with iPhone camera</p>
+            <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">Scan to download</p>
             <div className="bg-white p-2 rounded-xl">
               <Image
-                src="/appstore-qr.png"
-                alt="Scan to download MyCalAgent on the App Store"
+                src="/mycalagent-website-qr.png"
+                alt="Scan to download MyCalAgent"
                 width={120}
                 height={120}
                 className="h-auto w-[120px] object-contain"
               />
             </div>
-            <p className="text-xs text-gray-500">Points to the App Store listing</p>
+            <p className="text-xs text-gray-500">Point your Phone camera at the code above</p>
           </div>
 
           {/* Secondary CTA */}

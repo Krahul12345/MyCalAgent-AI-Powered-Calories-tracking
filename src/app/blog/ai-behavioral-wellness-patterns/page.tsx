@@ -3,8 +3,10 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
+import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import { getBlogImage } from "@/lib/blog-images";
 
 export const metadata: Metadata = {
   title: "How AI Detects Behavioral Patterns in Your Wellness Data — MyCalAgent Blog",
@@ -69,6 +71,8 @@ export default function AIBehavioralPatternsArticlePage() {
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">Behavioral wellness tracking goes beyond logging — it identifies recurring signals in how you eat, hydrate, and rest, then surfaces them as actionable insights.</p>
           </div>
+
+          <Image src={getBlogImage("5.png")} alt="MyCalAgent behavioral wellness patterns" width={1600} height={900} className="mb-10 w-full rounded-2xl border border-border/40 object-cover" />
 
           <div className="space-y-6 text-muted-foreground leading-relaxed">
             <h2 className="text-xl font-bold text-foreground">Logging vs. Understanding</h2>

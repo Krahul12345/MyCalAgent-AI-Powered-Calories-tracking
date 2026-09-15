@@ -3,7 +3,9 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
+import Image from "next/image";
 import Link from "next/link";
+import { getBlogImage } from "@/lib/blog-images";
 
 export const metadata: Metadata = {
   title: "What Is Wellness Intelligence? Why It Matters More Than Calorie Counting — MyCalAgent Blog",
@@ -55,6 +57,8 @@ export default function WellnessIntelligenceArticlePage() {
                 Calorie counting tells you what you ate. Wellness intelligence tells you how it affected you. Here&apos;s why understanding patterns matters more than tracking numbers.
               </p>
             </div>
+
+            <Image src={getBlogImage("1.png")} alt="MyCalAgent wellness intelligence dashboard" width={1600} height={900} className="mb-10 w-full rounded-2xl border border-border/40 object-cover" />
 
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <h2 className="text-xl font-bold text-foreground">The Problem With Counting Calories</h2>

@@ -82,6 +82,8 @@ requireIncludes("llms.txt route", llms, [
 const publicSitemapRoutes = [
   "/",
   "/features",
+  "/features/upcoming",
+  "/download",
   "/pricing",
   "/get-started",
   "/how-mycalagent-works",

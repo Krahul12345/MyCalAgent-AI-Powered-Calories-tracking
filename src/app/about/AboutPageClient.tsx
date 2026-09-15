@@ -1,155 +1,25 @@
-"use client";
-
-import { Navigation } from "@/components/Navigation";
-import { QuickFAQ } from "@/components/QuickFAQ";
-import { Footer } from "@/components/Footer";
-import { Target, Users, Zap, Heart, Sparkles } from "lucide-react";
-import AppStoreButtons from "@/components/AppStoreButtons";
+import Image from "next/image";
 import Link from "next/link";
-
-interface FAQ {
-  question: string;
-  answer: string;
-}
-
-interface AboutPageClientProps {
-  aboutFAQ: FAQ[];
-}
+import { ArrowUpRight, Heart, SlidersHorizontal, LockKeyhole, ScanEye } from "lucide-react";
+import { EditorialPage, EditorialHero, SectionIntro, EditorialFAQ, EditorialDownload, EditorialLinks, EditorialDisclaimer, type FAQItem } from "@/components/editorial/Editorial";
+import styles from "@/components/editorial/Editorial.module.css";
 
 const values = [
-  {
-    icon: Target,
-    title: "Precision",
-    description: "We're committed to providing the most accurate nutritional data using cutting-edge AI technology.",
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    icon: Users,
-    title: "Accessibility",
-    description: "Healthy eating should be simple for everyone. We make nutrition tracking effortless and intuitive.",
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    icon: Zap,
-    title: "Security & Innovation",
-    description: "Your data stays yours. Wellness data is protected with encrypted Supabase storage and secure processing. We continuously push the boundaries of what's possible with computer vision and AI.",
-    color: "from-green-500 to-emerald-500",
-  },
-  {
-    icon: Heart,
-    title: "Wellness",
-    description: "Your health and wellbeing are at the center of everything we build.",
-    color: "from-orange-500 to-red-500",
-  }
+  { icon: Heart, title: "Everyday wellbeing", body: "Meals and routines belong in the context of a life. Our focus is awareness, without turning every choice into a judgment." },
+  { icon: SlidersHorizontal, title: "Personal choice", body: "Useful tools leave room for your preferences. Review your entries and decide which routines you want to track." },
+  { icon: ScanEye, title: "Honest estimates", body: "AI can help with the details, but it can be wrong. Making that uncertainty visible is part of useful product design." },
+  { icon: LockKeyhole, title: "Respect for privacy", body: "Personal wellness information deserves care. Our Privacy Policy explains how data is collected, processed, and managed." },
 ];
 
-export default function AboutPageClient({ aboutFAQ }: AboutPageClientProps) {
-  return (
-    <div className="relative min-h-screen overflow-hidden">
-      <Navigation />
-      
-      <main className="relative z-10 pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20 animate-slide-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              AI That Helps You
-              <br />
-              <span className="gradient-text">Understand Your Body</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We&apos;re building AI wellness intelligence — helping people understand how meals, hydration, fasting, and daily habits affect how they actually feel.
-            </p>
-          </div>
-
-          <div className="mb-20">
-            <div className="max-w-4xl mx-auto p-10 rounded-3xl glass-card">
-              <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  MyCalAgent is built with a clear commitment: to become the most trusted AI wellness companion for everyday health — shaped continuously with the people who use it.
-                </p>
-                <p>
-                  Our mission began with a simple belief: <b>your body leaves clues about how food and habits affect how you feel — but most people never see them. We wanted to change that.</b>
-                </p>
-                <p>
-                  In 2026, a small team of AI engineers and wellness researchers came together with one clear vision: <b>to build an AI that doesn&apos;t just log what you eat — but helps you understand how it affects you.</b>
-                </p>
-                <p>
-                  Today, we&apos;re working closely with customers, wellness experts, and researchers to keep bringing the latest and greatest product features into MyCalAgent — shaping it into the most insightful, privacy-respecting, and genuinely useful AI wellness intelligence platform available.
-                </p>
-                <p>
-                  We&apos;re not building another calorie counter — we&apos;re building the future of personal wellness intelligence, together.
-                </p>
-              </div>
-            </div>
-            
-<div className="text-center mt-8">
-                <Link
-                  href="/survey"
-                  className="inline-flex items-center gap-3 px-8 py-4 rounded-xl gradient-primary text-white font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(16,185,129,0.4)] glow-hover"
-                >
-                  <Sparkles className="w-5 h-5" />
-                  <span>Take Survey &amp; Download</span>
-                </Link>
-              </div>
-          </div>
-
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Values</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((value, index) => {
-                const Icon = value.icon;
-                return (
-                  <div key={index} className="group relative">
-                    <div className="h-full p-6 rounded-3xl glass-card hover:glass text-center transition-all duration-500 hover:scale-105 glow-hover">
-                      <div className="relative mb-4 mx-auto w-14 h-14">
-                        <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${value.color} p-0.5`}>
-                          <div className="w-full h-full rounded-xl bg-background dark:bg-card flex items-center justify-center">
-                            <Icon className="w-7 h-7 text-foreground" />
-                          </div>
-                        </div>
-                        <div className={`absolute inset-0 w-14 h-14 rounded-xl bg-gradient-to-br ${value.color} blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
-                      </div>
-
-                      <h3 className="font-bold mb-2">{value.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
-
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="p-10 rounded-3xl glass-card">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold gradient-text mb-2">500K+</div>
-                <div className="text-sm text-muted-foreground">Foods Recognized</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold gradient-text mb-2">10M+</div>
-                <div className="text-sm text-muted-foreground">Scans Processed</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold gradient-text mb-2">150+</div>
-                <div className="text-sm text-muted-foreground">Countries</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <h2 className="text-3xl font-bold mb-4">Join us on our mission</h2>
-            <p className="text-muted-foreground mb-6">Help us make healthy eating simple for everyone.</p>
-            <AppStoreButtons className="justify-center" />
-          </div>
-        </div>
-
-        <QuickFAQ items={aboutFAQ} />
-      </main>
-
-      <Footer />
-    </div>
-  );
+export default function AboutPageClient({ aboutFAQ }: { aboutFAQ: FAQItem[] }) {
+  return <EditorialPage>
+    <EditorialHero label="ABOUT US" title={"About\nMyCalAgent."} description="Built around a simple idea: wellness tracking should have room for everyday life." image="/about-editorial.png" alt="Illustrative lifestyle scene of friends sharing lunch, not a photograph of the MyCalAgent team" href="#our-story" action="Our perspective" />
+    <div className={styles.strip}><div className={styles.wrap}><span>FOOD. HABITS. EVERYDAY LIFE.</span><Link href="/survey">Share ideas &amp; feedback<ArrowUpRight size={16} /></Link></div></div>
+    <section id="our-story" className={`${styles.wrap} ${styles.section} ${styles.story}`}><SectionIntro eyebrow="WHY MYCALAGENT" title={"A fuller view\nof the everyday."} /><div className={styles.storyCopy}><p>What you eat is one part of your day. The routines around it matter to your experience, too.</p><p>MyCalAgent brings meals, hydration, fasting windows, and daily habits into one place. Our aim is to make recording those details simpler and reflecting on them more approachable.</p><p>We use AI to assist with nutrition estimates and observations across your logs. The purpose is to support personal awareness, while keeping uncertainty and your own judgment in view.</p><p>We see the product as an ongoing conversation with the people who use it. Everyday needs, questions, and feedback help inform what we explore next.</p></div></section>
+    <section className={`${styles.tinted} ${styles.section}`}><div className={styles.wrap}><SectionIntro eyebrow="WHAT GUIDES THE WORK" title="Thoughtful tools. Human priorities." /><div className={styles.valueGrid}>{values.map(value => <article key={value.title}><value.icon size={27} strokeWidth={1.5} aria-hidden="true" /><h3>{value.title}</h3><p>{value.body}</p></article>)}</div></div></section>
+    <section className={`${styles.wrap} ${styles.section} ${styles.split}`}><figure><div className={styles.photo}><Image src="/upcoming-cali.png" alt="Illustrative lifestyle photo of a woman using her phone at lunch" fill sizes="(max-width:640px) 90vw, 550px" /></div><figcaption className={styles.photoNote}>Illustrative lifestyle image, not a customer testimonial.</figcaption></figure><div><SectionIntro eyebrow="DESIGNED AROUND REAL ROUTINES" title={"A place for your habits.\nNot a score for your life."} description="A hurried lunch, a glass of water, a check-in at the end of the day. The starting point is what you choose to record, with space to review and correct it." /><Link href="/how-mycalagent-works" className={styles.textLink}>See how it works<ArrowUpRight size={18} /></Link></div></section>
+    <section className={`${styles.rose} ${styles.quoteBand}`}><div className={styles.wrap}><span className={styles.eyebrow}>OUR PURPOSE</span><p>Make everyday wellness easier to record, and more approachable to reflect on.</p></div></section>
+    <section className={`${styles.wrap} ${styles.section} ${styles.feedback}`}><div><SectionIntro eyebrow="PART OF THE CONVERSATION" title="What would make it useful to you?" /><p>Tell us what fits your routine, what gets in the way, and what you would like to see. Ideas inform our thinking without creating a promise of a future feature.</p></div><Link href="/survey" className={styles.button}>Share ideas &amp; feedback<ArrowUpRight size={18} /></Link></section>
+    <EditorialFAQ items={aboutFAQ} title="Get to know MyCalAgent." /><EditorialDownload /><EditorialLinks links={[["Upcoming features", "/features/upcoming"], ["AI Insights", "/ai-wellness-insights"], ["Security", "/security"], ["Research", "/research"], ["Contact", "mailto:support@mycalagent.com"]]} /><EditorialDisclaimer />
+  </EditorialPage>;
 }

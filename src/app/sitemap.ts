@@ -56,6 +56,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // ── Free Tools ────────────────────────────────────────────────────────────
     {
+      url: `${baseUrl}/features/upcoming`,
+      lastModified: new Date('2026-09-14'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/download`,
+      lastModified: new Date('2026-09-14'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/macro-calorie-calculator`,
       lastModified: now,
       changeFrequency: 'monthly',

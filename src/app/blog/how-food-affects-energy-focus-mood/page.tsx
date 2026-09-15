@@ -3,7 +3,9 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import AppStoreButtons from "@/components/AppStoreButtons";
+import Image from "next/image";
 import Link from "next/link";
+import { getBlogImage } from "@/lib/blog-images";
 
 export const metadata: Metadata = {
   title: "How What You Eat Affects Your Energy, Focus, and Mood — MyCalAgent Blog",
@@ -61,6 +63,8 @@ export default function ArticleFoodEnergyPage() {
                 The connection between food and how you feel isn&apos;t abstract — it&apos;s biochemical. Here&apos;s how different meals, meal timing, and nutrient patterns shape your mental and physical energy throughout the day.
               </p>
             </div>
+
+            <Image src={getBlogImage("2.png")} alt="MyCalAgent food and mood insights" width={1600} height={900} className="mb-10 w-full rounded-2xl border border-border/40 object-cover" />
 
             <div className="prose prose-sm dark:prose-invert max-w-none space-y-6 text-muted-foreground leading-relaxed">
               <h2 className="text-xl font-bold text-foreground">The Short Version</h2>

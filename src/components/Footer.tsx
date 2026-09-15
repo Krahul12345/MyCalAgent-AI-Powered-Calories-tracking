@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Youtube } from "lucide-react";
 import { openCookiePreferences } from "@/components/CookieConsent";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 
 const socialLinks = [
   {
@@ -17,7 +18,7 @@ export const Footer = () => {
   return (
     <footer className="relative z-10 border-t border-border bg-white/60 px-6 py-14">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8 mb-8">
             <div className="col-span-2 lg:col-span-1">
               <div className="flex items-center gap-2 mb-4">
                 <Image
@@ -61,6 +62,7 @@ export const Footer = () => {
                 <li><Link href="/macro-calorie-calculator" className="hover:text-foreground transition-colors">Macro Calculator</Link></li>
               </ul>
             </div>
+            <NewsletterSignup />
 
           <div>
             <h4 className="text-sm font-semibold mb-3">Compare</h4>
