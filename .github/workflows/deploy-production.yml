@@ -40,6 +40,14 @@ jobs:
           VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
           VERCEL_PROJECT_ID: prj_t2cOtyTnC6IzC1ueHmAXb1bXmIHY
 
+      - name: Verify required production settings
+        run: |
+          bunx vercel env ls production --token=${{ secrets.VERCEL_TOKEN }}
+          bun --env-file=.vercel/.env.production.local -e 'const missing = ["DATABASE_URL", "BETTER_AUTH_SECRET"].filter(key => !process.env[key]); if (missing.length) { console.error("Required production settings unavailable: " + missing.join(", ")); process.exit(1); }'
+        env:
+          VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
+          VERCEL_PROJECT_ID: prj_t2cOtyTnC6IzC1ueHmAXb1bXmIHY
+
       - name: Validate release
         run: |
           bun run typecheck
