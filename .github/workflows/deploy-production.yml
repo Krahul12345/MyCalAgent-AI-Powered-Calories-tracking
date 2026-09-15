@@ -33,8 +33,8 @@ jobs:
       - name: Pull Vercel environment
         run: bunx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
+          VERCEL_PROJECT_ID: prj_t2cOtyTnC6IzC1ueHmAXb1bXmIHY
 
       - name: Validate release
         run: |
@@ -46,8 +46,8 @@ jobs:
       - name: Build for Vercel
         run: bunx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
+          VERCEL_PROJECT_ID: prj_t2cOtyTnC6IzC1ueHmAXb1bXmIHY
 
       - name: Prepare production newsletter table
         run: bun --env-file=.vercel/.env.production.local scripts/prepare-newsletter.mjs
@@ -59,5 +59,5 @@ jobs:
           echo "url=$url" >> "$GITHUB_OUTPUT"
           echo "$url"
         env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
+          VERCEL_PROJECT_ID: prj_t2cOtyTnC6IzC1ueHmAXb1bXmIHY
