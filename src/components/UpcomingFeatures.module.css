@@ -39,9 +39,14 @@
 .conceptVisual{min-height:0;border-radius:8px;display:flex;flex-direction:column;background:#edf5f0;color:#174a34;overflow:hidden;margin:0}
 .movement{background:#eef2f6;color:#354e66}.meditation{background:#f6eff1;color:#784858}.glucose{background:#f0f3ed;color:#47573b}
 .visualTop{display:flex;justify-content:space-between;align-items:center;gap:16px}.visualTop span{font-size:11px}
-.featurePhoto{position:relative;aspect-ratio:3/2;background:#e5ebe7}
+.featurePhoto{position:relative;aspect-ratio:3/2;background:#e5ebe7;overflow:hidden}
 .featurePhoto img{object-fit:cover}
+.featureVideo{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
 .photoLabel{position:absolute;bottom:14px;left:16px;background:rgba(255,255,255,.94);color:#34473d;border-radius:4px;padding:5px 9px;font-size:10px;font-weight:600}
+.videoControl{position:absolute;right:16px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(16,48,37,.84);color:#fff;backdrop-filter:blur(12px);box-shadow:0 10px 28px rgba(10,32,24,.2);padding:9px 13px;font-size:11px;font-weight:700;cursor:pointer}
+.videoControl:hover{background:rgba(16,48,37,.94)}
+.videoControl:active{transform:scale(.97)}
+.videoControl svg{flex-shrink:0}
 .photoCaption{padding:22px 26px}
 .photoCaption h4{font-size:24px;font-weight:600;margin:14px 0 8px}
 .photoCaption p{font-size:12px;line-height:1.75}

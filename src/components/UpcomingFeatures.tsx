@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, AudioLines, Footprints, Headphones, Layers3, LockKeyhole, Plus, Minus, Activity, MessageSquare } from "lucide-react";
+import { ArrowDown, ArrowUpRight, AudioLines, Footprints, Headphones, Layers3, LockKeyhole, Plus, Minus, Activity, MessageSquare, Play, Square } from "lucide-react";
 import styles from "./UpcomingFeatures.module.css";
+
+const movementVideoUrl = "https://kxlkulmuhnnnalnzlftn.supabase.co/storage/v1/object/sign/Videos/Mesurement.mp4?token=eyJraWQiOiIxOGI0OWExNC04NDE4LTQzZGMtYTEzMi1hNGIyMjQzMDZhNDAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJWaWRlb3MvTWVzdXJlbWVudC5tcDQiLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg5OTM2OTI3LCJleHAiOjE5NDc2MTY5Mjd9.wfrtbvi2lBCgBReBNjau2OD6Nyctvq62szhvDgUjmBI";
 
 const concepts = [
   {
@@ -23,6 +25,7 @@ const concepts = [
     details: ["Guided mobility and fitness sessions", "Camera-based movement estimates", "Session history alongside everyday habits"],
     note: "Concept only. Movement estimates are not an assessment of injury, exercise safety, or a substitute for professional guidance.",
     visualTitle: "Movement", visualSubtitle: "Session library concept", prompt: "Make room for movement.", response: "Mobility, everyday activity, and workout sessions are directions under consideration.",
+    videoUrl: movementVideoUrl,
   },
   {
     id: "meditation", label: "Meditation", icon: Headphones, number: "03", title: "A little space.\nJust for you.",
@@ -34,7 +37,7 @@ const concepts = [
   },
   {
     id: "glucose", label: "Glucose trends", icon: Activity, number: "04", title: "More context.\nCarefully considered.",
-    image: "/upcoming-glucose.png", imageAlt: "Lifestyle concept: a phone, notebook, water, and meal arranged on a table", teaser: "Optional data & meal context",
+    image: "/upcoming-glucose-monitoring-concept.png", imageAlt: "Concept image of a MyCalAgent glucose trends screen on a phone beside everyday wellness objects", teaser: "Optional data & meal context",
     description: "An optional concept for viewing summaries of existing Apple Health glucose data alongside logged meals, with attention to data coverage.",
     details: ["Read-only Apple Health data, with permission", "Qualitative summaries and coverage information", "An optional, separately enabled experience"],
     note: "Initial scope considers iOS only. No direct sensor connection, glucose alerts, diagnosis, predictions, or medication guidance. Never use for treatment decisions.",
@@ -52,9 +55,24 @@ const questions = [
 export default function UpcomingFeatures() {
   const [selected, setSelected] = useState(0);
   const [openQuestion, setOpenQuestion] = useState<number | null>(0);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const reduced = useReducedMotion();
   const concept = concepts[selected];
   const Icon = concept.icon;
+  const hasVideo = Boolean(concept.videoUrl);
+  const toggleVideo = async () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isVideoPlaying) {
+      video.pause();
+      video.currentTime = 0;
+      setIsVideoPlaying(false);
+      return;
+    }
+    await video.play();
+    setIsVideoPlaying(true);
+  };
 
   return (
     <main className={styles.page}>
@@ -79,14 +97,14 @@ export default function UpcomingFeatures() {
       <section id="explore" className={styles.gallery} aria-labelledby="explore-heading">
         <div className={styles.sectionHeading}><div><span className={styles.eyebrow}>FOUR DIRECTIONS. ONE EVERYDAY LIFE.</span><h2 id="explore-heading">A closer look at what's possible.</h2></div><span className={styles.conceptLabel}>Under consideration</span></div>
         <div className={styles.tabs} role="tablist" aria-label="Feature concepts">
-          {concepts.map((item, index) => <button key={item.id} id={`tab-${item.id}`} role="tab" aria-selected={selected === index} aria-controls="concept-panel" tabIndex={selected === index ? 0 : -1} onClick={() => setSelected(index)} onKeyDown={(event) => {
+          {concepts.map((item, index) => <button key={item.id} id={`tab-${item.id}`} role="tab" aria-selected={selected === index} aria-controls="concept-panel" tabIndex={selected === index ? 0 : -1} onClick={() => { setSelected(index); setIsVideoPlaying(false); }} onKeyDown={(event) => {
             let next = index;
             if (event.key === "ArrowRight") next = (index + 1) % concepts.length;
             else if (event.key === "ArrowLeft") next = (index + concepts.length - 1) % concepts.length;
             else if (event.key === "Home") next = 0;
             else if (event.key === "End") next = concepts.length - 1;
             else return;
-            event.preventDefault(); setSelected(next); document.getElementById(`tab-${concepts[next].id}`)?.focus();
+            event.preventDefault(); setSelected(next); setIsVideoPlaying(false); document.getElementById(`tab-${concepts[next].id}`)?.focus();
           }}><item.icon size={25} aria-hidden="true" /><span className={styles.tabText}><strong>{item.label}</strong><span>{item.teaser}</span></span>{selected === index && <motion.span layoutId="concept-tab" className={styles.tabUnderline} transition={{ type: "spring", bounce: 0, duration: reduced ? 0 : 0.35 }} />}</button>)}
         </div>
         <div id="concept-panel" role="tabpanel" aria-labelledby={`tab-${concept.id}`} tabIndex={0} className={styles.panel}>
@@ -94,8 +112,8 @@ export default function UpcomingFeatures() {
             <motion.div key={concept.id} className={styles.panelInner} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduced ? 0 : 0.14 }}>
               <div className={styles.conceptCopy}><span className={styles.index}>{concept.number} / EXPLORING</span><h3>{concept.title}</h3><p>{concept.description}</p><ul>{concept.details.map(detail => <li key={detail}><Plus size={15} />{detail}</li>)}</ul><p className={styles.note}>{concept.note}</p></div>
               <figure className={`${styles.conceptVisual} ${styles[concept.id]}`}>
-                <div className={styles.featurePhoto}><Image src={concept.image} alt={concept.imageAlt} fill sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 900px) 45vw, 540px" /><span className={styles.photoLabel}>Concept imagery</span></div>
-                <figcaption className={styles.photoCaption}><div className={styles.visualTop}><Icon size={22} aria-hidden="true" /><span>{concept.visualSubtitle}</span></div><h4>{concept.visualTitle}</h4><p>{concept.response}</p><span className={styles.visualDisclaimer}>AI-generated illustration, not an app screenshot</span></figcaption>
+                <div className={styles.featurePhoto}>{hasVideo ? <><video ref={videoRef} className={styles.featureVideo} poster={concept.image} playsInline preload="metadata" onEnded={() => setIsVideoPlaying(false)} onPause={() => setIsVideoPlaying(false)}><source src={concept.videoUrl} type="video/mp4" /></video><button type="button" className={styles.videoControl} onClick={toggleVideo} aria-label={isVideoPlaying ? "Stop movement concept video" : "Play movement concept video"}>{isVideoPlaying ? <Square size={15} fill="currentColor" /> : <Play size={16} fill="currentColor" />}<span>{isVideoPlaying ? "Stop video" : "Play video"}</span></button></> : <Image src={concept.image} alt={concept.imageAlt} fill sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 900px) 45vw, 540px" />}<span className={styles.photoLabel}>{hasVideo ? "Concept video" : "Concept imagery"}</span></div>
+                <figcaption className={styles.photoCaption}><div className={styles.visualTop}><Icon size={22} aria-hidden="true" /><span>{concept.visualSubtitle}</span></div><h4>{concept.visualTitle}</h4><p>{concept.response}</p><span className={styles.visualDisclaimer}>Concept image, not an available feature or measured result</span></figcaption>
               </figure>
             </motion.div>
           </AnimatePresence>
