@@ -40,6 +40,17 @@ jobs:
           VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
           VERCEL_PROJECT_ID: prj_t2cOtyTnC6IzC1ueHmAXb1bXmIHY
 
+      - name: Seed required production settings
+        run: |
+          printf '%s' "$DATABASE_URL" | bunx vercel env add DATABASE_URL production --force --sensitive --token=${{ secrets.VERCEL_TOKEN }}
+          printf '%s' "$BETTER_AUTH_SECRET" | bunx vercel env add BETTER_AUTH_SECRET production --force --sensitive --token=${{ secrets.VERCEL_TOKEN }}
+          bunx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
+          VERCEL_PROJECT_ID: prj_t2cOtyTnC6IzC1ueHmAXb1bXmIHY
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+
       - name: Verify required production settings
         run: |
           bunx vercel env ls production --token=${{ secrets.VERCEL_TOKEN }}
