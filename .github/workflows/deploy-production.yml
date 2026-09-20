@@ -42,8 +42,8 @@ jobs:
 
       - name: Seed required production settings
         run: |
-          printf '%s' "$DATABASE_URL" | bunx vercel env add DATABASE_URL production --force --sensitive --token=${{ secrets.VERCEL_TOKEN }}
-          printf '%s' "$BETTER_AUTH_SECRET" | bunx vercel env add BETTER_AUTH_SECRET production --force --sensitive --token=${{ secrets.VERCEL_TOKEN }}
+          printf '%s' "$DATABASE_URL" | bunx vercel env add DATABASE_URL production --force --token=${{ secrets.VERCEL_TOKEN }}
+          printf '%s' "$BETTER_AUTH_SECRET" | bunx vercel env add BETTER_AUTH_SECRET production --force --token=${{ secrets.VERCEL_TOKEN }}
           bunx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
