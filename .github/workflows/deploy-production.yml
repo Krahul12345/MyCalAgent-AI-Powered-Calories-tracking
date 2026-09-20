@@ -44,8 +44,8 @@ jobs:
         run: |
           bunx vercel env remove DATABASE_URL production --yes --token=${{ secrets.VERCEL_TOKEN }} || true
           bunx vercel env remove BETTER_AUTH_SECRET production --yes --token=${{ secrets.VERCEL_TOKEN }} || true
-          printf '%s' "$DATABASE_URL" | bunx vercel env add DATABASE_URL production --force --token=${{ secrets.VERCEL_TOKEN }}
-          printf '%s' "$BETTER_AUTH_SECRET" | bunx vercel env add BETTER_AUTH_SECRET production --force --token=${{ secrets.VERCEL_TOKEN }}
+          printf '%s' "$DATABASE_URL" | bunx vercel env add DATABASE_URL production --force --type config --token=${{ secrets.VERCEL_TOKEN }}
+          printf '%s' "$BETTER_AUTH_SECRET" | bunx vercel env add BETTER_AUTH_SECRET production --force --type config --token=${{ secrets.VERCEL_TOKEN }}
           bunx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
@@ -56,7 +56,7 @@ jobs:
       - name: Verify required production settings
         run: |
           bunx vercel env ls production --token=${{ secrets.VERCEL_TOKEN }}
-          bun --env-file=.vercel/.env.production.local -e 'const missing = ["DATABASE_URL", "BETTER_AUTH_SECRET"].filter(key => !process.env[key]); if (missing.length) { console.error("Required production settings unavailable: " + missing.join(", ")); process.exit(1); }'
+          bun --env-file=.vercel/.env.production.local -e 'const missing = ["DATABASE_URL", "BETTER_AUTH_SECRET"].filter(key => !process.env[key] || process.env[key] === "[SENSITIVE]"); if (missing.length) { console.error("Required production settings unavailable: " + missing.join(", ")); process.exit(1); }'
         env:
           VERCEL_ORG_ID: team_OvgBQBeXusUZeSYPqhwMI5pc
           VERCEL_PROJECT_ID: prj_t2cOtyTnC6IzC1ueHmAXb1bXmIHY
