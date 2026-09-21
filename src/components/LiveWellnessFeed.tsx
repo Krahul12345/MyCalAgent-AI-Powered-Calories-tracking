@@ -222,10 +222,6 @@ export default function LiveWellnessFeed() {
         </span>
       </div>
 
-      {/* Privacy disclaimer */}
-      <p className="text-center mt-1 text-[10px]" style={{ color: "#94A3B8" }}>
-        Example wellness moments. No personal data shown.
-      </p>
     </div>
   );
 }

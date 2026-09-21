@@ -77,7 +77,7 @@ export default function UpcomingFeatures() {
   return (
     <main className={styles.page}>
       <section className={styles.hero} aria-labelledby="upcoming-title">
-        <Image src="/upcoming-wellness-studio.png" alt="A bright studio with a person seated on an exercise mat, lifestyle concept imagery" fill priority sizes="100vw" className={styles.heroImage} />
+        <Image src="/upcoming-wellness-studio.png" alt="A bright studio with a person seated on an exercise mat" fill priority sizes="100vw" className={styles.heroImage} />
         <div className={styles.heroContent}>
           <Link href="/features" className={styles.eyebrow}>MYCALAGENT / A LOOK AHEAD</Link>
           <h1 id="upcoming-title">Upcoming<br />features.</h1>
@@ -112,8 +112,8 @@ export default function UpcomingFeatures() {
             <motion.div key={concept.id} className={styles.panelInner} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduced ? 0 : 0.14 }}>
               <div className={styles.conceptCopy}><span className={styles.index}>{concept.number} / EXPLORING</span><h3>{concept.title}</h3><p>{concept.description}</p><ul>{concept.details.map(detail => <li key={detail}><Plus size={15} />{detail}</li>)}</ul><p className={styles.note}>{concept.note}</p></div>
               <figure className={`${styles.conceptVisual} ${styles[concept.id]}`}>
-                <div className={styles.featurePhoto}>{hasVideo ? <><video ref={videoRef} className={styles.featureVideo} poster={concept.image} playsInline preload="metadata" onEnded={() => setIsVideoPlaying(false)} onPause={() => setIsVideoPlaying(false)}><source src={concept.videoUrl} type="video/mp4" /></video><button type="button" className={styles.videoControl} onClick={toggleVideo} aria-label={isVideoPlaying ? "Stop movement concept video" : "Play movement concept video"}>{isVideoPlaying ? <Square size={15} fill="currentColor" /> : <Play size={16} fill="currentColor" />}<span>{isVideoPlaying ? "Stop video" : "Play video"}</span></button></> : <Image src={concept.image} alt={concept.imageAlt} fill sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 900px) 45vw, 540px" />}<span className={styles.photoLabel}>{hasVideo ? "Concept video" : "Concept imagery"}</span></div>
-                <figcaption className={styles.photoCaption}><div className={styles.visualTop}><Icon size={22} aria-hidden="true" /><span>{concept.visualSubtitle}</span></div><h4>{concept.visualTitle}</h4><p>{concept.response}</p><span className={styles.visualDisclaimer}>Concept image, not an available feature or measured result</span></figcaption>
+                <div className={styles.featurePhoto}>{hasVideo ? <><video ref={videoRef} className={styles.featureVideo} poster={concept.image} playsInline preload="metadata" onEnded={() => setIsVideoPlaying(false)} onPause={() => setIsVideoPlaying(false)}><source src={concept.videoUrl} type="video/mp4" /></video><button type="button" className={styles.videoControl} onClick={toggleVideo} aria-label={isVideoPlaying ? "Stop movement concept video" : "Play movement concept video"}>{isVideoPlaying ? <Square size={15} fill="currentColor" /> : <Play size={16} fill="currentColor" />}<span>{isVideoPlaying ? "Stop video" : "Play video"}</span></button></> : <Image src={concept.image} alt={concept.imageAlt} fill sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 900px) 45vw, 540px" />}</div>
+                <figcaption className={styles.photoCaption}><div className={styles.visualTop}><Icon size={22} aria-hidden="true" /><span>{concept.visualSubtitle}</span></div><h4>{concept.visualTitle}</h4><p>{concept.response}</p></figcaption>
               </figure>
             </motion.div>
           </AnimatePresence>

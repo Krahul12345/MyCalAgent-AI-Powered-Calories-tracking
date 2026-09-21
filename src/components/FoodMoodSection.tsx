@@ -18,7 +18,7 @@ export default function FoodMoodSection() {
         <p className={styles.lead}>A day is more than a calorie total. Bring your food logs and personal check-ins together, and approach the patterns with curiosity.</p>
       </div>
       <div className={styles.layout}>
-        <figure><div className={styles.visual}><Image src="/ai-insights-editorial.png" alt="Breakfast, a glass of water, a notebook, and a phone on a light table" fill sizes="(max-width:760px) 90vw, 544px" /></div><figcaption className={styles.caption}>Illustrative lifestyle imagery. No personal results shown.</figcaption></figure>
+        <figure><div className={styles.visual}><Image src="/ai-insights-editorial.png" alt="Breakfast, a glass of water, a notebook, and a phone on a light table" fill sizes="(max-width:760px) 90vw, 544px" /></div></figure>
         <div><div className={styles.topics}>{topics.map(topic => <article className={styles.topic} key={topic.title}><topic.icon size={25} aria-hidden="true" /><div><h3>{topic.title}</h3><p>{topic.description}</p></div></article>)}</div><Link className={styles.link} href="/ai-wellness-insights">Explore AI wellness insights <ArrowUpRight size={18} aria-hidden="true" /></Link></div>
       </div>
     </div>

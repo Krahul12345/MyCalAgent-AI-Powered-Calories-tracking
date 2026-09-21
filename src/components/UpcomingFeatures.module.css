@@ -40,7 +40,7 @@
 .movement{background:#eef2f6;color:#354e66}.meditation{background:#f6eff1;color:#784858}.glucose{background:#f0f3ed;color:#47573b}
 .visualTop{display:flex;justify-content:space-between;align-items:center;gap:16px}.visualTop span{font-size:11px}
 .featurePhoto{position:relative;aspect-ratio:3/2;background:#e5ebe7;overflow:hidden}
-.featurePhoto img{object-fit:cover}
+.featurePhoto img{object-fit:contain}
 .featureVideo{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
 .photoLabel{position:absolute;bottom:14px;left:16px;background:rgba(255,255,255,.94);color:#34473d;border-radius:4px;padding:5px 9px;font-size:10px;font-weight:600}
 .videoControl{position:absolute;right:16px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(16,48,37,.84);color:#fff;backdrop-filter:blur(12px);box-shadow:0 10px 28px rgba(10,32,24,.2);padding:9px 13px;font-size:11px;font-weight:700;cursor:pointer}
@@ -74,3 +74,5 @@
 @media(max-width:1000px){.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.feedback{grid-template-columns:1fr auto;padding:28px 30px}.feedbackIcon{display:none}}
 @media(max-width:900px){.conceptVisual{padding:0}}
 @media(max-width:640px){.heroActions{display:grid;justify-items:start;gap:14px;margin-top:18px}.heroSurvey{font-size:13px}.heroImage{top:340px!important;height:340px!important}.tabs{gap:6px;padding:6px}.tabs button{min-height:100px;padding:14px 9px;gap:8px;justify-content:flex-start}.tabs button>svg{width:20px;height:20px}.tabText strong{font-size:14px}.tabText>span{font-size:10px}.feedback{grid-template-columns:1fr;padding:28px 24px;gap:20px}.feedback h2{font-size:25px}.surveyButton{justify-self:start;max-width:100%;font-size:13px;padding:14px 16px}.conceptVisual{min-height:0;padding:0}.photoCaption{padding:20px}.photoCaption h4{font-size:23px}}
+.heroImage{object-fit:contain!important;object-position:center!important;background:#edf0ef}
+@media(max-width:640px){.heroImage{top:0!important;height:100%!important;object-fit:contain!important;object-position:center bottom!important}.heroCaption{display:none}}
