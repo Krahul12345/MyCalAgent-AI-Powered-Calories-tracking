@@ -77,7 +77,7 @@ export default function UpcomingFeatures() {
   return (
     <main className={styles.page}>
       <section className={styles.hero} aria-labelledby="upcoming-title">
-        <Image src="/upcoming-wellness-studio.png" alt="A bright studio with a person seated on an exercise mat" fill priority sizes="100vw" className={styles.heroImage} />
+        <div className={styles.heroMedia}><Image src="/upcoming-wellness-studio.png" alt="A bright studio with a person seated on an exercise mat" fill priority sizes="100vw" className={styles.heroImage} unoptimized /></div>
         <div className={styles.heroContent}>
           <Link href="/features" className={styles.eyebrow}>MYCALAGENT / A LOOK AHEAD</Link>
           <h1 id="upcoming-title">Upcoming<br />features.</h1>

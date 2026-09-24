@@ -166,7 +166,9 @@ function setDiagnostics(
   articles: BlogArticle[],
   extra: Partial<BlogCmsDiagnostics> = {}
 ) {
-  const latestArticle = [...articles].sort((a, b) => (b.publish_date > a.publish_date ? 1 : -1))[0];
+  const latestArticle = articles
+    .filter((article) => article.status === "published")
+    .sort((a, b) => (b.publish_date > a.publish_date ? 1 : -1))[0];
   _diagnostics = {
     source,
     article_count: articles.length,

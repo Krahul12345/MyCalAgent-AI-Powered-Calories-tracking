@@ -13,7 +13,9 @@ const CATEGORIES = [
   "All",
   "Food & Mood",
   "AI Wellness",
+  "Product Guide",
   "Hydration",
+  "Fitness & Lifestyle",
   "Intermittent Fasting",
   "Productivity & Energy",
   "Privacy & Security",
@@ -38,6 +40,8 @@ const CATEGORY_COLORS: Record<string, { pill: string; dot: string; bg: string }>
   "Intermittent Fasting":  { pill: "bg-emerald-50 text-emerald-700 border-emerald-200",  dot: "#10B981", bg: "#ecfdf5" },
   "Wellness Intelligence": { pill: "bg-indigo-50 text-indigo-700 border-indigo-200",     dot: "#6366F1", bg: "#eef2ff" },
   "Productivity & Energy": { pill: "bg-amber-50 text-amber-700 border-amber-200",        dot: "#F59E0B", bg: "#fffbeb" },
+  "Product Guide":         { pill: "bg-emerald-50 text-emerald-700 border-emerald-200",  dot: "#15803D", bg: "#ecfdf5" },
+  "Fitness & Lifestyle":   { pill: "bg-teal-50 text-teal-700 border-teal-200",           dot: "#14B8A6", bg: "#f0fdfa" },
   "Privacy & Security":    { pill: "bg-slate-50 text-slate-700 border-slate-200",        dot: "#64748B", bg: "#f8fafc" },
   "App Updates":           { pill: "bg-teal-50 text-teal-700 border-teal-200",           dot: "#14B8A6", bg: "#f0fdfa" },
 };

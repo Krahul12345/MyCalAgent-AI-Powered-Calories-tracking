@@ -29,3 +29,12 @@
 .heroContent{position:relative;z-index:1}
 .heroImage{object-fit:cover!important;object-position:center!important;background:#edf0ee}
 @media(max-width:640px){.hero{height:655px}.hero::before{background:linear-gradient(90deg,rgba(237,240,238,.98) 0%,rgba(237,240,238,.86) 43%,rgba(237,240,238,.34) 72%,rgba(237,240,238,.08) 100%)}.heroContent{position:relative;z-index:1;padding:30px 24px}.heroImage{top:0!important;height:100%!important;object-fit:cover!important;object-position:72% center!important}}
+.hero{display:block!important;height:auto!important;min-height:clamp(560px,calc(100dvh - 64px),720px);padding:clamp(74px,9vw,116px) max(48px,calc((100% - 1240px)/2));overflow:hidden;background:#edf2ef}
+.hero::before{display:block;content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(237,242,239,.98) 0%,rgba(237,242,239,.93) 32%,rgba(237,242,239,.72) 48%,rgba(237,242,239,.34) 66%,rgba(237,242,239,.08) 92%);pointer-events:none}
+.heroContent{position:relative;z-index:2;margin:0;max-width:520px;padding:0!important}
+.heroMedia{position:absolute;inset:0;z-index:-1;width:100%;height:100%;padding:0;border-radius:0;background:#edf2ef;box-shadow:none}
+.heroMedia .heroImage{object-fit:contain!important;object-position:center right!important;border-radius:0;background:#edf2ef}
+@media(max-width:1000px){.hero{padding-inline:30px}.heroContent{max-width:410px}.hero h1{font-size:clamp(46px,6vw,58px)}.heroMedia .heroImage{object-position:center right!important}}
+@media(max-width:760px){.hero{display:flex!important;flex-direction:column;min-height:0;padding:30px 24px 0}.hero::before{background:linear-gradient(180deg,rgba(237,242,239,.98) 0%,rgba(237,242,239,.9) 54%,rgba(237,242,239,.2) 100%)}.heroContent{order:1;max-width:100%}.hero h1{font-size:clamp(40px,12vw,48px)}.heroContent>p{max-width:34rem}.heroMedia{order:2;position:relative;inset:auto;z-index:1;width:calc(100% + 48px);height:auto;aspect-ratio:3/2;margin:30px -24px 0;background:transparent}.heroMedia .heroImage{object-position:center!important}.imageCredit{display:none}}
+.photo{border-radius:14px;background:#edf4ef;box-shadow:0 16px 40px rgba(27,40,34,.08)}
+.photo img{border-radius:inherit}

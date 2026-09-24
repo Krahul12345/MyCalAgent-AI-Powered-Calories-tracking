@@ -2,15 +2,48 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Youtube } from "lucide-react";
+import { Mail } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaRedditAlien, FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { openCookiePreferences } from "@/components/CookieConsent";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 
 const socialLinks = [
   {
+    label: "Instagram",
+    icon: FaInstagram,
+    href: "#",
+    color: "#E4405F",
+  },
+  {
+    label: "Facebook",
+    icon: FaFacebookF,
+    href: "#",
+    color: "#1877F2",
+  },
+  {
+    label: "LinkedIn",
+    icon: FaLinkedinIn,
+    href: "#",
+    color: "#0A66C2",
+  },
+  {
+    label: "X",
+    icon: FaXTwitter,
+    href: "#",
+    color: "#111111",
+  },
+  {
+    label: "Reddit",
+    icon: FaRedditAlien,
+    href: "#",
+    color: "#FF4500",
+  },
+  {
     label: "YouTube",
-    icon: Youtube,
+    icon: FaYoutube,
     href: "https://youtube.com/shorts/OrdcECgmelU",
+    color: "#FF0000",
   },
 ];
 
@@ -34,14 +67,16 @@ export const Footer = () => {
                 AI Wellness Intelligence — understand how meals, hydration &amp; habits affect how you feel.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
-                {socialLinks.map(({ label, icon: Icon, href }) =>
+                {socialLinks.map(({ label, icon: Icon, href, color }) =>
                     <a
                       key={label}
                       href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white text-muted-foreground transition-colors hover:border-primary/30 hover:text-primary"
+                      target={href === "#" ? undefined : "_blank"}
+                      rel={href === "#" ? undefined : "noopener noreferrer"}
+                      aria-label={href === "#" ? `${label} link coming soon` : label}
+                      onClick={href === "#" ? event => event.preventDefault() : undefined}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white transition-colors hover:border-primary/30"
+                      style={{ color }}
                     >
                       <Icon className="h-4 w-4" />
                     </a>

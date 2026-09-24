@@ -14,7 +14,7 @@ export function EditorialPage({ children }: { children: ReactNode }) {
 }
 
 export function EditorialHero({ label, title, description, image, alt, href, action }: { label: string; title: string; description: string; image: string; alt: string; href: string; action: string }) {
-  return <section className={styles.hero}><Image src={image} alt={alt} fill priority sizes="100vw" className={styles.heroImage} /><div className={styles.heroContent}><span className={styles.eyebrow}>MYCALAGENT / {label}</span><h1>{title}</h1><p>{description}</p><a href={href} className={styles.textLink}>{action}<ArrowDown size={18} aria-hidden="true" /></a></div></section>;
+  return <section className={styles.hero}><div className={styles.heroMedia}><Image src={image} alt={alt} fill priority sizes="100vw" className={styles.heroImage} unoptimized /></div><div className={styles.heroContent}><span className={styles.eyebrow}>MYCALAGENT / {label}</span><h1>{title}</h1><p>{description}</p><a href={href} className={styles.textLink}>{action}<ArrowDown size={18} aria-hidden="true" /></a></div></section>;
 }
 
 export function SectionIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {

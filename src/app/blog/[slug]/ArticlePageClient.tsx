@@ -28,6 +28,8 @@ const CATEGORY_COLORS: Record<string, string> = {
   "Intermittent Fasting": "#10B981",
   "Wellness Intelligence": "#6366F1",
   "Productivity & Energy": "#F59E0B",
+  "Product Guide": "#15803D",
+  "Fitness & Lifestyle": "#14B8A6",
   "Privacy & Security": "#64748B",
   "App Updates": "#14B8A6",
 };
@@ -39,6 +41,8 @@ const CATEGORY_BG: Record<string, string> = {
   "Intermittent Fasting": "#ecfdf5",
   "Wellness Intelligence": "#eef2ff",
   "Productivity & Energy": "#fffbeb",
+  "Product Guide": "#ecfdf5",
+  "Fitness & Lifestyle": "#f0fdfa",
   "Privacy & Security": "#f8fafc",
   "App Updates": "#f0fdfa",
 };
@@ -131,26 +135,24 @@ function articlePreview(html: string): string {
     .slice(0, 900);
 }
 
-function buildPrompt(article: BlogArticle, url: string, platformId: string): string {
-  const basePrompt = `Summarize the key insights from ${url} and explain what this means for wellness tracking, hydration, food habits, and behavioral wellness. The article is titled: "${article.title}"`;
+function displayImageUrl(src: string): string {
+  return src.replace(/^https:\/\/(?:www\.)?mycalagent\.com/i, "");
+}
 
-  if (platformId !== "gemini") {
-    return basePrompt;
-  }
-
+function buildPrompt(article: BlogArticle, url: string): string {
   const tags = article.tags.length ? article.tags.join(", ") : "wellness tracking";
   const sources = article.source_name || "MyCalAgent editorial sources";
   const preview = articlePreview(article.content);
 
   return [
-    `Summarize this MyCalAgent article and explain what it means for wellness tracking, hydration, food habits, and behavioral wellness.`,
+    `Summarize this latest MyCalAgent article and explain what it means for wellness tracking, hydration, food habits, and behavioral wellness.`,
     `Public URL: ${url}`,
     `Title: ${article.title}`,
     `Category: ${article.category}`,
     `Tags: ${tags}`,
     `Excerpt: ${article.excerpt}`,
     `Sources cited: ${sources}`,
-    `If Google AI Mode has not indexed the URL yet, use this article preview as context instead of saying the article is unavailable: ${preview}`,
+    `If the URL has not been indexed yet, use this article preview as context instead of saying the article is unavailable: ${preview}`,
   ].join("\n");
 }
 
@@ -190,7 +192,7 @@ function AIShareButtons({
         return (
           <a
             key={p.id}
-            href={p.buildUrl(buildPrompt(article, url, p.id))}
+            href={p.buildUrl(buildPrompt(article, url))}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackAIShare(p.id)}
@@ -484,7 +486,7 @@ export default function ArticlePageClient({ article, related }: { article: BlogA
             {article.featured_image && (
               <div style={{ marginBottom: 36, display: "flex", justifyContent: "center" }}>
                 <div style={{ maxWidth: 520, width: "100%", borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", background: "#fff" }}>
-                  <img src={article.featured_image} alt={article.title} style={{ width: "100%", height: "auto", maxHeight: 540, objectFit: "contain", display: "block" }} />
+                  <img src={displayImageUrl(article.featured_image)} alt={article.title} style={{ width: "100%", height: "auto", maxHeight: 540, objectFit: "contain", display: "block" }} />
                 </div>
               </div>
             )}

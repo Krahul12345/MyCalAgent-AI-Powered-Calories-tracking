@@ -5,7 +5,11 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { Volume2, VolumeX, Maximize, Minimize, Play, Pause } from "lucide-react";
 import AppStoreButtons from "@/components/AppStoreButtons";
 
-export default function VideoSection() {
+interface VideoSectionProps {
+  compact?: boolean;
+}
+
+export default function VideoSection({ compact = false }: VideoSectionProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMuted, setIsMuted] = useState(true);
@@ -182,20 +186,30 @@ export default function VideoSection() {
   return (
     <section
       id="demo"
-      className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden scroll-mt-20"
+      className={`relative px-4 sm:px-6 overflow-hidden scroll-mt-20 ${
+        compact ? "py-10 sm:py-12 md:py-14 bg-[#f4faf6]" : "py-12 sm:py-16 md:py-20"
+      }`}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className={`${compact ? "max-w-5xl" : "max-w-7xl"} mx-auto`}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={compact ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-10"
+          className={`text-center ${compact ? "mb-6 sm:mb-8" : "mb-8 sm:mb-10"}`}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6">
+          <h2
+            className={`font-bold mb-4 sm:mb-6 ${
+              compact ? "text-2xl sm:text-3xl md:text-4xl" : "text-2xl sm:text-3xl md:text-5xl"
+            }`}
+          >
             See How MyCalAgent <span className="gradient-text">Works</span>
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+          <p
+            className={`text-muted-foreground mx-auto px-4 ${
+              compact ? "text-sm sm:text-base max-w-xl" : "text-base sm:text-lg max-w-2xl"
+            }`}
+          >
             Watch how MyCalAgent helps users log meals, track nutrition, and stay consistent —
             all with minimal effort.
           </p>
@@ -203,15 +217,15 @@ export default function VideoSection() {
 
         {!isFullscreen && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={compact ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mb-8 sm:mb-10 flex flex-col items-center gap-4"
+            className={`${compact ? "mb-6 sm:mb-8 gap-3" : "mb-8 sm:mb-10 gap-4"} flex flex-col items-center`}
           >
             <p className="text-sm sm:text-base text-muted-foreground">Download the app</p>
             <div className="relative flex flex-col items-center gap-3">
-              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-transparent blur-2xl" />
+              <div className={`${compact ? "absolute -inset-4" : "absolute -inset-6"} rounded-3xl bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-transparent blur-2xl`} />
               <AppStoreButtons className="relative" />
             </div>
           </motion.div>
@@ -219,7 +233,7 @@ export default function VideoSection() {
 
         <motion.div
           ref={containerRef}
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={compact ? false : { opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -234,7 +248,11 @@ export default function VideoSection() {
             className={`relative overflow-hidden ${
               isFullscreen
                 ? "w-full h-full max-w-none rounded-none bg-black"
-                : "w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] rounded-[2rem] sm:rounded-[2.5rem] bg-background"
+                : `${
+                    compact
+                      ? "w-[230px] sm:w-[260px] md:w-[300px]"
+                      : "w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px]"
+                  } rounded-[2rem] sm:rounded-[2.5rem] bg-background`
             }`}
             style={isFullscreen ? {} : { aspectRatio: "9/19.5" }}
           >
@@ -248,6 +266,7 @@ export default function VideoSection() {
               muted
               autoPlay
               preload="auto"
+              poster="/hero-meal-scanner.webp"
               onClick={togglePlay}
             >
               <source
@@ -375,7 +394,7 @@ export default function VideoSection() {
         </motion.div>
 
         {!isFullscreen && (
-          <p className="text-center text-xs sm:text-sm text-muted-foreground mt-6 sm:mt-8">
+          <p className={`text-center text-xs sm:text-sm text-muted-foreground ${compact ? "mt-5 sm:mt-6" : "mt-6 sm:mt-8"}`}>
             Tap to play/pause • Click fullscreen for immersive experience
           </p>
         )}

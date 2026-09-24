@@ -174,7 +174,7 @@ export default function LiveWellnessFeed() {
     >
       {/* Pill card */}
       <div
-        className="flex items-center gap-3 px-4 py-2.5 rounded-2xl text-sm"
+        className="flex items-start gap-3 px-4 py-2.5 rounded-2xl text-sm"
         style={{
           background: "rgba(255,255,255,0.93)",
           backdropFilter: "blur(20px)",
@@ -198,7 +198,7 @@ export default function LiveWellnessFeed() {
         </span>
 
         {/* Animated message */}
-        <div className="flex-1 min-w-0">
+        <div className="min-w-0 flex-1 pr-2">
           <AnimatePresence mode="wait">
             <motion.p
               key={index}
@@ -206,7 +206,7 @@ export default function LiveWellnessFeed() {
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={prefersReduced.current ? {} : { opacity: 0, y: -8, filter: "blur(2px)" }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-              className="leading-snug"
+              className="leading-snug break-words"
               style={{ color: "#0F172A" }}
             >
               <span className="font-bold">{msg.name}</span>
@@ -217,7 +217,7 @@ export default function LiveWellnessFeed() {
         </div>
 
         {/* Timestamp */}
-        <span className="flex-shrink-0 text-[11px] whitespace-nowrap" style={{ color: "#94A3B8" }}>
+        <span className="ml-auto flex-shrink-0 pt-0.5 text-[11px] whitespace-nowrap" style={{ color: "#94A3B8" }}>
           {timestamp}
         </span>
       </div>

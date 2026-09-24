@@ -95,7 +95,7 @@ export async function GET() {
   const blogLinks = articles
     .map((article) => `- [${article.title}](${article.canonical_url || `${baseUrl}/blog/${article.slug}`})`)
     .join("\n");
-  const updatedDate = "2026-09-14";
+  const updatedDate = new Date().toISOString().slice(0, 10);
 
   const body = `# MyCalAgent — AI Wellness Intelligence Platform
 
