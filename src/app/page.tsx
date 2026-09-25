@@ -191,8 +191,8 @@ export default function Home() {
           <WellnessComparisonSection />
           <AppDownloadSection />
           <VideoSection />
-          <ComparisonCTA />
           <HomeUpcomingPreview />
+          <ComparisonCTA />
           <AICompareCTA />
           <UserInsightsSection />
           <QuickFAQ items={homeFAQ} />

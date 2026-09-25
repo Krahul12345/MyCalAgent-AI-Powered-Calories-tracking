@@ -14,7 +14,7 @@ export const ComparisonCTA = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-black mb-8 tracking-tight leading-tight">
-            How Does <span className="text-emerald-500">MyCalAgent</span> Compare <br className="hidden md:block" />
+            How Does <span className="text-[#0F5C39]">MyCalAgent</span> Compare <br className="hidden md:block" />
             to Other Calorie Tracking Apps?
           </h2>
           
