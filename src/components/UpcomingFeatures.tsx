@@ -11,21 +11,21 @@ const movementVideoUrl = "https://kxlkulmuhnnnalnzlftn.supabase.co/storage/v1/ob
 
 const concepts = [
   {
-    id: "cali", label: "Cali voice", icon: AudioLines, number: "01", title: "A conversation.\nIn your own words.",
-    image: "/upcoming-cali.png", imageAlt: "Lifestyle concept: a woman speaking into her phone beside her lunch", teaser: "Conversations & meal logging",
-    description: "We're exploring spoken conversations with Cali, alongside text, for reflecting on your logged meals and everyday routines.",
-    details: ["Voice conversations with visible transcripts", "Meal dictation and editable corrections", "Text as an alternative to voice"],
-    note: "Concept only. AI responses may be inaccurate or incomplete and are not medical advice.",
-    visualTitle: "Ask Cali", visualSubtitle: "Voice + text concept", prompt: "Let's look back at my meals.", response: "A space to reflect on what you've logged, in a conversation that fits your day.",
-  },
-  {
-    id: "movement", label: "Movement", icon: Footprints, number: "02", title: "Everyday movement.\nA new perspective.",
+    id: "movement", label: "Movement", icon: Footprints, number: "01", title: "Everyday movement.\nA new perspective.",
     image: "/upcoming-movement-tracking-concept.png", imageAlt: "Concept illustration: a man stretching with blue motion-tracking markers and a phone on a stand", teaser: "Everyday activity & mobility",
     description: "An exploration of camera-assisted movement sessions, repetition counts, and activity summaries alongside your daily logs.",
     details: ["Guided mobility and fitness sessions", "Camera-based movement estimates", "Session history alongside everyday habits"],
     note: "Concept only. Movement estimates are not an assessment of injury, exercise safety, or a substitute for professional guidance.",
     visualTitle: "Movement", visualSubtitle: "Session library concept", prompt: "Make room for movement.", response: "Mobility, everyday activity, and workout sessions are directions under consideration.",
     videoUrl: movementVideoUrl,
+  },
+  {
+    id: "cali", label: "Cali voice", icon: AudioLines, number: "02", title: "A conversation.\nIn your own words.",
+    image: "/upcoming-cali.png", imageAlt: "Lifestyle concept: a woman speaking into her phone beside her lunch", teaser: "Conversations & meal logging",
+    description: "We're exploring spoken conversations with Cali, alongside text, for reflecting on your logged meals and everyday routines.",
+    details: ["Voice conversations with visible transcripts", "Meal dictation and editable corrections", "Text as an alternative to voice"],
+    note: "Concept only. AI responses may be inaccurate or incomplete and are not medical advice.",
+    visualTitle: "Ask Cali", visualSubtitle: "Voice + text concept", prompt: "Let's look back at my meals.", response: "A space to reflect on what you've logged, in a conversation that fits your day.",
   },
   {
     id: "meditation", label: "Meditation", icon: Headphones, number: "03", title: "A little space.\nJust for you.",

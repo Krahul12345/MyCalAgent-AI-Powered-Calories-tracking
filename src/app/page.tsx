@@ -11,6 +11,7 @@ import WellnessComparisonSection from "@/components/WellnessComparisonSection";
 import AppDownloadSection from "@/components/AppDownloadSection";
 import VideoSection from "@/components/VideoSection";
 import { ComparisonCTA } from "@/components/ComparisonCTA";
+import { HomeUpcomingPreview } from "@/components/HomeUpcomingPreview";
 import { QuickFAQ } from "@/components/QuickFAQ";
 import AICompareCTA from "@/components/AICompareCTA";
 import UserInsightsSection from "@/components/UserInsightsSection";
@@ -191,6 +192,7 @@ export default function Home() {
           <AppDownloadSection />
           <VideoSection />
           <ComparisonCTA />
+          <HomeUpcomingPreview />
           <AICompareCTA />
           <UserInsightsSection />
           <QuickFAQ items={homeFAQ} />
